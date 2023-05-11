@@ -1,8 +1,8 @@
 const renderOneCategory = (data) => {
-    const books = data.map(({ id, book_image, title, author }) => {
-        return `<li class="card" data-book="id">
+    const books = data.map(({ _id, book_image, title, author }) => {
+        return `<li class="card" data-book="${_id}">
         <div class="card__thumb">
-            <img src="${book_image}" alt="${title}">
+            <img src="${book_image}" alt="${title}" class="card__img">
             <div class="card__text">
                 <p class="card__text-inner">quick view</p>
             </div>
