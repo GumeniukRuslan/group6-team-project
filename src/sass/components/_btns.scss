@@ -3,6 +3,8 @@
     background-color: transparent;
     border: 2px solid var(--secondary-color);
     border-radius: 40px;
+    color: var(--main-color);
+    font-weight: 700;
     @extend %transition;
     &:hover, &:focus, &:active {
         background-color: var(--secondary-color);
