@@ -1,10 +1,18 @@
 @import './common';
 @import './base/fonts';
+
 @import './utils/mixins';
+@import './utils/placeholders';
+@import './utils/animations';
+
 @import './base/reset-base';
 @import './base/variables';
 @import './base/container';
-@import './base/hidden';
 
+@import './base/hidden';
 @import './layout/header';
 @import './layout/mobile-menu';
+@import './components/btns';
+@import './components/card';
+@import './layout/top-books';
+@import './layout/books';

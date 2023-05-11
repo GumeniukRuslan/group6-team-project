@@ -1,0 +1,67 @@
+.books__handler {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+}
+
+.category__list {
+  display: flex;
+  flex-direction: row;
+  @include min_768 {
+    gap: 25px;
+  }
+  @include min_1440 {
+    gap: 24px;
+  }
+  gap: 25px;
+  .card {
+    display: none;
+    @include max_767 {
+      &:nth-child(1) {
+        display: block;
+      }
+    }
+    @include between_768_1439 {
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        display: block;
+      }
+      &:nth-child(3) {
+        gap: 0;
+      }
+    }
+    @include min_1440 {
+      display: block;
+    }
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    text-transform: uppercase;
+    color: var(--additional-text-color);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    font-family: 'DM Sans';
+    margin-bottom: 18px;
+  }
+  &__btn {
+    align-self: flex-end;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'DM Sans';
+    padding: 14px 28px;
+    margin-top: 8px;
+    @include min_768 {
+        margin-top: 34px;
+    }
+    @include min_1440 {
+        margin-top: 32px;
+    }
+  }
+}

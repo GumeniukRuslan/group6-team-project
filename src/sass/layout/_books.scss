@@ -1,0 +1,17 @@
+.books {
+    min-width: 335px;
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1875;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+    letter-spacing: -0.04em;
+    &-last {
+      color: var(--secondary-color);
+    }
+    @include min_768 {
+      font-size: 48px;
+    }
+  }
+}
