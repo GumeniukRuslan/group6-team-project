@@ -1,34 +1,84 @@
 .card {
-    width: 100%;
-    display: none;
-    @include max_767 {
-        &:nth-child(1) {
-            display: block;
-        }
+  width: 100%;
+  cursor: pointer;
+  @include max_767 {
+    min-width: 335px;
+  }
+  @include min_768 {
+    width: calc((100% - 2 * 25px) / 3);
+  }
+  @include min_1440 {
+    width: calc((100% - 4 * 24px) / 5);
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    .card__text {
+      transform: translateY(0);
     }
-    @include between_768_1439 {
-        &:nth-child(1), &:nth-child(2), &:nth-child(3) {
-            display: block;
-        }
+  }
+  &__thumb {
+    width: 100%;
+    height: 485px;
+    position: relative;
+    overflow: hidden;
+    @include min_768 {
+        height: 316px;
     }
     @include min_1440 {
-        display: block;
+        height: 256px;
     }
-    &__thumb {
-        width: 100%;
-        position: relative;
+  }
+  &__img {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  &__text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--additional-btn-color);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transform: translateY(100%);
+    @extend %transition;
+    @include min_768 {
+      padding-top: 26px;
+      padding-bottom: 26px;
     }
-    &__img {
-        border-radius: 8px;
-        display: block;
-        width: 100%;
-        height: auto;
+    &-inner {
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.2;
+      @include min_768 {
+        font-size: 18px;
+      }
+      @include min_1440 {
+        font-size: 14px;
+      }
     }
-    &__text {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-transform: uppercase;
-        background-color: var(--additional-btn-color);
-    }
+  }
+  &__title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.125;
+    letter-spacing: -0.04em;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+  &__author {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
+    color: var(--additional-text-color);
+  }
 }
