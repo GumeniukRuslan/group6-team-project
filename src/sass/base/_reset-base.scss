@@ -2,11 +2,16 @@ body {
   margin: 0;
   color: var(--main-text-color);
   background-color: var(--even-section-background-color);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+main {
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 h1,

@@ -10,5 +10,8 @@
     &-last {
       color: var(--secondary-color);
     }
+    @include min_768 {
+      font-size: 48px;
+    }
   }
 }
