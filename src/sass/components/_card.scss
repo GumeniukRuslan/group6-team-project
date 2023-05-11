@@ -16,12 +16,16 @@
     .card__text {
       transform: translateY(0);
     }
+    .card__img {
+      transform: scale(1.03);
+    }
   }
   &__thumb {
     width: 100%;
     height: 485px;
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
     @include min_768 {
         height: 316px;
     }
@@ -35,6 +39,7 @@
     width: 100%;
     height: 100%;
     object-fit: fill;
+    @extend %transition;
   }
   &__text {
     position: absolute;
