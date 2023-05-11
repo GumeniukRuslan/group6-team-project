@@ -1,6 +1,10 @@
 .container {
   margin: 0 auto;
   padding: 0 20px;
+  
+  @include min_375{
+    max-width: 375px;
+  };
 
   @include min_768{
     max-width: 768px;
