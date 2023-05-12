@@ -6,5 +6,6 @@ export const refs = {
   booksHandler: document.querySelector('.books__handler'),
   categoryTitle: document.querySelector('.books__title'),
   scrollTopBtn: document.querySelector('.btn-top'),
-  scrollTopTarget: document.querySelector('#top-target')
+  scrollTopTarget: document.querySelector('#top-target'),
+  shopList: document.querySelector('.shoping-list'),
 };
