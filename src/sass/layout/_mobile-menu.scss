@@ -18,6 +18,20 @@
   //   background-size: auto auto;
 
   transition: transform 0.2s;
+
+  .mobile-menu__user {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 15.52%;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+
+    color: var(--dark-main-color);
+  }
 }
 
 .showMenu {
