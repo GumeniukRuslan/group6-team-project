@@ -50,7 +50,7 @@
     padding-bottom: 40px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    transform: translateY(100%);
+    transform: translateY(101%);
     @extend %transition;
     @include min_768 {
       padding-top: 26px;

@@ -8,12 +8,14 @@
 @import './base/reset-base';
 @import './base/variables';
 @import './base/container';
-
 @import './base/hidden';
-@import './layout/header';
-@import './layout/mobile-menu';
+
 @import './components/btns';
 @import './components/card';
+@import './components/error';
+
+@import './layout/header';
+@import './layout/mobile-menu';
 @import './layout/top-books';
 @import './layout/books';
 @import './layout/support-funds';
