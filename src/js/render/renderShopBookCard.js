@@ -3,6 +3,7 @@ export const renderShopBookCards = data => {
   const amazon = new URL('../../images/amazon.png', import.meta.url);
   const book1 = new URL('../../images/book1.png', import.meta.url);
   const book2 = new URL('../../images/book2.png', import.meta.url);
+  const trashIcon = new URL('../../images/icons.svg', import.meta.url);
   const books = data
     .map(
       ({
@@ -19,7 +20,7 @@ export const renderShopBookCards = data => {
             book_image ? book_image : sample
           }" alt="${title}" loading="lazy">
           <div class="book-information">
-            <div class="bred">
+            <div class="flex-inheritance">
               <h2 class="book_title">${title}</h2>
               <p class="book_category">${list_name}</p>
               <p class="book_descriprion">${description}</p>
@@ -35,7 +36,7 @@ export const renderShopBookCards = data => {
           </div>
           <button class="delete-btn" type="button">
             <svg class="shoping-trash__svg">
-              <use href="./images/icons.svg#icon-bin"></use>
+             <use href="${trashIcon}#icon-bin"></use
             </svg>
           </button>
         </li>`;

@@ -46,6 +46,7 @@
   margin-right: 14px;
   height: 142px;
   object-fit: fill;
+  border-radius: 8px;
   @include min_768 {
       height: 165px;
       margin-right: 24px;
@@ -132,6 +133,7 @@ vertical-align: bottom;
   gap: 8px;
   @include min_768 {
       align-items: center;
+      gap: 16px;
     }
 };
 
