@@ -129,6 +129,10 @@
   border-radius: 18px;
 
   stroke: var(--additional-btn-color);
+
+  header & {
+    width: 104px;
+  }
 }
 
 .buttons-auth__menu {
