@@ -1,0 +1,153 @@
+.shoping-list{
+  
+};
+
+.shoping-list_book{
+  display: flex;
+  padding: 14px;
+  background: #FFFFFF;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  position: relative;
+  margin-bottom: 20px;
+  @include min_768 {
+    padding: 24px;
+    &:last-child{
+      margin-bottom: 40px;
+    }
+  }
+};
+
+.delete-btn{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  transform: translate(-50% -50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include min_768 {
+    width: 34px;
+    height: 34px;
+  }
+};
+.shoping-trash__svg{
+  width: 16px;
+  height: 16px;
+  @include min_768 {
+      width: 18px;
+      height: 18px;
+    }
+}
+
+.book_img{
+  margin-right: 14px;
+  height: 100%;
+  @include min_768 {
+      margin-right: 24px;
+    }
+};
+
+.book-information{
+  
+};
+
+.book_title{
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+};
+
+.book_category{
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.03em;
+  color: var(--additional-text-color);
+  @include min_768 {
+      margin-bottom: 14px;
+    }
+};
+
+.book_descriprion{
+  overflow: hidden;
+  text-overflow: clip;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.04em;
+  color: var(--main-color);
+  @include min_768 {
+      margin-bottom: 32px;
+    }
+};
+
+.book_links-and-author{
+display: flex;
+justify-content: space-between;
+align-items: center;
+@include min_768 {
+    align-items: baseline;
+  }
+};
+
+.book_author{
+  white-space: nowrap;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  color: var(--additional-text-color);
+};
+
+.book_shoping-links{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  @include min_768 {
+      align-items: center;
+    }
+};
+
+.shoping-links_link{
+
+};
+
+.book1_img{
+  width: 16px;
+  height: 16px;
+  filter: grayscale(100%);
+  @include min_768 {
+      width: 28px;
+      height: 27px;
+    }
+};
+
+.book2_img{
+  width: 16px;
+  height: 16px;
+  filter: grayscale(100%);
+  @include min_768 {
+      width: 32px;
+      height: 30px;
+    }
+};
+
+.amazon-img{
+  width: 32px;
+  height: 11px;
+  filter: grayscale(100%);
+  @include min_768 {
+      width: 48px;
+      height: 15px;
+    }
+}
