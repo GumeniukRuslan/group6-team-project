@@ -1,11 +1,11 @@
 .mobile-menu {
   position: fixed;
   transform: translateY(-100%);
-  top: 64px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 66px;
+  padding-top: 104px;
   z-index: 99;
   background-image: url(../images/mobile-menu-bg.png),
     radial-gradient(
@@ -34,4 +34,8 @@
   @include max_767 {
     display: none;
   }
+}
+
+body.lock {
+  overflow: hidden;
 }
