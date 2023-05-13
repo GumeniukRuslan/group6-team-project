@@ -1,10 +1,11 @@
+import sample from '../../images/sample.png';
+import amazon from '../../images/amazon.png';
+import book1 from '../../images/book1.png';
+import book2 from '../../images/book2.png';
+import trashIcon from '../../images/icons.svg';
+
 export const renderShopBookCards = data => {
-  const sample = new URL('../../images/sample.png', import.meta.url);
-  const amazon = new URL('../../images/amazon.png', import.meta.url);
-  const book1 = new URL('../../images/book1.png', import.meta.url);
-  const book2 = new URL('../../images/book2.png', import.meta.url);
-  const trashIcon = new URL('../../images/icons.svg', import.meta.url);
-  const books = data
+  books = data
     .map(
       ({
         _id,
