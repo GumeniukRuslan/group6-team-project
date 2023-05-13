@@ -1,41 +1,27 @@
 import { getCategoryList } from '../api/fetchLogic';
 import { refs } from '../components/refs';
 
-const renderAllCategories = (data) => {
-  const categories = data.map(({ list_name }) => {
-    return `
-      <div class="categories">
-        <ul class="categories__list">
-          <li class="categories__item">All categories</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-          <li class="categories__item">${list_name}</li>
-        </ul>
-      </div>
-    `;
-  }).join("");
+const renderAllCategories = data => {
+  const categories = data
+    .map(({ list_name }) => {
+      return `<li class="categories__item">${list_name}</li>`;
+    })
+    .join('');
   return categories;
-} 
+};
 
 async function createAllCategories() {
   try {
     const allCategories = await getCategoryList();
-    const categoriesHtml = renderAllCategories(allCategories);
-    refs.allCategoriesList.insertAdjacentHTML("beforeend", categoriesHtml);
+    refs.allCategoriesList.insertAdjacentHTML(
+      'beforeend',
+      renderAllCategories(allCategories)
+    );
   } catch (error) {
     console.log(error);
   }
 }
-
-createAllCategories();
+window.addEventListener('load', createAllCategories);
 
 // import { getCategoryList } from '../api/fetchLogic';
 // import { refs } from '../components/refs';
