@@ -1,0 +1,28 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include min_1440 {
+    margin: 0 auto;
+    padding-top: 140px;
+  }
+  &__text {
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1.25;
+    margin-bottom: 15px;
+    max-width: 350px;
+    @include min_768 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+  &__img {
+    @include min_768 {
+      width: 322px;
+    }
+  }
+}

@@ -14,4 +14,18 @@
       font-size: 48px;
     }
   }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    @include min_768 {
+      flex-wrap: wrap;
+      flex-direction: row;
+      column-gap: 25px;
+      row-gap: 40px;
+    }
+    @include min_1440 {
+      column-gap: 24px;
+    }
+  }
 }
