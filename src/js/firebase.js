@@ -11,7 +11,6 @@ import {
   getFirestore,
   doc,
   setDoc,
-  serverTimestamp,
   getDoc,
   updateDoc,
   arrayUnion,
@@ -37,15 +36,18 @@ const db = getFirestore(app);
 
 export let userCurrent = null;
 
+handleAuthStateChanged();
 refs.regForm.addEventListener('submit', signIn);
 refs.logOutButton.addEventListener('click', logOut);
 
 /**
  * Функция для взаимодействия со статусом пользователя(авторизован/неавторизован)
+ * обернутая в промис для возможности вызова её в другом месте
+ * и получении статуса пользователя
  * Функционал для авторизированного в if
  * Функционал для неавторизированного в else
  */
-async function handleAuthStateChanged() {
+export async function handleAuthStateChanged() {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -53,19 +55,14 @@ async function handleAuthStateChanged() {
         console.log(user);
         resolve(userCurrent);
 
-        // console.log(userCurrent);
-
         getUserName(user.email)
           .then(data => setUserName(refs.userName, data.name))
           .catch(error => console.error('Error adding document: ', error));
 
         renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
         return userCurrent;
-
-        //
       } else {
-        console.log('Anyone logged in');
-        reject(new Error('Пользователь не вошел в систему'));
+        reject('Anyone logged in');
       }
     });
   });
@@ -112,9 +109,10 @@ function signIn(evt) {
       console.log('Signed in');
     })
     .catch(error => {
-      console.log(error, 'Signed in');
+      console.log(error.code, 'Not signed in');
       const errorCode = error.code;
       const errorMessage = error.message;
+      //Обработать ошибку error.code = auth/user-not-found
     });
 }
 
@@ -134,7 +132,11 @@ function logOut(evt) {
 }
 
 //
-
+/**
+ * Функция для добавления имени пользователя в database
+ * @param {string} userEmail
+ * @param {string} userName
+ */
 async function addUserName(userEmail, userName) {
   try {
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
@@ -145,6 +147,11 @@ async function addUserName(userEmail, userName) {
   }
 }
 
+/**
+ * Функция для получения имени с database
+ * @param {string} userEmail
+ * @returns
+ */
 async function getUserName(userEmail) {
   const docRef = await getDoc(doc(db, `names/${userEmail}`));
   const data = await docRef.data();
@@ -152,13 +159,16 @@ async function getUserName(userEmail) {
   return data;
 }
 
+/**
+ * Функция для добавления книги в database Шопинг-лист по клику на (пока на картинку)
+ * @param {event} evt
+ */
 export async function addToShopList(evt) {
   const li = evt.target.closest('li');
 
   if (userCurrent) {
     console.log(li.dataset.book);
     try {
-      // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
       const docRef = await setDoc(
         doc(db, `shoplist/${userCurrent}`),
         {
@@ -172,13 +182,16 @@ export async function addToShopList(evt) {
   }
 }
 
+/**
+ * Функция для удаления книги с database Шопинг-листа по клику на (пока на тайтл)
+ * @param {event} evt
+ */
 export async function rmvFrmShopList(evt) {
   const li = evt.target.closest('li');
 
   if (userCurrent) {
     console.log(li.dataset.book);
     try {
-      // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
       const docRef = await updateDoc(doc(db, `shoplist/${userCurrent}`), {
         books: arrayRemove(`${li.dataset.book}`),
       });
@@ -188,6 +201,10 @@ export async function rmvFrmShopList(evt) {
   }
 }
 
+/**
+ * Функция для получения книг с database Шопинг-листа по загрузке страницы
+ * @returns масив книг
+ */
 export async function getBksFrmShpLst() {
   try {
     const user = await handleAuthStateChanged();

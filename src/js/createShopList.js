@@ -3,8 +3,10 @@ import { refs } from './components/refs';
 import { renderShopBookCards } from './render/renderShopBookCard';
 import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
-import { userCurrent } from './firebase';
 import { getBksFrmShpLst } from './firebase';
+import { handleAuthStateChanged } from './firebase';
+
+handleAuthStateChanged();
 
 const createShopList = async () => {
   startLoading();
