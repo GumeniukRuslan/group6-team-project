@@ -6,9 +6,18 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  serverTimestamp,
+  getDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
 import renderOnAuth from './render/renderOnAuth';
+import setUserName from './render/setUserName';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCFbDfMxvAAm2TBu0RcI8fVQFaZMghyfcY',
@@ -21,6 +30,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 let userCurrent = null;
 
@@ -36,9 +46,13 @@ onAuthStateChanged(auth, user => {
   if (user) {
     userCurrent = user.email;
     //
-    console.log(user);
+    // console.log(user);
+    // console.log(setUserName(user.email));
+    getUserName(user.email)
+      .then(data => setUserName(refs.userName, data.name))
+      .catch(error => console.error('Error adding document: ', error));
 
-    renderOnAuth();
+    renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
 
     //
   } else {
@@ -58,8 +72,8 @@ function registerNewUser(evt) {
   createUserWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
       // Signed in
-
-      const user = userCredential.user;
+      // const user = userCredential.user;
+      firestoreTest(data.email, data.name);
     })
     .catch(error => {
       const errorCode = error.code;
@@ -100,10 +114,30 @@ function signIn(evt) {
 function logOut(evt) {
   signOut(auth)
     .then(() => {
-      renderOnAuth();
+      renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
       console.log('Log out');
     })
     .catch(error => {
       console.log(error, 'Log out error');
     });
+}
+
+//
+
+async function firestoreTest(userEmail, userName) {
+  try {
+    // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
+    const docRef = await setDoc(doc(db, `names/${userEmail}`), {
+      name: `${userName}`,
+    });
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+}
+
+async function getUserName(userEmail) {
+  const docRef = await getDoc(doc(db, `names/${userEmail}`));
+  const data = await docRef.data();
+
+  return data;
 }
