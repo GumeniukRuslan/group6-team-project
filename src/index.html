@@ -8,11 +8,16 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
+    
     <include src="./HTMLpartials/header.html"></include>
+    <a href="./shoping-list.html">test</a>
     <include src="./HTMLpartials/mobile-menu.html"></include>
     <main>
       <div id="top-target"></div>
-      <div class="container">
+      <div class="container books--flex">
+        <aside class="books__aside">
+          <include src="./HTMLpartials/support-funds.html"></include>
+        </aside>
         <include src="./HTMLpartials/books-list.html"></include>
       </div>
     </main>
@@ -21,6 +26,5 @@
         <use href="./images/icons.svg#icon-arrow-up">
       </svg>
     </button>
-
   </body>
 </html>
