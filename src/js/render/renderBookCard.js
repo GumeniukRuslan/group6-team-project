@@ -1,8 +1,9 @@
 export const renderBookCard = (data) => {
+    const sample = new URL('../../images/sample.png', import.meta.url);
     const books = data.map(({ _id, book_image, title, author }) => {
         return `<li class="card" data-book="${_id}">
         <div class="card__thumb">
-            <img src="${book_image}" alt="${title}" class="card__img">
+            <img src="${book_image ? book_image : sample}" loading="lazy" alt="${title}" class="card__img">
             <div class="card__text">
                 <p class="card__text-inner">quick view</p>
             </div>
