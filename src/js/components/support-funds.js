@@ -37,7 +37,7 @@ export const funds = [
   },
 ];
 
-const imgSupportUrl = [
+/*const imgSupportUrl = [
   '../../images/saveTheChildren.png',
   './images/projectHope.png',
   './images/united24.png',
@@ -72,4 +72,4 @@ funds.forEach((fund) => {
   fundsListEl.appendChild(listItem);
 
 });
-console.log(fundsListEl)
+console.log(fundsListEl)*/
