@@ -26,7 +26,8 @@
 }
 
 .support-logo{
-display: inline-block
+display: inline-block;
+filter: invert(100%) grayscale(100%) contrast(2.5);
 };
 
 .buttons-slider {
