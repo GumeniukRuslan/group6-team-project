@@ -8,3 +8,4 @@ import './js/scrollToTop';
 import './js/components/support-funds';
 import './js/categoryBooks';
 import './js/switch';
+import './js/components/gradient';
