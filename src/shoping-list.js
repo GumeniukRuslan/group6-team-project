@@ -1,6 +1,7 @@
 import './js/components/refs';
 import './js/mobileMenu';
 import './js/firebase';
+import './js/createSupportList';
 import './js/createShopList';
 
 // import Pagination from 'tui-pagination';

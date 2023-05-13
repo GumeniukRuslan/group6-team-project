@@ -14,7 +14,10 @@ export const renderShopBookCards = data => {
         list_name,
         amazon_product_url,
         description,
+        buy_links,
       }) => {
+        const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
+        const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
         return `<li class="shoping-list_book" data-book="${_id}">
           <img class="book_img" src="${
             book_image ? book_image : sample
@@ -29,8 +32,12 @@ export const renderShopBookCards = data => {
               <p class="book_author">${author}</p>
               <ul class="book_shoping-links">
                 <li><a class="shoping-links_link" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
-                <li><a class="shoping-links_link" href="${amazon_product_url}"><img class="book1_img" src="${book1}" alt=""></a></li>
-                <li><a class="shoping-links_link" href="${amazon_product_url}"><img class="book2_img" src="${book2}" alt=""></a></li>
+                <li><a class="shoping-links_link" href="${
+                  appleURL[0].url
+                }"><img class="book1_img" src="${book1}" alt=""></a></li>
+                <li><a class="shoping-links_link" href="${
+                  bookShop[0].url
+                }"><img class="book2_img" src="${book2}" alt=""></a></li>
               </ul>
             </div>
           </div>
