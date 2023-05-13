@@ -12,7 +12,7 @@ const createShopList = async () => {
     );
     refs.shopList.innerHTML = renderShopBookCards(books);
   } catch (e) {
-    refs.shopList.innerHTML = renderError();
+    refs.shopList.innerHTML = renderError(`This page is empty, add some books and proceed to order.`);
   }
   removeLoading();
 };

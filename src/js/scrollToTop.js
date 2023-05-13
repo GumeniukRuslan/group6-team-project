@@ -10,7 +10,7 @@ const observeTop = (entries) => {
     });
 } 
 
-const scrollToTop = () => {
+export const scrollToTop = () => {
     window.scroll({
         top: 0,
         behavior: 'smooth',
