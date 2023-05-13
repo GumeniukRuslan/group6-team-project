@@ -21,6 +21,6 @@ const createModal = async (evt) => {
     removeLoading();
   };
   
-  bookCard.addEventListener('click', createModal);
+  refs.bookCard.addEventListener('click', createModal);
 
   
