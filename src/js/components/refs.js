@@ -15,6 +15,4 @@ export const refs = {
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
   elmsAuth: document.querySelectorAll('.js-elmsAuth'),
-  //
-  shopList: document.querySelector('.shoping-list'),
 };
