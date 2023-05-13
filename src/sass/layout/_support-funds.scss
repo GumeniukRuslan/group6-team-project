@@ -20,9 +20,21 @@
         line-height: 1.14;
         letter-spacing: -0.04em;
         color: var(--primary-bcg);
+        display: flex;
+        margin-right: 12px;
         padding-top: 20px;
         padding-left: 40px;
-    }        
+    }
+    &__coat {
+        margin-left: 12px;
+        fill: var(--primary-bcg);
+    }
+
+}
+
+.support__list{
+    display: flex;
+    flex-direction: column;
 }
 
 .support-logo{
