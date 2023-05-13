@@ -12,7 +12,7 @@ const createTopBooks = async () => {
         const books = await getTopBooks();
         refs.booksHandler.innerHTML = renderTopCategories(books);
     } catch (e) {
-        refs.booksHandler.innerHTML = renderError();
+        refs.booksHandler.innerHTML = renderError(`Something went wrong...`);
     }
     removeLoading();
 }
