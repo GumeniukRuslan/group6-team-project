@@ -6,13 +6,16 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+
 import {
+  getFirestore,
   doc,
   setDoc,
   serverTimestamp,
   getDoc,
   updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
@@ -32,7 +35,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let userCurrent = null;
+export let userCurrent = null;
 
 refs.regForm.addEventListener('submit', signIn);
 refs.logOutButton.addEventListener('click', logOut);
@@ -42,23 +45,31 @@ refs.logOutButton.addEventListener('click', logOut);
  * Функционал для авторизированного в if
  * Функционал для неавторизированного в else
  */
-onAuthStateChanged(auth, user => {
-  if (user) {
-    userCurrent = user.email;
-    //
-    // console.log(user);
-    // console.log(setUserName(user.email));
-    getUserName(user.email)
-      .then(data => setUserName(refs.userName, data.name))
-      .catch(error => console.error('Error adding document: ', error));
+async function handleAuthStateChanged() {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        userCurrent = user.email;
+        console.log(user);
+        resolve(userCurrent);
 
-    renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
+        // console.log(userCurrent);
 
-    //
-  } else {
-    console.log('Anyone logged in');
-  }
-});
+        getUserName(user.email)
+          .then(data => setUserName(refs.userName, data.name))
+          .catch(error => console.error('Error adding document: ', error));
+
+        renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
+        return userCurrent;
+
+        //
+      } else {
+        console.log('Anyone logged in');
+        reject(new Error('Пользователь не вошел в систему'));
+      }
+    });
+  });
+}
 
 /**
  * Функция для регистрации
@@ -73,7 +84,7 @@ function registerNewUser(evt) {
     .then(userCredential => {
       // Signed in
       // const user = userCredential.user;
-      firestoreTest(data.email, data.name);
+      addUserName(data.email, data.name);
     })
     .catch(error => {
       const errorCode = error.code;
@@ -124,14 +135,13 @@ function logOut(evt) {
 
 //
 
-async function firestoreTest(userEmail, userName) {
+async function addUserName(userEmail, userName) {
   try {
-    // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
       name: `${userName}`,
     });
   } catch (e) {
-    console.error('Error adding document: ', e);
+    console.error('Error adding username: ', e);
   }
 }
 
@@ -140,4 +150,53 @@ async function getUserName(userEmail) {
   const data = await docRef.data();
 
   return data;
+}
+
+export async function addToShopList(evt) {
+  const li = evt.target.closest('li');
+
+  if (userCurrent) {
+    console.log(li.dataset.book);
+    try {
+      // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
+      const docRef = await setDoc(
+        doc(db, `shoplist/${userCurrent}`),
+        {
+          books: arrayUnion(`${li.dataset.book}`),
+        },
+        { merge: true }
+      );
+    } catch (e) {
+      console.error('Error adding book: ', e);
+    }
+  }
+}
+
+export async function rmvFrmShopList(evt) {
+  const li = evt.target.closest('li');
+
+  if (userCurrent) {
+    console.log(li.dataset.book);
+    try {
+      // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
+      const docRef = await updateDoc(doc(db, `shoplist/${userCurrent}`), {
+        books: arrayRemove(`${li.dataset.book}`),
+      });
+    } catch (e) {
+      console.error('Error remove book: ', e);
+    }
+  }
+}
+
+export async function getBksFrmShpLst() {
+  try {
+    const user = await handleAuthStateChanged();
+    const docRef = await getDoc(doc(db, `shoplist/${user}`));
+    const data = await docRef.data();
+    const booksArray = data.books;
+
+    return booksArray;
+  } catch (error) {
+    console.error(error);
+  }
 }
