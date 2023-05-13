@@ -1,12 +1,12 @@
 import { refs } from './components/refs';
-import { modal_open_close } from './components/modalOpenClose';
+import { toggleModal } from './components/toggleModal';
 import { getOneBookById } from './api/fetchLogic';
 import { renderModal } from './render/renderModal';
 import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
 
 const createModal = async (evt) => {
-    modal_open_close();
+    toggleModal();
     refs.backdrop.innerHTML = "";
     startLoading();
     const bookId = evt.target.dataset.book;
