@@ -1,7 +1,6 @@
 body {
   margin: 0;
   color: var(--main-text-color);
-  background-color: var(--even-section-background-color);
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -11,7 +10,13 @@ html {
 
 main {
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
+  @include min_768 {
+    padding-bottom: 100px;
+  }
+  @include min_1440 {
+    padding-bottom: 72px;
+  }
 }
 
 h1,
