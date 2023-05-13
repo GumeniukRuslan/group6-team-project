@@ -8,23 +8,22 @@
         Bookshelf
       </a>
 
-      <ul class="header__buttons-nav js-elmsAuth hidden">
-        <li><a class="buttons-nav__item" href="./index.html">Home</a></li>
+      <ul class="header__buttons-nav">
+        <li><a href="./index.html">Home</a></li>
         <li>
-          <a class="buttons-nav__item buttons-nav__shop-list" href="#">
+          <a class="buttons-nav__shop-list" href="#">
             Shopping list
             <svg class="shop-list__img" width="20" height="20">
-              <use href="./images/icons.svg#icon-shopping-bag"></use>
+              <use href="#"></use>
             </svg>
           </a>
         </li>
       </ul>
     </nav>
-    <ul class="header__buttons-auth">
-      <li class="buttons-auth__item">
-        <input class="buttons__switcher" type="checkbox" id="switch" />
-        <label class="buttons__switcher-label" for="switch">Toggle</label>
-      </li>
+    <div class="header__buttons-auth">
+      <input class="buttons__switcher" type="checkbox" id="switch" />
+      <label class="buttons__switcher-label" for="switch">Toggle</label>
+
 
       <li class="buttons-auth__sign-block js-elmsNonAuth">
         <button class="buttons-auth__sign">
@@ -78,5 +77,28 @@
       <input name="password" type="password" />
       <button>Submit</button>
     </form>
+
+      <button class="buttons-auth__sign">
+        Sign Up
+        <svg width="20" height="20">
+          <use href="./images/icons.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+      <button class="buttons-auth__sign">
+        Sign In
+        <svg class="sign-in__img" width="20" height="20">
+          <use href="./images/icons.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+      <button class="buttons-auth__menu js-burger">
+        <svg class="menu__img js-burgerMenu showButton" width="28" height="28">
+          <use href="./images/icons.svg#icon-burger"></use>
+        </svg>
+        <svg class="menu__img js-burgerClose hideButton" width="28" height="28">
+          <use href="./images/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+    </div>
+
   </div>
 </header>

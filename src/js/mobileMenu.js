@@ -1,5 +1,8 @@
 import { refs } from './components/refs';
 
+console.log(refs.mobileMenu);
+console.log(refs.burger);
+
 refs.burger.addEventListener('click', toggleMenu);
 
 function toggleMenu() {
@@ -11,8 +14,6 @@ function toggleMenu() {
 
     refs.burgerMenuIcon.classList.add('showButton');
     refs.burgerMenuIcon.classList.remove('hideButton');
-
-    document.body.classList.remove('lock');
   } else {
     refs.mobileMenu.classList.add('showMenu');
 
@@ -21,8 +22,6 @@ function toggleMenu() {
 
     refs.burgerMenuIcon.classList.add('hideButton');
     refs.burgerMenuIcon.classList.remove('showButton');
-
-    document.body.classList.add('lock');
   }
 }
 
@@ -35,6 +34,4 @@ window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
 
   refs.burgerMenuIcon.classList.add('showButton');
   refs.burgerMenuIcon.classList.remove('hideButton');
-
-  document.body.classList.remove('lock');
 });
