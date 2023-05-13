@@ -18,7 +18,7 @@ export const renderShopBookCards = data => {
       }) => {
         const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
         const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
-        return `<li class="shoping-list_book" data-book="${_id}">
+        return `<li class="shopping-list_book" data-book="${_id}">
           <img class="book_img" src="${
             book_image ? book_image : sample
           }" alt="${title}" loading="lazy">
@@ -30,19 +30,19 @@ export const renderShopBookCards = data => {
             </div>
             <div class="book_links-and-author">
               <p class="book_author">${author}</p>
-              <ul class="book_shoping-links">
-                <li><a class="shoping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
-                <li><a class="shoping-links_link" target="_blank" rel="noopener noreferrer" href="${
+              <ul class="book_shopping-links">
+                <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
+                <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
                   appleURL[0].url
                 }"><img class="book1_img" src="${book1}" alt=""></a></li>
-                <li><a class="shoping-links_link" target="_blank" rel="noopener noreferrer" href="${
+                <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
                   bookShop[0].url
                 }"><img class="book2_img" src="${book2}" alt=""></a></li>
               </ul>
             </div>
           </div>
           <button class="delete-btn" type="button">
-            <svg class="shoping-trash__svg">
+            <svg class="shopping-trash__svg">
              <use href="${trashIcon}#icon-bin"></use
             </svg>
           </button>
