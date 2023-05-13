@@ -1,15 +1,12 @@
 .categories {
-    padding-top: 40px;
     margin-bottom: 40px;
 
     @include min_768 {
-        padding-left: 12px;
         margin-right: 32px;
         margin-bottom: 0;
     }
 
     @include min_1440 {
-        padding-left: 4px;
         margin-right: 0;
         margin-bottom: 86px;
     } 
@@ -19,21 +16,16 @@
     width: 100%;
     height: 228px;
     overflow-y: auto;
-
-    @include min_375 {
-        width: 335px;
-    }
-
     @include min_768 {
-        width: 337px;
         height: 472px;
     }
 
-    @include min_1440 {
-        width: 356px;
-    } 
 }
-
+.books__aside{
+@include between_768_1439{
+    display: flex;
+}
+}
 .categories__item {
     font-family: 'DM Sans';
     font-weight: 400;
@@ -41,15 +33,23 @@
     line-height: calc(18 / 16);
     letter-spacing: -0.02em;
     color: var(--categories-color);
-    padding-bottom: 24px;
+    
     cursor: pointer;
+    &:not(:last-child){
+        padding-bottom: 24px;
+    }
 
     @include min_768 {
         font-size: 18px;
         line-height: calc(24 / 18);
-        padding-bottom: 32px;
+        &:not(:last-child) {
+                padding-bottom: 32px;
+        }
     }
-
+    &:hover,
+    &:focus{
+        color: var(--secondary-color);
+    }
     &:active {
         font-weight: 700;
         text-transform: uppercase;
