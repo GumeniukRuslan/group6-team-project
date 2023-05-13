@@ -12,12 +12,15 @@ const createModal = async (evt) => {
     const bookId = evt.target.dataset.book;
     
     try {
-      const book = await getOneBookById(bookId);
-      refs.backdrop.innerHTML = renderModal(book);
+      const dataBook = await getOneBookById(bookId);
+      refs.backdrop.innerHTML = renderModal(dataBook);
     } catch (e) {
-      refs.backdrop.innerHTML = renderError();
+      refs.backdrop.innerHTML = renderError(
+        `This page is empty, add some books and proceed to order.`);
     }
     removeLoading();
   };
   
-  document.addEventListener('click', createModal);
+  bookCard.addEventListener('click', createModal);
+
+  

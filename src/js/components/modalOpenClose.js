@@ -1,4 +1,4 @@
-import { refs } from './components/refs';
+import { refs } from './refs';
 
 refs.bookCard.addEventListener('click', toggleModal);
 refs.closeModal.addEventListener('click', toggleModal);

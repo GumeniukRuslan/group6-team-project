@@ -23,7 +23,7 @@ export const refs = {
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),
   modalWindow: document.querySelector('[data-modal]'),
-  bookCard: document.querySelector('.card'),
+  bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
 
 };
