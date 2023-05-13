@@ -27,10 +27,10 @@
     overflow: hidden;
     border-radius: 8px;
     @include min_768 {
-        height: 316px;
+      height: 316px;
     }
     @include min_1440 {
-        height: 256px;
+      height: 256px;
     }
   }
   &__img {
