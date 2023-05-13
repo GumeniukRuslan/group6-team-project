@@ -34,3 +34,9 @@
         @content;
     }
 }
+
+@mixin centeredFlex($type){
+        display: $type;
+        justify-content: center;
+        align-items: center;
+    }
