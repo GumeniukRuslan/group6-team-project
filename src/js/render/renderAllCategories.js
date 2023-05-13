@@ -37,8 +37,6 @@ async function createAllCategories() {
 
 createAllCategories();
 
-// Сделал, как ты написал, но не работает.
-
 // import { getCategoryList } from '../api/fetchLogic';
 // import { refs } from '../components/refs';
 
