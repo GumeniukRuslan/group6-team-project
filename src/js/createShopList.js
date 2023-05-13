@@ -3,6 +3,7 @@ import { refs } from './components/refs';
 import { renderShopBookCards } from './render/renderShopBookCard';
 import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
+import { deleteBook } from './helpers/deleteBook';
 
 const createShopList = async () => {
   startLoading();
@@ -12,8 +13,11 @@ const createShopList = async () => {
     );
     refs.shopList.innerHTML = renderShopBookCards(books);
   } catch (e) {
-    refs.shopList.innerHTML = renderError(`This page is empty, add some books and proceed to order.`);
+    refs.shopList.innerHTML = renderError(
+      `This page is empty, add some books and proceed to order.`
+    );
   }
+  refs.shopList.addEventListener('click', deleteBook);
   removeLoading();
 };
 

@@ -57,6 +57,7 @@
     font-family: 'DM Sans';
     padding: 14px 28px;
     margin-top: 8px;
+    cursor: pointer;
     @include min_768 {
         margin-top: 34px;
     }
@@ -64,4 +65,7 @@
         margin-top: 32px;
     }
   }
+}
+.books__aside{
+  position: relative;
 }
