@@ -18,5 +18,6 @@ export const refs = {
   userName: document.querySelectorAll('.js-userName'),
 
   allCategoriesList: document.querySelector('.categories__list'),
+  suppList: document.querySelector('.support__list'),
   shopList: document.querySelector('.shoping-list'),
 };
