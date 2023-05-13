@@ -32,9 +32,16 @@
     bottom: 80px;
   }
   &__svg {
-    animation: btn-scroll 1s infinite;
     fill: var(--primary-bcg);
+    transform: rotate(180deg);
     @extend %transition;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    .btn-top__svg {
+      transform: rotate(0);
+    }
   }
   animation: btn-scroll 1s infinite;
   &::before {

@@ -8,42 +8,75 @@
         Bookshelf
       </a>
 
-      <ul class="header__buttons-nav">
-        <li><a href="./index.html">Home</a></li>
+      <ul class="header__buttons-nav js-elmsAuth hidden">
+        <li><a class="buttons-nav__item" href="./index.html">Home</a></li>
         <li>
-          <a class="buttons-nav__shop-list" href="#">
+          <a class="buttons-nav__item buttons-nav__shop-list" href="#">
             Shopping list
             <svg class="shop-list__img" width="20" height="20">
-              <use href="#"></use>
+              <use href="./images/icons.svg#icon-shopping-bag"></use>
             </svg>
           </a>
         </li>
       </ul>
     </nav>
-    <div class="header__buttons-auth">
-      <input class="buttons__switcher" type="checkbox" id="switch" />
-      <label class="buttons__switcher-label" for="switch">Toggle</label>
+    <ul class="header__buttons-auth">
+      <li class="buttons-auth__item">
+        <input class="buttons__switcher" type="checkbox" id="switch" />
+        <label class="buttons__switcher-label" for="switch">Toggle</label>
+      </li>
 
-      <button class="buttons-auth__sign">
-        Sign Up
-        <svg width="20" height="20">
-          <use href="./images/icons.svg#icon-arrow-right"></use>
-        </svg>
-      </button>
-      <button class="buttons-auth__sign">
-        Sign In
-        <svg class="sign-in__img" width="20" height="20">
-          <use href="./images/icons.svg#icon-arrow-right"></use>
-        </svg>
-      </button>
-      <button class="buttons-auth__menu js-burger">
-        <svg class="menu__img js-burgerMenu showButton" width="28" height="28">
-          <use href="./images/icons.svg#icon-burger"></use>
-        </svg>
-        <svg class="menu__img js-burgerClose hideButton" width="28" height="28">
-          <use href="./images/icons.svg#icon-close"></use>
-        </svg>
-      </button>
-    </div>
+      <li class="buttons-auth__sign-block js-elmsNonAuth">
+        <button class="buttons-auth__sign">
+          Sign Up
+          <svg width="20" height="20">
+            <use href="./images/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+        <button class="buttons-auth__sign">
+          Sign In
+          <svg class="sign-in__img" width="20" height="20">
+            <use href="./images/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+      </li>
+      <li class="buttons-auth__item">
+        <button class="buttons-auth__menu js-burger">
+          <svg
+            class="menu__img js-burgerMenu showButton"
+            width="28"
+            height="28"
+          >
+            <use href="./images/icons.svg#icon-burger"></use>
+          </svg>
+          <svg
+            class="menu__img js-burgerClose hideButton"
+            width="28"
+            height="28"
+          >
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </li>
+      <li class="buttons-auth__item js-elmsAuth hidden">
+        <button class="user">
+          <svg class="user__img" width="19" height="19">
+            <use href="./images/icons.svg#icon-user"></use>
+          </svg>
+          User
+          <svg class="user__arrow" width="23" height="26">
+            <use href="./images/icons.svg#icon-open-user"></use>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="hidden">
+    <form class="js-regForm">
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <input name="password" type="password" />
+      <button>submit</button>
+    </form>
   </div>
 </header>

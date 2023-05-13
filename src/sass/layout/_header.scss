@@ -31,16 +31,52 @@
 
   color: #000;
   font-weight: 700;
+
+  @include min_768 {
+    margin-right: 40px;
+  }
 }
 
 .header__buttons-nav {
-  display: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-direction: column;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+
+  @include min_768 {
+    gap: 16px;
+    flex-direction: row;
+  }
+  header & {
+    @include max_767 {
+      display: none;
+    }
+  }
 
   .buttons-nav__shop-list {
-    .shop-list__img {
-      // temporarily
-      background-color: #000;
-    }
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-weight: 500;
+    fill: var(--main-color);
+  }
+}
+
+.buttons-nav__item {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 36px;
+  @extend %transition;
+  &:hover,
+  &:focus {
+    background-color: var(--additional-btn-color);
   }
 }
 
@@ -49,11 +85,53 @@
   align-items: center;
   gap: 14px;
 
+  .buttons-auth__item {
+    display: flex;
+    align-items: center;
+
+    .user {
+      display: flex;
+      align-items: center;
+      padding: 4px 12px;
+
+      color: var(--primary-bcg);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+
+      border: 0;
+      background-color: var(--secondary-color);
+      border-radius: 36px;
+
+      header & {
+        @include max_767 {
+          display: none;
+        }
+      }
+
+      .user__arrow {
+        margin-left: 4px;
+        fill: var(--primary-bcg);
+      }
+    }
+  }
+
   .buttons-auth__sign {
     @include max_767 {
       display: none;
     }
   }
+}
+
+.user__img {
+  width: 37px;
+  height: 37px;
+  margin-right: 9px;
+  padding: 9px;
+  border-radius: 36px;
+  background-color: #f6f6f6;
+  fill: var(--secondary-color);
 }
 
 // Switcher
@@ -110,6 +188,11 @@
 }
 //
 
+.buttons-auth__sign-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 .buttons-auth__sign {
   display: flex;
   justify-content: space-between;
@@ -129,6 +212,10 @@
   border-radius: 18px;
 
   stroke: var(--additional-btn-color);
+
+  header & {
+    width: 104px;
+  }
 }
 
 .buttons-auth__menu {

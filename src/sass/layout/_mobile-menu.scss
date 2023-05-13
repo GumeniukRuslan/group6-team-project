@@ -1,11 +1,11 @@
 .mobile-menu {
   position: fixed;
   transform: translateY(-100%);
-  top: 64px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 66px;
+  padding-top: 104px;
   z-index: 99;
   background-image: url(../images/mobile-menu-bg.png),
     radial-gradient(
@@ -15,9 +15,59 @@
     );
   background-repeat: no-repeat;
   background-position: center bottom;
-  //   background-size: auto auto;
 
   transition: transform 0.2s;
+
+  .mobile-menu__box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .header__buttons-nav {
+      align-items: flex-start;
+    }
+  }
+
+  .mobile-menu__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30%;
+  }
+
+  .mobile-menu__user {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+
+    color: var(--dark-main-color);
+  }
+
+  .buttons-nav__item {
+    color: var(--primary-bcg);
+    fill: var(--primary-bcg);
+
+    @extend %transition;
+    &:hover,
+    &:focus {
+      background-color: var(--additional-btn-color);
+      color: var(--main-color);
+      fill: var(--main-color);
+    }
+  }
+
+  .buttons-auth__sign {
+    width: 118px;
+    margin-bottom: 20px;
+    background-color: var(--primary-bcg);
+    color: var(--main-color);
+  }
 }
 
 .showMenu {
@@ -34,4 +84,8 @@
   @include max_767 {
     display: none;
   }
+}
+
+body.lock {
+  overflow: hidden;
 }

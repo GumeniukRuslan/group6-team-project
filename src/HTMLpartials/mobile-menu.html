@@ -1,8 +1,33 @@
 <!-- Mobile menu -->
 <div class="mobile-menu js-mobileMenu">
-  <div class="container">
-    <button class="buttons-auth__sign">
+  <div class="container mobile-menu__box">
+    <button class="buttons-auth__sign js-elmsNonAuth">
       Sign Up
+      <svg width="20" height="20">
+        <use href="./images/icons.svg#icon-arrow-right"></use>
+      </svg>
+    </button>
+    <div class="mobile-menu__wrapper js-elmsAuth hidden">
+      <p class="mobile-menu__user">
+        <svg class="user__img" width="19" height="19">
+          <use href="./images/icons.svg#icon-user"></use>
+        </svg>
+        User
+      </p>
+      <ul class="header__buttons-nav">
+        <li><a class="buttons-nav__item" href="./index.html">Home</a></li>
+        <li>
+          <a class="buttons-nav__item buttons-nav__shop-list" href="#">
+            Shopping list
+            <svg class="shop-list__img" width="20" height="20">
+              <use href="./images/icons.svg#icon-shopping-bag"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button class="buttons-auth__sign js-logOutButton js-elmsAuth hidden">
+      Log Out
       <svg width="20" height="20">
         <use href="./images/icons.svg#icon-arrow-right"></use>
       </svg>

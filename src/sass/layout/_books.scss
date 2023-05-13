@@ -1,18 +1,5 @@
 .books {
-  min-width: 335px;
-  width: 100%;
-  &--flex {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    @include min_768 {
-      gap: 100px;
-    }
-    @include min_1440 {
-      flex-direction: row;
-      gap: 40px;
-    }
-  }
+    min-width: 335px;
   &__title {
     font-weight: 700;
     font-size: 32px;
