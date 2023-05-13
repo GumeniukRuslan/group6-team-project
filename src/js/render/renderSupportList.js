@@ -5,7 +5,7 @@ export function renderSupportList(data) {
         '../../images/saveTheChildren.png',
         import.meta.url
       );
-      return `<li><a class="support-link" href="${url}" target="_blank"
+      return `<li class="support-item"><a class="support-link" href="${url}" target="_blank"
                   rel="noopener noreferrer">${(idx + 1)
         .toString()
         .padStart(

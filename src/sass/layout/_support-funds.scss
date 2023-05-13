@@ -24,7 +24,8 @@
         color: var(--primary-bcg);
         display: flex;
         margin-right: 12px;
-        padding-top: 20px;
+        margin-bottom: 40px;
+        padding-top: 24px;
         padding-left: 40px;
     }
     &__coat {
@@ -34,14 +35,29 @@
 
 }
 
+.support__handler {
+    padding-left: 40px;
+}
+
 .support__list{
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.support-item {
+    color: var(--primary-bcg);
+}
+
+.support-link {
+    display: flex;
+    align-items: center;
 }
 
 .support-logo{
-display: inline-block;
-filter: invert(100%) grayscale(100%) contrast(2.5);
+    display: inline-flex;
+    filter: invert(100%) grayscale(100%) contrast(2.5);
+    margin-left: 16px;
 };
 
 .buttons-slider {
