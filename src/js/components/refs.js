@@ -19,5 +19,11 @@ export const refs = {
 
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),
-  shopList: document.querySelector('.shoping-list'),
+  shopList: document.querySelector('.shopping-list'),
+  // Модалка
+  closeModal: document.querySelector('.modal__btn-close'),
+  modalWindow: document.querySelector('[data-modal]'),
+  bookCard: document.querySelector('.card__thumb'),
+  backdrop: document.querySelector('.backdrop'),
+
 };

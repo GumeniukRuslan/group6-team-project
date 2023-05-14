@@ -4,7 +4,7 @@
   padding: 20px 0;
   z-index: 100;
 
-  background-color: var(--primary-bcg);
+  background-color: var(--heder-bcg);
   border: 1.5px solid var(--main-color);
   border-radius: 0px 0px 8px 8px;
 
@@ -29,7 +29,7 @@
   align-items: center;
   padding: 2px 0;
 
-  color: #000;
+  color: var(--main-text-color);
   font-weight: 700;
 
   @include min_768 {
@@ -161,24 +161,26 @@
     left: 2px;
     width: 19px;
     height: 19px;
-    background: radial-gradient(circle at center,
+    background: radial-gradient(
+        circle at center,
 
         #ffffff 15%,
         #ffffff 40%,
         #f0efef 40%,
         #f0efef 55%,
-        #ffffff 55%),
+        #ffffff 55%
+      ),
       linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
     border-radius: 90px;
     transition: 250ms ease-in;
   }
 }
 
-.buttons__switcher:checked+.buttons__switcher-label {
+.buttons__switcher:checked + .buttons__switcher-label {
   background: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
 }
 
-.buttons__switcher:checked+.buttons__switcher-label:after {
+.buttons__switcher:checked + .buttons__switcher-label:after {
   left: calc(100% - 2px);
   transform: translateX(-100%);
 }

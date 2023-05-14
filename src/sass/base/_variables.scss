@@ -1,16 +1,42 @@
 :root {
+  --main-text-color: #111111;
   --main-color: #111111;
-  --secondary-color: #4F2EE8;
-  --additional-text-color: #B4AFAF;
-  --primary-bcg: #FFFFFF;
-  --additional-btn-color: #EAC645;
-  --scroll-color: #E0E0E0;
+  --body-bcg: #ffffff
+  --heder-bcg: #ffffff;
+  --secondary-color: #4f2ee8;
+  --additional-text-color: #b4afaf;
+  --primary-bcg: #ffffff;
+  --additional-btn-color: #eac645;
+  --scroll-color: #e0e0e0;
+  --categories-color: rgba(17, 17, 17, 0.6);
 
-  --dark-main-color: #FFFFFF;
-  --dark-secondary-color: #4F2EE8;
-  --dark-additional-text-color: #B4AFAF;
+  --dark-main-color: #ffffff;
+  --dark-secondary-color: #4f2ee8;
+  --dark-additional-text-color: #b4afaf;
   --dark-primary-bcg: #111111;
   --dark-additional-bcg: #202024;
-  --dark-additional-btn-color: #EAC645;
-  --dark-scroll-color: rgba(17, 17, 17, 0.6);
+  --dark-additional-btn-color: #eac645;
+  --dark-scroll-color: rgba(255, 255, 255, 0.6);
+}
+
+/* define light theme */
+html[data-theme='light'] {
+  --body-bcg: #ffffff;
+  --main-text-color: #111111;
+  --categories-color: rgba(17, 17, 17, 0.6);
+
+  --main-color: #111111;
+  --additional-text-color: #b4afaf;
+  --heder-bcg: #ffffff;
+}
+
+/* define dark theme */
+html[data-theme='dark'] {
+  --body-bcg: #202024;
+  --main-text-color: #ffffff;
+  --categories-color: rgba(255, 255, 255, 0.6);
+
+  --main-color: #ffffff;
+  --additional-text-color: #b4afaf;
+  --heder-bcg: #111111;
 }

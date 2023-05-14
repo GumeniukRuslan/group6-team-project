@@ -5,8 +5,12 @@ import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
 import { getBksFrmShpLst } from './firebase';
 import { handleAuthStateChanged } from './firebase';
+import { deleteBook } from './helpers/deleteBook';
 
 handleAuthStateChanged();
+
+
+
 
 const createShopList = async () => {
   startLoading();
@@ -23,6 +27,7 @@ const createShopList = async () => {
       `This page is empty, add some books and proceed to order.`
     );
   }
+  refs.shopList.addEventListener('click', deleteBook);
   removeLoading();
 };
 

@@ -1,5 +1,16 @@
-
-.shoping-list_book{
+.flex-handler{
+  display: flex;
+  flex-direction: row;
+};
+.shopping-aside{
+  display: none;
+  @include min_1440{
+    display: block;
+    margin-right: 40px;
+  }
+  
+}
+.shopping-list_book{
   display: flex;
   padding: 14px;
   background: #FFFFFF;
@@ -33,7 +44,7 @@
     height: 34px;
   }
 };
-.shoping-trash__svg{
+.shopping-trash__svg{
   width: 16px;
   height: 16px;
   @include min_768 {
@@ -126,7 +137,7 @@ vertical-align: bottom;
     }
 };
 
-.book_shoping-links{
+.book_shopping-links{
   display: flex;
   justify-content: center;
   align-items: baseline;
