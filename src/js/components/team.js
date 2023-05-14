@@ -12,7 +12,7 @@ export const team = [
             url: 'https://github.com/GumeniukRuslan',
         }, {
             name: 'linkedin',
-            url: null,
+            url: 'https://www.linkedin.com/in/ruslan-humeniuk-794064276',
         }],
     },
     {
