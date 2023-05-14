@@ -9,6 +9,8 @@
   --additional-btn-color: #eac645;
   --scroll-color: #e0e0e0;
   --categories-color: rgba(17, 17, 17, 0.6);
+  --shoplist-text-color: rgba(0, 0, 0, 0.6);
+
 
   --dark-main-color: #ffffff;
   --dark-secondary-color: #4f2ee8;
@@ -29,6 +31,7 @@ html[data-theme='light'] {
   --additional-text-color: #b4afaf;
   --heder-bcg: #ffffff;
   --modal-bcg: #f6f6f6;
+  --shoplist-text-color: rgba(0, 0, 0, 0.6);
 }
 
 /* define dark theme */
@@ -37,6 +40,7 @@ html[data-theme='dark'] {
   --main-text-color: #ffffff;
   --categories-color: rgba(255, 255, 255, 0.6);
   --category-active: #eac645;
+  --shoplist-text-color: rgba(255, 255, 255, 0.6);
 
   --main-color: #ffffff;
   --additional-text-color: #b4afaf;

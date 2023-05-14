@@ -10,22 +10,6 @@ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 
 // switch theme if checkbox is engaged
 checkbox.addEventListener('change', cb => {
-  document.documentElement.setAttribute(
-    'data-theme',
-    cb.target.checked ? 'dark' : 'light'
-  );
-});
-
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  checkbox.checked = true;
-} else {
-  document.documentElement.setAttribute('data-theme', 'light');
-  checkbox.checked = false;
-}
-
-// switch theme if checkbox is engaged
-checkbox.addEventListener('change', cb => {
   const selectedTheme = cb.target.checked ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', selectedTheme);
   localStorage.setItem('theme', selectedTheme);

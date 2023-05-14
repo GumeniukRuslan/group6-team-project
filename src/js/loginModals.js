@@ -1,21 +1,28 @@
-import { closeLoginModalOnClick, closeLoginModalBackdrop, closeLoginModal } from "./components/closeModalBtn";
-import { closeLoginModalEsc } from "./components/closeModalOnEsc";
-import { refs } from "./components/refs";
+import {
+  closeLoginModalOnClick,
+  closeLoginModalBackdrop,
+  closeLoginModal,
+} from './components/closeModalBtn';
+import { closeLoginModalEsc } from './components/closeModalOnEsc';
+import { refs } from './components/refs';
+import './switch';
 
-const openModal = (currentModal) => {
+const openModal = currentModal => {
   currentModal.classList.add('open');
   document.body.classList.add('lock');
-  currentModal.addEventListener("click", closeLoginModalOnClick);
-  currentModal.addEventListener("click", closeLoginModalBackdrop);
-  window.addEventListener("keydown", closeLoginModalEsc);
-  const switchModalBtns = document.querySelector('.modal-overlay.open .login__switch');
-  switchModalBtns.addEventListener("click", changeModal);
-}
+  currentModal.addEventListener('click', closeLoginModalOnClick);
+  currentModal.addEventListener('click', closeLoginModalBackdrop);
+  window.addEventListener('keydown', closeLoginModalEsc);
+  const switchModalBtns = document.querySelector(
+    '.modal-overlay.open .login__switch'
+  );
+  switchModalBtns.addEventListener('click', changeModal);
+};
 
 function openLoginModal(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
-  } 
+  }
   const currentModalData = event.target.dataset.login;
   let currentModal;
   if (currentModalData === 'sign-up') {
@@ -29,7 +36,7 @@ function openLoginModal(event) {
 }
 
 if (refs.loginModalOpenBtns) {
-  refs.loginModalOpenBtns.addEventListener("click", openLoginModal);
+  refs.loginModalOpenBtns.addEventListener('click', openLoginModal);
 }
 
 export function changeModal(event) {
@@ -38,10 +45,8 @@ export function changeModal(event) {
   }
   if (event.target.classList.contains('active-label')) {
     return;
-  } 
+  }
   closeLoginModal();
   const newModal = event.target.dataset.login;
-  openModal(document.querySelector(`.js-${newModal}`))
-
+  openModal(document.querySelector(`.js-${newModal}`));
 }
-
