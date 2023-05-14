@@ -24,7 +24,7 @@ export const refs = {
   signInBtn: document.querySelector('.sign-in__Btn'),
   signUpBtn: document.querySelector('.buttons-auth__sign'),
   loginModal: document.querySelector('.modal-overlay'),
-  bodyRef: document.querySelector('body')
+  bodyRef: document.querySelector('body'),
   shopList: document.querySelector('.shopping-list'),
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),
@@ -32,4 +32,6 @@ export const refs = {
   modalWindow: document.querySelector('[data-modal]'),
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
+  // team modal
+  openTeamBtn: document.querySelector('.js-students')
 };
