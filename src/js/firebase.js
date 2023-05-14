@@ -164,15 +164,15 @@ async function getUserName(userEmail) {
  * @param {event} evt
  */
 export async function addToShopList(evt) {
-  const li = evt.target.closest('li');
+  const book = evt.target.closest('.modal-card__thumb');
 
   if (userCurrent) {
-    console.log(li.dataset.book);
+    console.log(book.dataset.book);
     try {
       const docRef = await setDoc(
         doc(db, `shoplist/${userCurrent}`),
         {
-          books: arrayUnion(`${li.dataset.book}`),
+          books: arrayUnion(`${book.dataset.book}`),
         },
         { merge: true }
       );

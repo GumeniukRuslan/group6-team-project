@@ -5,7 +5,7 @@ import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
 import { closeModal } from './components/closeModalBtn';
 import { onKeyDown } from './components/closeModalOnEsc';
-
+import { addBookToShopList } from './helpers/addBookToShopList';
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
     return;
@@ -22,13 +22,10 @@ const createModal = async evt => {
       `This page is empty, add some books and proceed to order.`
     );
   }
+  refs.backdrop.addEventListener('click', addBookToShopList);
   refs.backdrop.addEventListener('click', closeModal);
   window.addEventListener('keydown', onKeyDown);
   removeLoading();
 };
 
 refs.booksHandler.addEventListener('click', createModal);
-
-// export function toggleModal() {
-//   refs.modalWindow.classList.toggle('is-hidden');
-// }

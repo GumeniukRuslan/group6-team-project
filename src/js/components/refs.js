@@ -22,6 +22,7 @@ export const refs = {
   shopList: document.querySelector('.shopping-list'),
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),
+  addBtn: document.querySelector('.btn-add-list'),
   modalWindow: document.querySelector('[data-modal]'),
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
