@@ -6,13 +6,14 @@
       </svg>
     </button>
     <div class="modal__content">
-      <form class="login__form">
+      <form class="login__form js-logForm">
         <div class="login__container">
           <input
             class="login__input"
             type="email"
             name="email"
             placeholder="Email"
+            required
           />
           <svg width="18" height="18" class="login__icon">
             <use href="./images/icons.svg#icon-mail"></use>
@@ -24,6 +25,8 @@
             type="password"
             name="password"
             placeholder="Password"
+            minlength="6"
+            required
           />
           <svg width="18" height="18" class="login__icon">
             <use href="./images/icons.svg#icon-lock"></use>
@@ -32,7 +35,9 @@
         <button class="login__btn" type="submit">Sign in</button>
       </form>
       <div class="login__switch">
-        <p class="login__switch-label active-label" data-login="sign-in">Sign in</p>
+        <p class="login__switch-label active-label" data-login="sign-in">
+          Sign in
+        </p>
         <p class="login__switch-label" data-login="sign-up">Sign Up</p>
       </div>
     </div>
