@@ -6,6 +6,8 @@ import { renderError } from './render/renderError';
 import { closeModal } from './components/closeModalBtn';
 import { onKeyDown } from './components/closeModalOnEsc';
 import { addBookToShopList } from './helpers/addBookToShopList';
+import { deleteBookFromModal } from './helpers/deleteBookFromModal';
+
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
     return;
@@ -23,6 +25,7 @@ const createModal = async evt => {
     );
   }
   refs.backdrop.addEventListener('click', addBookToShopList);
+  refs.backdrop.addEventListener('click', deleteBookFromModal);
   refs.backdrop.addEventListener('click', closeModal);
   window.addEventListener('keydown', onKeyDown);
   removeLoading();

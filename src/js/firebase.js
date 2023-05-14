@@ -187,7 +187,8 @@ export async function addToShopList(evt) {
  * @param {event} evt
  */
 export async function rmvFrmShopList(evt) {
-  const li = evt.target.closest('li');
+  const li =
+    evt.target.closest('li') || evt.target.closest('.modal-card__thumb');
 
   if (userCurrent) {
     console.log(li.dataset.book);
