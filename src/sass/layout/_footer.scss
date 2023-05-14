@@ -1,0 +1,46 @@
+.footer {
+  width: 100%;
+  background-color: var(--heder-bcg);
+  border: 1.5px solid var(--main-color);
+  border-radius: 8px 8px 0px 0px;
+  min-width: 375px;
+  padding: 20px 0;
+  // @include min_768 {
+  //     padding-top: 10px;
+  //     padding-bottom: 10px;
+  // }
+  &--flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    @include min_768 {
+      flex-direction: row;
+      gap: 3px;
+    }
+  }
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+  }
+  &__students {
+    font-weight: 500;
+    color: var(--secondary-color);
+    @extend %transition;
+    cursor: pointer;
+    &:hover, &:focus, &:active {
+        color: var(--additional-btn-color);
+        .footer__icon {
+            animation: none;
+        }
+    }
+  }
+  &__icon {
+    fill: var(--additional-btn-color);
+    animation: rotate-star 2s ease-in-out infinite;
+    margin-top: -2px;
+  }
+}
