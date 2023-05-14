@@ -25,5 +25,4 @@ export const refs = {
   modalWindow: document.querySelector('[data-modal]'),
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
-
 };

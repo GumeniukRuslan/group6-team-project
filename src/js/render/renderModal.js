@@ -1,25 +1,41 @@
-export const renderModal = data => {
-    const sample = new URL('../../images/sample.png', import.meta.url);
-    const amazon = new URL('../../images/amazon.png', import.meta.url);
-    const book1 = new URL('../../images/book1.png', import.meta.url);
-    const book2 = new URL('../../images/book2.png', import.meta.url);
-  
-      const book = (({ _id, book_image, title, author, description, amazon_product_url, }) => {
-      return `<div class="modal">
+import sample from '../../images/sample.png';
+import amazon from '../../images/amazon.png';
+import book1 from '../../images/book1.png';
+import book2 from '../../images/book2.png';
+import cross from '../../images/icons.svg';
+
+export function renderModal({
+  _id,
+  book_image,
+  title,
+  author,
+  description,
+  amazon_product_url,
+  buy_links,
+}) {
+  const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
+  const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
+  return `<div class="modal">
         <button class="modal__btn-close" type="button" data-modal-close>
           <svg class="end" width="12" height="12">
-            <use href="./images/icons.svg#icon-close"></use>
+            <use href="${cross}#icon-close"></use>
           </svg>
         </button>
-        <div class="modal-card__thumb" data-book="${_id}>
-        <img src="${book_image ? book_image : sample}" loading="lazy" alt="${title}" class="card__img">
+        <div class="modal-card__thumb" data-book="${_id}">
+        <img class="book_img card__img" src="${
+          book_image ? book_image : sample
+        }" alt="${title}" loading="lazy">
         <h2 class="modal-card__title">${title}</h2>
         <p class="modal-card__author">${author}</p>
         <div class="modal-card__descriprion">${description}</div>
         <ul class="modal-card__links-shop">
-          <li><a class="modal-card__link" href="${amazon_product_url}"><img class="amazon-img" src="src="${amazon}" alt="amazon"></a></li>
-          <li><a class="modal-card__link" href="${amazon_product_url}"><img class="book1_img" src="${book1}" alt="book1"></a></li>
-          <li><a class="modal-card__link" href="${amazon_product_url}"><img class="book2_img" src="${book2}" alt="book2"></a></li>
+          <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
+          <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
+            appleURL[0].url
+          }"><img class="book1_img" src="${book1}" alt=""></a></li>
+          <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
+            bookShop[0].url
+          }"><img class="book2_img" src="${book2}" alt=""></a></li>
         </ul>
         <div class="add_to_list">
           <button class="btn-add-list" type="button">add to shopping list</button>
@@ -31,7 +47,5 @@ export const renderModal = data => {
         </div>
       </div>
     </div>
-</div>`
-    }).join("");
-    return book;
+</div>`;
 }
