@@ -3,6 +3,8 @@ import { getOneBookById } from './api/fetchLogic';
 import { renderModal } from './render/renderModal';
 import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
+import { closeModal } from './components/closeModalBtn';
+import { onKeyDown } from './components/closeModalOnEsc';
 
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
@@ -12,13 +14,16 @@ const createModal = async evt => {
   refs.backdrop.classList.remove('is-hidden');
   startLoading();
   const bookId = evt.target.closest('.card').dataset.book;
-  console.log(bookId);
-
-  const dataBook = await getOneBookById(bookId);
-  console.log(dataBook);
-  console.log(renderModal(dataBook));
-  refs.backdrop.innerHTML = renderModal(dataBook);
-
+  try {
+    const dataBook = await getOneBookById(bookId);
+    refs.backdrop.innerHTML = renderModal(dataBook);
+  } catch (e) {
+    refs.backdrop.innerHTML = renderError(
+      `This page is empty, add some books and proceed to order.`
+    );
+  }
+  refs.backdrop.addEventListener('click', closeModal);
+  window.addEventListener('keydown', onKeyDown);
   removeLoading();
 };
 
