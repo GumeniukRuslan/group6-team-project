@@ -25,20 +25,43 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 40px, 24px;
-    min-width: 278px;
-    min-height: 458px;
+    min-width: 335px;
+    min-height: 762px;
     background-color: var(--dark-main-color);
     
-    
-    @media screen and (min-width: 1200px){
-    min-width: 528px;
-    min-height: 581px;
+    @include min_768 {
+        width: 579px;
+        height: 465px; 
+    }
+
+    @include min_1440 {
+        width: 579px;
+        height: 501px; 
+    }
+    }
+
+   .card__img{
+    width: 287px;
+    height: 408px;
+    @include min_768 {
+        width: 192px;
+        height: 281px; 
     }
     }
     
     .modal__btn-close{
-    border: 2px solid var(--dark-main-color);
-    fill: var(--main-color);
+    display: inline-flex;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 12px;
+    right: 12px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-main-color);
+    padding: 0;
+    cursor: pointer;
+    border: none;
     }
 
     .end{
@@ -52,12 +75,19 @@
     
     .btn-add-list,
     .btn-remove-list{
+        @include centeredFlex(flex);
+        margin: auto;
+        width: 211px;
+        height: 46px;
         text-transform: uppercase;
         background-color: transparent;
         border: 2px solid var(--secondary-color);
         border-radius: 40px;
         color: var(--main-color);
         font-weight: 700;
+        font-size: 14px;
+        line-height: 1.28;
+        letter-spacing: -0.01em;
         @extend %transition;
         &:hover,
         &:focus,
@@ -68,30 +98,16 @@
         &:focus {
           box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
         }
-      }
-    // @include centeredFlex(flex);
-    // margin: auto;
-    // padding: 10px, 52px;
-    // min-width: 200px;
-    // min-height: 50px;
-    // // background: var(--second-color);
-    // // color: var(--third-color);
-    // font-family: 'Roboto';
-    // font-style: normal;
-    // font-weight: 700;
-    // font-size: 16px;
-    // line-height: 1.87;
-    // letter-spacing: 0.06em;
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    // border: none;
-    // border-radius: 4px;
-    // cursor: pointer;
-    // // transition: background-color var(--timing-function),
-    // // box-shadow var(--timing-function);
-    // &:hover,
-    // &:focus {
-    // background-color: rgba(24, 140, 232, 1);
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    // }
+        @include min_768 {
+            width: 490px;
+            height: 64px; 
+        }
     
+        @include min_1440 {
+            width: 579px;
+            height: 501px; 
+        }
+      }
+
+   
     
