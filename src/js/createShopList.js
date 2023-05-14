@@ -3,11 +3,21 @@ import { refs } from './components/refs';
 import { renderShopBookCards } from './render/renderShopBookCard';
 import { removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
+import { getBksFrmShpLst } from './firebase';
+import { handleAuthStateChanged } from './firebase';
 import { deleteBook } from './helpers/deleteBook';
+
+handleAuthStateChanged();
+
+
+
 
 const createShopList = async () => {
   startLoading();
   try {
+    //Возвращает масив айдишников добавленных книг
+    const data = await getBksFrmShpLst();
+    console.log(data);
     const books = await getBooksOfCertainCategory(
       'Combined Print and E-Book Fiction'
     );

@@ -6,13 +6,15 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+
 import {
+  getFirestore,
   doc,
   setDoc,
-  serverTimestamp,
   getDoc,
   updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
@@ -32,33 +34,39 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let userCurrent = null;
+export let userCurrent = null;
 
+handleAuthStateChanged();
 refs.regForm.addEventListener('submit', signIn);
 refs.logOutButton.addEventListener('click', logOut);
 
 /**
  * Функция для взаимодействия со статусом пользователя(авторизован/неавторизован)
+ * обернутая в промис для возможности вызова её в другом месте
+ * и получении статуса пользователя
  * Функционал для авторизированного в if
  * Функционал для неавторизированного в else
  */
-onAuthStateChanged(auth, user => {
-  if (user) {
-    userCurrent = user.email;
-    //
-    // console.log(user);
-    // console.log(setUserName(user.email));
-    getUserName(user.email)
-      .then(data => setUserName(refs.userName, data.name))
-      .catch(error => console.error('Error adding document: ', error));
+export async function handleAuthStateChanged() {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        userCurrent = user.email;
+        console.log(user);
+        resolve(userCurrent);
 
-    renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
+        getUserName(user.email)
+          .then(data => setUserName(refs.userName, data.name))
+          .catch(error => console.error('Error adding document: ', error));
 
-    //
-  } else {
-    console.log('Anyone logged in');
-  }
-});
+        renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
+        return userCurrent;
+      } else {
+        reject('Anyone logged in');
+      }
+    });
+  });
+}
 
 /**
  * Функция для регистрации
@@ -73,7 +81,7 @@ function registerNewUser(evt) {
     .then(userCredential => {
       // Signed in
       // const user = userCredential.user;
-      firestoreTest(data.email, data.name);
+      addUserName(data.email, data.name);
     })
     .catch(error => {
       const errorCode = error.code;
@@ -101,9 +109,10 @@ function signIn(evt) {
       console.log('Signed in');
     })
     .catch(error => {
-      console.log(error, 'Signed in');
+      console.log(error.code, 'Not signed in');
       const errorCode = error.code;
       const errorMessage = error.message;
+      //Обработать ошибку error.code = auth/user-not-found
     });
 }
 
@@ -123,21 +132,88 @@ function logOut(evt) {
 }
 
 //
-
-async function firestoreTest(userEmail, userName) {
+/**
+ * Функция для добавления имени пользователя в database
+ * @param {string} userEmail
+ * @param {string} userName
+ */
+async function addUserName(userEmail, userName) {
   try {
-    // const dateRequest = new Date().toUTCString(); [dateRequest] { capital: true },      { merge: true }
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
       name: `${userName}`,
     });
   } catch (e) {
-    console.error('Error adding document: ', e);
+    console.error('Error adding username: ', e);
   }
 }
 
+/**
+ * Функция для получения имени с database
+ * @param {string} userEmail
+ * @returns
+ */
 async function getUserName(userEmail) {
   const docRef = await getDoc(doc(db, `names/${userEmail}`));
   const data = await docRef.data();
 
   return data;
+}
+
+/**
+ * Функция для добавления книги в database Шопинг-лист по клику на (пока на картинку)
+ * @param {event} evt
+ */
+export async function addToShopList(evt) {
+  const li = evt.target.closest('li');
+
+  if (userCurrent) {
+    console.log(li.dataset.book);
+    try {
+      const docRef = await setDoc(
+        doc(db, `shoplist/${userCurrent}`),
+        {
+          books: arrayUnion(`${li.dataset.book}`),
+        },
+        { merge: true }
+      );
+    } catch (e) {
+      console.error('Error adding book: ', e);
+    }
+  }
+}
+
+/**
+ * Функция для удаления книги с database Шопинг-листа по клику на (пока на тайтл)
+ * @param {event} evt
+ */
+export async function rmvFrmShopList(evt) {
+  const li = evt.target.closest('li');
+
+  if (userCurrent) {
+    console.log(li.dataset.book);
+    try {
+      const docRef = await updateDoc(doc(db, `shoplist/${userCurrent}`), {
+        books: arrayRemove(`${li.dataset.book}`),
+      });
+    } catch (e) {
+      console.error('Error remove book: ', e);
+    }
+  }
+}
+
+/**
+ * Функция для получения книг с database Шопинг-листа по загрузке страницы
+ * @returns масив книг
+ */
+export async function getBksFrmShpLst() {
+  try {
+    const user = await handleAuthStateChanged();
+    const docRef = await getDoc(doc(db, `shoplist/${user}`));
+    const data = await docRef.data();
+    const booksArray = data.books;
+
+    return booksArray;
+  } catch (error) {
+    console.error(error);
+  }
 }
