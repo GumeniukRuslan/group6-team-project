@@ -4,7 +4,7 @@ import { refs } from '../components/refs';
 const renderAllCategories = data => {
   const categories = data
     .map(({ list_name }) => {
-      return `<li class="categories__item">${list_name}</li>`;
+      return `<li class="categories__item" data-category="${list_name}">${list_name}</li>`;
     })
     .join('');
   return categories;
