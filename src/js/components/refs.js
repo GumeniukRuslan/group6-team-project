@@ -12,6 +12,7 @@ export const refs = {
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
   logOutButton: document.querySelector('.js-logOutButton'),
+
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
   elmsAuth: document.querySelectorAll('.js-elmsAuth'),
@@ -19,11 +20,17 @@ export const refs = {
 
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),
+  // login modals
+  loginModalOpenBtns: document.querySelector('.js-elmsNonAuth'),
+  signUpModal: document.querySelector('.js-sign-up'),
+  signInModal: document.querySelector('.js-sign-in'),
+
   // кнопки Sign-In,Sign-Up
   signInBtn: document.querySelector('.sign-in__Btn'),
   signUpBtn: document.querySelector('.buttons-auth__sign'),
   loginModal: document.querySelector('.modal-overlay'),
   bodyRef: document.querySelector('body'),
+
   shopList: document.querySelector('.shopping-list'),
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),

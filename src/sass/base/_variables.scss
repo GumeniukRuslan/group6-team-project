@@ -28,6 +28,7 @@ html[data-theme='light'] {
   --main-color: #111111;
   --additional-text-color: #b4afaf;
   --heder-bcg: #ffffff;
+  --modal-bcg: #f6f6f6;
 }
 
 /* define dark theme */
@@ -40,4 +41,5 @@ html[data-theme='dark'] {
   --main-color: #ffffff;
   --additional-text-color: #b4afaf;
   --heder-bcg: #111111;
+  --modal-bcg: #202024;
 }
