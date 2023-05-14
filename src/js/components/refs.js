@@ -20,4 +20,9 @@ export const refs = {
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),
   shopList: document.querySelector('.shoping-list'),
+  // кнопки Sign-In,Sign-Up
+  signInBtn: document.querySelector('.sign-in__Btn'),
+  signUpBtn: document.querySelector('.buttons-auth__sign'),
+  loginModal: document.querySelector('.modal-overlay'),
+  bodyRef: document.querySelector('body')
 };
