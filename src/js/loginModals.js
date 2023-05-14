@@ -1,4 +1,5 @@
-import { closeLoginModalOnClick, closeLoginModalBackdrop, closeLoginModalEsc, closeLoginModal } from "./components/closeModalBtn";
+import { closeLoginModalOnClick, closeLoginModalBackdrop, closeLoginModal } from "./components/closeModalBtn";
+import { closeLoginModalEsc } from "./components/closeModalOnEsc";
 import { refs } from "./components/refs";
 
 const openModal = (currentModal) => {
