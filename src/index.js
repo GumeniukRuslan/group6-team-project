@@ -10,5 +10,4 @@ import './js/categoryBooks';
 import './js/switch';
 import './js/createModal';
 import './js/render/renderModal';
-import './js/components/modalOpenClose';
-
+import './js/components/toggleModal';
