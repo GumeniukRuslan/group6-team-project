@@ -1,12 +1,20 @@
 <!-- Mobile menu -->
 <div class="mobile-menu js-mobileMenu">
   <div class="container mobile-menu__box">
-    <button class="buttons-auth__sign js-elmsNonAuth">
-      Sign Up
-      <svg width="20" height="20">
-        <use href="./images/icons.svg#icon-arrow-right"></use>
-      </svg>
-    </button>
+    <div class="mobile-menu__signs-box js-elmsNonAuth">
+      <button class="buttons-auth__sign" data-login="sign-up">
+        Sign Up
+        <svg width="20" height="20">
+          <use href="./images/icons.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+      <button class="buttons-auth__sign" data-login="sign-in">
+        Sign In
+        <svg class="sign-in__img" width="20" height="20">
+          <use href="./images/icons.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+    </div>
     <div class="mobile-menu__wrapper js-elmsAuth hidden">
       <p class="mobile-menu__user">
         <svg class="user__img" width="19" height="19">
