@@ -8,4 +8,6 @@ import './js/scrollToTop';
 import './js/components/support-funds';
 import './js/categoryBooks';
 import './js/btnSignIn';
-
+import './js/switch';
+import './js/createModal';
+import './js/render/renderModal';
