@@ -26,4 +26,6 @@ export const refs = {
   modalWindow: document.querySelector('[data-modal]'),
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
+  buttonAdd: document.querySelector('.add_to_list'),
+  buttonRemove: document.querySelector('.remove_from_list'),
 };
