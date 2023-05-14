@@ -1,6 +1,8 @@
 .support {
     width: 335px;
     height: 352px;
+    padding-top: 24px;
+    padding-left: 40px;
     background: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4F2EE8 18.03%, #FFFFFF 100%);
     box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
     border-radius: 16px;
@@ -24,8 +26,6 @@
         color: var(--primary-bcg);
         display: flex;
         margin-bottom: 40px;
-        padding-top: 24px;
-        padding-left: 40px;
     }
     &__coat {
         margin-left: 12px;
@@ -35,8 +35,14 @@
 }
 
 .support__handler {
-    padding-left: 40px;
+    overflow: hidden;
+    width: 159px;
+    height: 188px;
+    @include min_768 {
+            height: 292px;
+        }
 }
+
 
 .support__list{
     display: flex;
@@ -55,7 +61,7 @@
 
 .support-logo{
     display: inline-flex;
-    filter: invert(100%) grayscale(100%) contrast(2.5);
+    filter: invert(100%) sepia(100%) saturate(0%) brightness(7.5);
     margin-left: 16px;
 };
 
@@ -68,8 +74,15 @@
     border-radius: 50%;
     border: none;
     background-color: var(--primary-bcg);
-    margin-left: 152px;
+    margin-top: 16px;
+    margin-left: 105px;
     cursor: pointer;
+    @include min_768 {
+        margin-top: 32px;
+    }
+    @include min_1440 {
+        margin-top: 40px;
+    }
     &__svg {
         fill: var(--secondary-color);
     }

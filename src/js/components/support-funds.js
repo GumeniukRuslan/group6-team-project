@@ -55,3 +55,6 @@ export const funds = [
     img: prytula,
   },
 ];
+
+
+
