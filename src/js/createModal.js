@@ -21,7 +21,7 @@ const createModal = async evt => {
     
     const dataBook = await getOneBookById(bookId);
     refs.backdrop.innerHTML = renderModal(dataBook);
-    // const isBookInside = async getBksFrmShpLst()
+    // const isBookInside = async getBksFrmShpLst();
     // if (isBook.includes(bookId)){
 
     // }

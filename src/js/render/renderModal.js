@@ -22,20 +22,24 @@ export function renderModal({
           </svg>
         </button>
         <div class="modal-card__thumb" data-book="${_id}">
+        <div class="modal-card__media-point">
         <img class="book_img card__img" src="${
           book_image ? book_image : sample
         }" alt="${title}" loading="lazy">
+        <div class="modal-card__info">
         <h2 class="modal-card__title">${title}</h2>
         <p class="modal-card__author">${author}</p>
-        <div class="modal-card__descriprion">${description}</div>
+        <p class="modal-card__descriprion">${description}</p>
         <ul class="modal-card__links-shop">
-          <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
+          <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" width="62" height="19" src="${amazon}" alt=""></a></li>
           <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
             appleURL[0].url
-          }"><img class="book1_img" src="${book1}" alt=""></a></li>
+          }"><img class="book1_img" width="32" height="32" src="${book1}" alt=""></a></li>
           <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
             bookShop[0].url
-          }"><img class="book2_img" src="${book2}" alt=""></a></li>
+          }"><img class="book2_img" width="38" height="36" src="${book2}" alt=""></a></li>
+          </div>
+          </div>
         </ul>
         <div class="add_to_list">
           <button class="btn-add-list" type="button">add to shopping list</button>
