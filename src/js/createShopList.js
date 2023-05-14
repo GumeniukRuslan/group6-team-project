@@ -14,6 +14,9 @@ const createShopList = async () => {
   try {
     const data = await getBksFrmShpLst();
     const arrOfBooks = await handlePromiseArray(data);
+    if (!arrOfBooks.length) {
+      throw new Error();
+    }
     refs.shopList.innerHTML = renderShopBookCards(arrOfBooks);
   } catch (e) {
     refs.shopList.innerHTML = renderError(
