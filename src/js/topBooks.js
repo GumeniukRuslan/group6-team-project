@@ -5,7 +5,7 @@ import { renderCategoryTitle } from "./render/renderCategoryTitle";
 import { removeLoading, startLoading } from "./helpers/spinner";
 import { renderError } from "./render/renderError";
 
-const createTopBooks = async () => {
+export const createTopBooks = async () => {
     startLoading();
     renderCategoryTitle(`Best sellers books`);
     try {

@@ -5,27 +5,23 @@ import { renderError } from './render/renderError';
 import { renderCategoryTitle } from './render/renderCategoryTitle';
 import { renderBookCard } from './render/renderBookCard';
 import { scrollToTop } from './scrollToTop';
-import { addToShopList } from './firebase';
-import { rmvFrmShopList } from './firebase';
+import { createTopBooks } from './topBooks';
+import { activeCategory } from './helpers/activeCategory';
 
 const createCategoryBooks = async event => {
-  // && li
-
-  if (event.target.classList.contains('card__img')) {
-    addToShopList(event);
-  }
-  if (event.target.classList.contains('card__title')) {
-    rmvFrmShopList(event);
-  }
-  if (event.target.nodeName !== 'BUTTON') {
+ if (event.target.nodeName !== 'BUTTON' && event.target.nodeName !== 'LI') {
     return;
   }
-
-  startLoading();
   const category = event.target.dataset.category;
+  activeCategory(category);
+  if (category === 'all') {
+    createTopBooks();
+    return;
+  }
+  startLoading();
   try {
-    const categoryList = await getBooksOfCertainCategory(category);
     renderCategoryTitle(category);
+    const categoryList = await getBooksOfCertainCategory(category);
     refs.booksHandler.innerHTML = `<ul class="books__list">${renderBookCard(
       categoryList
     )}</ul>`;
@@ -37,3 +33,4 @@ const createCategoryBooks = async event => {
 };
 
 refs.booksHandler.addEventListener('click', createCategoryBooks);
+refs.allCategoriesList.addEventListener('click', createCategoryBooks)

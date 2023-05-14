@@ -24,7 +24,7 @@ html[data-theme='light'] {
   --body-bcg: #ffffff;
   --main-text-color: #111111;
   --categories-color: rgba(17, 17, 17, 0.6);
-
+  --category-active: #4f2ee8;
   --main-color: #111111;
   --additional-text-color: #b4afaf;
   --heder-bcg: #ffffff;
@@ -35,6 +35,7 @@ html[data-theme='dark'] {
   --body-bcg: #202024;
   --main-text-color: #ffffff;
   --categories-color: rgba(255, 255, 255, 0.6);
+  --category-active: #eac645;
 
   --main-color: #ffffff;
   --additional-text-color: #b4afaf;
