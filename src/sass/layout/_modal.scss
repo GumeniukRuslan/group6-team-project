@@ -32,6 +32,7 @@
     @include min_768 {
         width: 579px;
         height: 465px; 
+        padding: 40px;
     }
 
     @include min_1440 {
@@ -47,6 +48,33 @@
         width: 192px;
         height: 281px; 
     }
+    }
+
+    .modal-card__title{
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.12;
+        @include min_768 {
+            font-size: 24px;
+            line-height: 1.16;
+        }
+    }
+
+    .modal-card__author{
+        font-weight: 400;
+        font-style: italic;
+        font-size: 12px;
+        line-height: 1.16; 
+        @include min_768 {
+            font-size: 14px;
+            line-height: 1.28;
+        }
+    }
+
+    .modal-card__descriprion{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28; 
     }
     
     .modal__btn-close{
@@ -101,6 +129,8 @@
         @include min_768 {
             width: 490px;
             height: 64px; 
+            font-size: 18px;
+            line-height: 1.33;
         }
     
         @include min_1440 {

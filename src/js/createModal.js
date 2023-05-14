@@ -7,6 +7,7 @@ import { closeModal } from './components/closeModalBtn';
 import { onKeyDown } from './components/closeModalOnEsc';
 import { addBookToShopList } from './helpers/addBookToShopList';
 import { deleteBookFromModal } from './helpers/deleteBookFromModal';
+import { getBksFrmShpLst } from './firebase';
 
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
@@ -17,8 +18,13 @@ const createModal = async evt => {
   startLoading();
   const bookId = evt.target.closest('.card').dataset.book;
   try {
+    
     const dataBook = await getOneBookById(bookId);
     refs.backdrop.innerHTML = renderModal(dataBook);
+    // const isBookInside = async getBksFrmShpLst()
+    // if (isBook.includes(bookId)){
+
+    // }
   } catch (e) {
     refs.backdrop.innerHTML = renderError(
       `This page is empty, add some books and proceed to order.`
