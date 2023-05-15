@@ -5,7 +5,7 @@ import book2 from '../../images/book2.png';
 import trashIcon from '../../images/icons.svg';
 
 export const renderShopBookCards = data => {
-  books = data
+  const books = data
     .map(
       ({
         _id,
