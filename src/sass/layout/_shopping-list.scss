@@ -9,6 +9,7 @@
     margin-right: 40px;
   }
 }
+
 .shopping-list_book {
   display: flex;
   padding: 14px;
@@ -17,6 +18,7 @@
   border-radius: 16px;
   position: relative;
   margin-bottom: 20px;
+  min-width: 100%;
   @include min_768 {
     padding: 24px;
     &:last-child {

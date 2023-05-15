@@ -32,6 +32,7 @@ export const refs = {
   bodyRef: document.querySelector('body'),
 
   shopList: document.querySelector('.shopping-list'),
+  paginationBlock: document.querySelector('.tui-pagination'),
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),
   addBtn: document.querySelector('.btn-add-list'),
@@ -39,5 +40,5 @@ export const refs = {
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
   // team modal
-  openTeamBtn: document.querySelector('.js-students')
+  openTeamBtn: document.querySelector('.js-students'),
 };
