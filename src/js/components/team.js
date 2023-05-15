@@ -1,6 +1,8 @@
-import HumeniukRuslan from '../../images/HumeniukRuslan.png'
-import PolishchukOlexandra from '../../images/PolishchukOlexandra.jpg'
-import VorobiovArtem from '../../images/VorobiovArtem.jpg'
+import HumeniukRuslan from '../../images/HumeniukRuslan.png';
+import PolishchukOlexandra from '../../images/PolishchukOlexandra.jpg';
+import VorobiovArtem from '../../images/VorobiovArtem.jpg';
+import ArturHlebov from '../../images/ArturHlebov.jpg';
+import OlegKiosa from '../../images/OlegKiosa.jpg';
 
 export const team = [
     {
@@ -53,26 +55,26 @@ export const team = [
     },
     {
         name: 'Oleg Kiosa',
-        photo: null,
+        photo: OlegKiosa,
         position: 'Developer',
         links: [{
             name: 'github',
             url: 'https://github.com/KiosaOleg',
         }, {
             name: 'linkedin',
-            url: null,
+            url: 'https://www.linkedin.com/in/oleg-kiosa-465918276/',
         }],
     },
     {
         name: 'Artur Hlebov',
-        photo: null,
+        photo: ArturHlebov,
         position: 'Developer',
         links: [{
             name: 'github',
             url: 'https://github.com/Mr-Desperado-19',
         }, {
             name: 'linkedin',
-            url: null,
+            url: 'https://www.linkedin.com/in/artur-hlebov/',
         }],
     },
     {
