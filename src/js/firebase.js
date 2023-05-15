@@ -38,7 +38,10 @@ export let userCurrent = null;
 
 console.log(window.location.pathname);
 handleAuthStateChanged();
-if (window.location.pathname !== '/shopping-list.html') {
+if (
+  window.location.pathname !== '/shopping-list.html' &&
+  window.location.pathname !== '/group6-team-project/shopping-list.html'
+) {
   refs.regForm.addEventListener('submit', registerNewUser);
   refs.logForm.addEventListener('submit', signIn);
 }
