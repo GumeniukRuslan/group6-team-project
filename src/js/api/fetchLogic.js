@@ -38,6 +38,7 @@ async function getOneBookById(id) {
       `https://books-backend.p.goit.global/books/${id}`
     );
     return response.data;
+    console.log(response.data);
   } catch (error) {
     console.error(error);
   }
@@ -53,5 +54,4 @@ export {
 
 
 // getOneBookById("643282b1e85766588626a080")
-// getTopBooks()
-// createModal()
+
