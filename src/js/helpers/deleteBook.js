@@ -1,5 +1,6 @@
 import { refs } from '../components/refs';
 import { rmvFrmShopList } from '../firebase';
+import { renderShopBookCards } from '../render/renderShopBookCard';
 
 export function deleteBook(evt) {
   if (!evt.target.closest('.delete-btn')) {

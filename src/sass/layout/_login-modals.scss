@@ -1,0 +1,178 @@
+.modal-overlay {
+  visibility: hidden;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  min-width: 375px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transition: all 0.4s ease 0s;
+  background: linear-gradient(55deg, #4f2ee8, #ccece7);
+  background-size: 400% 400%;
+  animation: gradient 8s ease-in-out infinite;
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    .modal {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 999;
+  min-width: 335px;
+  padding: 40px 20px;
+  background-color: var(--modal-bcg);
+  border: 2px solid var(--main-text-color);
+  border-radius: 18px;
+  @extend %transition;
+  opacity: 0;
+  @include min_1440 {
+    min-width: 580px;
+    padding: 80px 40px 40px;
+  }
+  &__close {
+    background-color: transparent;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    stroke: var(--main-text-color);
+    border: none;
+    @extend %transition;
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &:active {
+      stroke: var(--secondary-color);
+    }
+    @include min_1440 {
+      & > svg {
+        width: 28px;
+        height: 28px;
+      }
+      top: 24px;
+      right: 24px;
+    }
+  }
+}
+
+.login {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+  &__icon {
+    stroke: var(--main-text-color);
+    fill: none;
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    @extend %transition;
+    @include min_1440 {
+      width: 28px;
+      height: 28px;
+      top: 18px;
+      right: 32px;
+    }
+  }
+  &__input {
+    background-color: transparent;
+    outline: none;
+    border-radius: 40px;
+    width: 100%;
+    border: 2px solid var(--main-text-color);
+    color: var(--main-text-color);
+    text-transform: uppercase;
+    padding: 16px 24px;
+    @extend %transition;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    @include min_1440 {
+      padding: 20px 40px;
+    }
+    &::placeholder {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.2;
+      color: var(--main-text-color);
+      @include min_1440 {
+        font-size: 18px;
+      }
+    }
+    &:focus-within {
+      border-color: var(--secondary-color);
+      + .login__icon {
+        stroke: var(--secondary-color);
+      }
+    }
+  }
+  &__container {
+    position: relative;
+  }
+  &__btn {
+    border: none;
+    width: 100%;
+    border-radius: 40px;
+    background-color: var(--main-text-color);
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 1.33;
+    color: var(--modal-bcg);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    cursor: pointer;
+    @extend %transition;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: var(--secondary-color);
+    }
+    @include min_768 {
+      font-size: 18px;
+    }
+  }
+  &__switch {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    &-label {
+      text-transform: uppercase;
+      color: var(--categories-color);
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 18px;
+      cursor: pointer;
+      @extend %transition;
+      &.active-label,
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+        color: var(--secondary-color);
+      }
+      @include min_1440 {
+        font-size: 18px;
+      }
+    }
+  }
+}

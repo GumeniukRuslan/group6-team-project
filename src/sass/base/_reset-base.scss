@@ -3,6 +3,10 @@ body {
   color: var(--main-text-color);
   font-family: 'DM Sans', sans-serif;
   background: var(--body-bcg);
+  @extend %transition;
+  &.lock {
+    overflow: hidden;
+  }
 }
 
 html {

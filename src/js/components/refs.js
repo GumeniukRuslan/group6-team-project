@@ -11,7 +11,9 @@ export const refs = {
   scrollTopTarget: document.querySelector('#top-target'),
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
+  logForm: document.querySelector('.js-logForm'),
   logOutButton: document.querySelector('.js-logOutButton'),
+
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
   elmsAuth: document.querySelectorAll('.js-elmsAuth'),
@@ -19,13 +21,28 @@ export const refs = {
 
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),
+  // login modals
+  loginModalOpenBtns: document.querySelector('.js-elmsNonAuth'),
+  signUpModal: document.querySelector('.js-sign-up'),
+  signInModal: document.querySelector('.js-sign-in'),
+
+  // кнопки Sign-In,Sign-Up
+  signInBtn: document.querySelector('.sign-in__Btn'),
+  signUpBtn: document.querySelector('.buttons-auth__sign'),
+  loginModal: document.querySelector('.modal-overlay'),
+  bodyRef: document.querySelector('body'),
+
   shopList: document.querySelector('.shopping-list'),
+  paginationBlock: document.querySelector('.tui-pagination'),
   // Модалка
   closeModal: document.querySelector('.modal__btn-close'),
   addBtn: document.querySelector('.btn-add-list'),
   modalWindow: document.querySelector('[data-modal]'),
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
+
   buttonAdd: document.querySelector('.add_to_list'),
   buttonRemove: document.querySelector('.remove_from_list'),
+  // team modal
+  openTeamBtn: document.querySelector('.js-students'),
 };

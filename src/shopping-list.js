@@ -3,6 +3,7 @@ import './js/mobileMenu';
 import './js/firebase';
 import './js/createSupportList';
 import './js/createShopList';
+import './js/switch';
 
 import Pagination from 'tui-pagination';
 
