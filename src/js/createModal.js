@@ -8,7 +8,6 @@ import { onKeyDown } from './components/closeModalOnEsc';
 import { addBookToShopList } from './helpers/addBookToShopList';
 import { deleteBookFromModal } from './helpers/deleteBookFromModal';
 import { getBksFrmShpLst } from './firebase';
-// import { renderModalAdd } from './render/renderButtonAdd';
 
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
@@ -21,12 +20,6 @@ const createModal = async evt => {
   try {
     const dataBook = await getOneBookById(bookId);
     refs.backdrop.innerHTML = renderModal(dataBook);
-    // const isBookincludes = async getBksFrmShpLst();
-  
-    // if (isBookincludes.includes(bookId))
-    // {
-    //   renderModalAdd();
-    // }
   
   } catch (e) {
     refs.backdrop.innerHTML = renderError(
