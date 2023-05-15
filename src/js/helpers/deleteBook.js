@@ -1,6 +1,5 @@
 import { refs } from '../components/refs';
 import { rmvFrmShopList } from '../firebase';
-import { renderShopBookCards } from '../render/renderShopBookCard';
 import { getBksFrmShpLst } from '../firebase';
 import { renderError } from '../render/renderError';
 import { storagePaginationHolder } from '../createShopList';
@@ -41,11 +40,9 @@ export async function deleteBook(evt) {
         storagePaginationHolder.getCurrentPage() + 1
       );
 
-      storagePaginationHolder._options.visiblePages -= 1;
       if (storagePaginationHolder._options.visiblePages === 1) {
         refs.paginationBlock.style.display = 'none';
       }
-      console.log(storagePaginationHolder);
     }
   }
 }

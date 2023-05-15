@@ -27,7 +27,11 @@ export const renderShopBookCards = data => {
             <div class="flex-inheritance">
               <h2 class="book_title">${title}</h2>
               <p class="book_category">${list_name}</p>
-              <p class="book_descriprion">${description}</p>
+              <p class="book_descriprion">${
+                description
+                  ? description
+                  : 'Unfortunately, there is no description'
+              }</p>
             </div>
             <div class="book_links-and-author">
               <p class="book_author">${author}</p>
