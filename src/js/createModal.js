@@ -17,11 +17,11 @@ export const openModalBook = async (id) => {
   refs.backdrop.innerHTML = renderModal(dataBook);
 
   const btns = document.querySelector('.modal-book__btns');
-  const booksInShopList = await getBksFrmShpLst();
   if (!userCurrent) {
       btns.innerHTML = unloggedUserShopList();
   } else {
-      if (booksInShopList.includes(id)) {
+    const booksInShopList = await getBksFrmShpLst();
+      if ( booksInShopList && booksInShopList.includes(id)) {
           btns.innerHTML = alreadyInShopList();
       } else {
           btns.innerHTML = notInShopList();
@@ -29,15 +29,15 @@ export const openModalBook = async (id) => {
   }
   const btnClose = document.querySelector('[data-modal-close]');
   btnClose.addEventListener('click', closeModal);
-
   refs.backdrop.addEventListener("click", closeModalBackdrop);
   document.body.classList.add('lock');
   window.addEventListener('keydown', onKeyDown);
 
   const btnShop = document.querySelector('.modal-book__btn');
-  if (btnShop.disabled = 'true') {
+  if (btnShop.disabled === false) {
     btnShop.addEventListener("click", addBookToShopList);
   }
+  refs.backdrop.classList.remove('is-hidden');
 }
 
 const createModal = async evt => {
@@ -46,7 +46,6 @@ const createModal = async evt => {
   }
   cleanModal();
   startLoading();
-  refs.backdrop.classList.remove('is-hidden');
   const bookId = evt.target.closest('.card').dataset.book;
   try {
     openModalBook(bookId)
