@@ -92,7 +92,7 @@ function registerNewUser(evt) {
 }
 
 /**
- * Функция для логина
+ * Функция для логина!
  * @param {submit} evt
  */
 function signIn(evt) {
