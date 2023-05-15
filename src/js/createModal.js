@@ -23,7 +23,7 @@ const createModal = async evt => {
     refs.backdrop.innerHTML = renderModal(dataBook);
     // const isBookincludes = async getBksFrmShpLst();
   
-    // if (isBookincludes.find(bookId))
+    // if (isBookincludes.includes(bookId))
     // {
     //   renderModalAdd();
     // }
