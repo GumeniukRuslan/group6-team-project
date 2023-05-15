@@ -1,15 +1,23 @@
 import { refs } from './refs';
 import { onKeyDown, closeLoginModalEsc } from './closeModalOnEsc';
-import { addBookToShopList } from '../helpers/addBookToShopList';
-import { deleteBookFromModal } from '../helpers/deleteBookFromModal';
 import { changeModal } from '../loginModals';
+import { closeLoginModalBackdrop, closeModalBackdrop } from './closeModalBackdrop';
 
-export function closeModal(evt) {
+import { addBookToShopList } from '../helpers/addBookToShopList';
+import { cleanModal } from '../helpers/modalHelpers';
+
+export function closeModal() {
+  const closeBtn = document.querySelector('[data-modal-close]');
   refs.backdrop.classList.add('is-hidden');
-// .removeEventListener('click', deleteBookFromModal);
-//   refs.backdrop.removeEventListener('click', addBookToShopList);
-  evt.currentTarget.removeEventListener('click', closeModal);
+  document.body.classList.remove('lock');
+  closeBtn.removeEventListener('click', closeModal);
+  refs.backdrop.removeEventListener("click", closeModalBackdrop);
   window.removeEventListener('keydown', onKeyDown);
+  const btnShop = document.querySelector('.modal-book__btn');
+  if (btnShop.disabled = 'true') {
+    btnShop.removeEventListener("click", addBookToShopList);
+  }
+  cleanModal();
 }
 
 export const closeLoginModal = () => {
@@ -21,7 +29,6 @@ export const closeLoginModal = () => {
   currentModal.removeEventListener("click", closeLoginModalOnClick);
   currentModal.removeEventListener("click", closeLoginModalBackdrop);
   currentModal.addEventListener("keydown", closeLoginModalEsc);
-
 }
 
 export const closeLoginModalOnClick = (event) => {
@@ -32,10 +39,4 @@ export const closeLoginModalOnClick = (event) => {
     return;
   }
   closeLoginModal(event);
-}
-
-export const closeLoginModalBackdrop = (event) => {
-  if (event.target === event.currentTarget && event.target.classList.contains('modal-overlay')) {
-    closeLoginModal(event);
-  }
 }
