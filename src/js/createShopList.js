@@ -8,13 +8,12 @@ import { handleAuthStateChanged } from './firebase';
 import { createLibraryPagination } from './render/renderPagination';
 import { deleteBook } from './helpers/deleteBook';
 
-handleAuthStateChanged();
-
 export let storagePaginationHolder;
 
 const createShopList = async () => {
   startLoading();
   try {
+    const user = await handleAuthStateChanged();
     const data = await getBksFrmShpLst();
     storageItemsQuantity = data;
     const arrOfBooks = await handlePromiseArray(data);
