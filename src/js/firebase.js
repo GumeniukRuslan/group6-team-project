@@ -175,7 +175,7 @@ async function getUserName(userEmail) {
  * @param {event} evt
  */
 export async function addToShopList(evt) {
-  const book = evt.target.closest('.modal-card__thumb');
+  const book = evt.target.closest('.modal-book__content');
 
   if (userCurrent) {
     console.log(book.dataset.book);
@@ -199,7 +199,7 @@ export async function addToShopList(evt) {
  */
 export async function rmvFrmShopList(evt) {
   const li =
-    evt.target.closest('li') || evt.target.closest('.modal-card__thumb');
+    evt.target.closest('li') || evt.target.closest('.modal-book__content');
 
   if (userCurrent) {
     console.log(li.dataset.book);
