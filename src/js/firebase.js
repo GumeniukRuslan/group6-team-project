@@ -38,10 +38,7 @@ export let userCurrent = null;
 
 handleAuthStateChanged();
 
-if (
-  window.location.pathname === '/index.html' ||
-  window.location.pathname === '/'
-) {
+if (window.location.pathname !== '/shopping-list.html') {
   refs.regForm.addEventListener('submit', registerNewUser);
   refs.logForm.addEventListener('submit', signIn);
 }
