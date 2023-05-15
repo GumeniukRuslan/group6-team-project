@@ -36,7 +36,6 @@ const db = getFirestore(app);
 
 export let userCurrent = null;
 
-console.log(window.location.pathname);
 handleAuthStateChanged();
 if (
   window.location.pathname !== '/shopping-list.html' &&
