@@ -37,7 +37,11 @@ const db = getFirestore(app);
 export let userCurrent = null;
 
 handleAuthStateChanged();
-if (window.location.pathname === '/index.html') {
+
+if (
+  window.location.pathname === '/index.html' ||
+  window.location.pathname === '/'
+) {
   refs.regForm.addEventListener('submit', registerNewUser);
   refs.logForm.addEventListener('submit', signIn);
 }
