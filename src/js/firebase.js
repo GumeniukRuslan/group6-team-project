@@ -37,10 +37,7 @@ const db = getFirestore(app);
 export let userCurrent = null;
 
 handleAuthStateChanged();
-if (window.location.pathname === '/index.html') {
-  refs.regForm.addEventListener('submit', registerNewUser);
-  refs.logForm.addEventListener('submit', signIn);
-}
+refs.regForm.addEventListener('submit', signIn);
 refs.logOutButton.addEventListener('click', logOut);
 
 /**
@@ -75,13 +72,12 @@ export async function handleAuthStateChanged() {
  * Функция для регистрации
  * @param {submit} evt
  */
-async function registerNewUser(evt) {
+function registerNewUser(evt) {
   evt.preventDefault();
 
   let data = formValuesGet(evt.target);
-  console.log(data);
 
-  await createUserWithEmailAndPassword(auth, data.email, data.password)
+  createUserWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
       // Signed in
       // const user = userCredential.user;
@@ -92,18 +88,19 @@ async function registerNewUser(evt) {
       const errorMessage = error.message;
       // ..
     });
+  //   location.reload();
 }
 
 /**
  * Функция для логина
  * @param {submit} evt
  */
-async function signIn(evt) {
+function signIn(evt) {
   evt.preventDefault();
 
   let data = formValuesGet(evt.target);
 
-  await signInWithEmailAndPassword(auth, data.email, data.password)
+  signInWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
       // Signed in
 
@@ -117,7 +114,6 @@ async function signIn(evt) {
       const errorMessage = error.message;
       //Обработать ошибку error.code = auth/user-not-found
     });
-  location.reload();
 }
 
 /**
@@ -127,9 +123,6 @@ async function signIn(evt) {
 function logOut(evt) {
   signOut(auth)
     .then(() => {
-      if (window.location.pathname === '/shopping-list.html') {
-        location.assign('/index.html');
-      }
       renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
       console.log('Log out');
     })
@@ -149,7 +142,6 @@ async function addUserName(userEmail, userName) {
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
       name: `${userName}`,
     });
-    location.reload();
   } catch (e) {
     console.error('Error adding username: ', e);
   }
