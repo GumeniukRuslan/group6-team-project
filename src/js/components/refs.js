@@ -11,6 +11,7 @@ export const refs = {
   scrollTopTarget: document.querySelector('#top-target'),
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
+  logForm: document.querySelector('.js-logForm'),
   logOutButton: document.querySelector('.js-logOutButton'),
 
   //Header`s elements
@@ -39,5 +40,5 @@ export const refs = {
   bookCard: document.querySelector('.card__thumb'),
   backdrop: document.querySelector('.backdrop'),
   // team modal
-  openTeamBtn: document.querySelector('.js-students')
+  openTeamBtn: document.querySelector('.js-students'),
 };
