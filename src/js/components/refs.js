@@ -11,6 +11,7 @@ export const refs = {
   scrollTopTarget: document.querySelector('#top-target'),
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
+  logForm: document.querySelector('.js-logForm'),
   logOutButton: document.querySelector('.js-logOutButton'),
 
   //Header`s elements
