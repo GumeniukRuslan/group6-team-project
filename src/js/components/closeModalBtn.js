@@ -5,16 +5,11 @@ import { deleteBookFromModal } from '../helpers/deleteBookFromModal';
 import { changeModal } from '../loginModals';
 
 export function closeModal(evt) {
-  if (
-    evt.target.closest('.modal__btn-close') ||
-    evt.target.classList.contains('backdrop')
-  ) {
-    refs.backdrop.classList.add('is-hidden');
-    refs.backdrop.removeEventListener('click', deleteBookFromModal);
-    refs.backdrop.removeEventListener('click', addBookToShopList);
-    refs.backdrop.removeEventListener('click', closeModal);
-    window.removeEventListener('keydown', onKeyDown);
-  }
+  refs.backdrop.classList.add('is-hidden');
+// .removeEventListener('click', deleteBookFromModal);
+//   refs.backdrop.removeEventListener('click', addBookToShopList);
+  evt.currentTarget.removeEventListener('click', closeModal);
+  window.removeEventListener('keydown', onKeyDown);
 }
 
 export const closeLoginModal = () => {

@@ -16,6 +16,15 @@
   &:focus {
     box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
   }
+  &:disabled {
+    border-color: var(--additional-text-color);
+    color: var(--additional-text-color);
+    cursor: auto;
+    &:hover {
+      background-color: transparent;
+      color: var(--additional-text-color);
+    }
+  }
 }
 
 .btn-top {

@@ -3,7 +3,6 @@ import amazon from '../../images/amazon.png';
 import book1 from '../../images/book1.png';
 import book2 from '../../images/book2.png';
 import cross from '../../images/icons.svg';
-import { getBksFrmShpLst } from '../firebase';
 
 export function renderModal({
   _id,
@@ -41,12 +40,7 @@ export function renderModal({
               </ul>
           </div>
       </div>
-      <div class="modal-book__btns">
-          <button class="btn--violet modal-book__btn" type="button">remove from the shopping list</button>
-          <p class="modal-book__notification">
-            Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.
-          </p>
-      </div>
-  </div>
+      <div class="modal-book__btns"></div>
+    </div>
 </div>`;
 }
