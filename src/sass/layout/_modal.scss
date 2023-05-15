@@ -9,7 +9,7 @@
     background-color: var(--dark-main-color);
     transition: opacity var(--timing-function), visibility var(--timing-function);
     animation-name: scale-in-center;
-    animation-duration: 1000ms;
+    animation-duration: 2000ms;
     
     &.is-hidden{
     opacity: 0;
@@ -51,9 +51,11 @@
     width: 100%;
     height: 408px;
     margin-bottom: 14px;
+    margin-top: 40px;
     @include min_768 {
         width: 192px;
-        height: 281px; 
+        height: 281px;
+        margin-top: 0; 
     }
     }
 
@@ -125,10 +127,10 @@
     background-color: var(--dark-main-color);
     padding: 0;
     cursor: pointer;
-    border: none;
+    border: 2px solid;
     }
 
-    .end{
+    .close-icon{
     fill: var(--main-color);
     &:focus,
     &:hover{
