@@ -52,6 +52,7 @@
 
 .support-item {
     color: var(--primary-bcg);
+    width: 123px;
 }
 
 .support-link {
@@ -75,13 +76,14 @@
     border: none;
     background-color: var(--primary-bcg);
     margin-top: 16px;
-    margin-left: 105px;
+    margin-left: 108px;
     cursor: pointer;
     @include min_768 {
         margin-top: 32px;
     }
     @include min_1440 {
         margin-top: 40px;
+        margin-left: 118px;
     }
     &__svg {
         fill: var(--secondary-color);
