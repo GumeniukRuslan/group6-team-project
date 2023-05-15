@@ -15,7 +15,7 @@ export function renderModal({
 }) {
   const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
   const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
-  return `<div class="modal">
+  return `<div class="modal-book">
         <button class="modal__btn-close" type="button" data-modal-close>
           <svg class="end" width="12" height="12">
             <use href="${cross}#icon-close"></use>
