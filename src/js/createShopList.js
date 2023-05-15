@@ -16,7 +16,6 @@ const createShopList = async () => {
   startLoading();
   try {
     const data = await getBksFrmShpLst();
-    storageItemsQuantity = data;
     const arrOfBooks = await handlePromiseArray(data);
     if (!arrOfBooks.length) {
       throw new Error();
