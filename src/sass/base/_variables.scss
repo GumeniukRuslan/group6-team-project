@@ -9,8 +9,6 @@
   --additional-btn-color: #eac645;
   --scroll-color: #e0e0e0;
   --categories-color: rgba(17, 17, 17, 0.6);
-  --shoplist-text-color: rgba(0, 0, 0, 0.6);
-
 
   --dark-main-color: #ffffff;
   --dark-secondary-color: #4f2ee8;
@@ -19,7 +17,7 @@
   --dark-additional-bcg: #202024;
   --dark-additional-btn-color: #eac645;
   --dark-scroll-color: rgba(255, 255, 255, 0.6);
-  --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --backdrop-bcg: rgba(17, 17, 17, 0.4);
 }
 
 /* define light theme */
@@ -32,7 +30,7 @@ html[data-theme='light'] {
   --additional-text-color: #b4afaf;
   --heder-bcg: #ffffff;
   --modal-bcg: #f6f6f6;
-  --shoplist-text-color: rgba(0, 0, 0, 0.6);
+  --amazon-filter: grayscale(100%);
 }
 
 /* define dark theme */
@@ -41,10 +39,10 @@ html[data-theme='dark'] {
   --main-text-color: #ffffff;
   --categories-color: rgba(255, 255, 255, 0.6);
   --category-active: #eac645;
-  --shoplist-text-color: rgba(255, 255, 255, 0.6);
 
   --main-color: #ffffff;
   --additional-text-color: #b4afaf;
   --heder-bcg: #111111;
   --modal-bcg: #202024;
+  --amazon-filter: grayscale(100%) invert(100%);
 }
