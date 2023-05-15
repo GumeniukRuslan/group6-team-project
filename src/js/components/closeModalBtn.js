@@ -14,7 +14,7 @@ export function closeModal() {
   refs.backdrop.removeEventListener("click", closeModalBackdrop);
   window.removeEventListener('keydown', onKeyDown);
   const btnShop = document.querySelector('.modal-book__btn');
-  if (btnShop.disabled = 'true') {
+  if (btnShop.disabled === false) {
     btnShop.removeEventListener("click", addBookToShopList);
   }
   cleanModal();
