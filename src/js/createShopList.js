@@ -16,16 +16,17 @@ const createShopList = async () => {
   startLoading();
   try {
     const data = await getBksFrmShpLst();
+    storageItemsQuantity = data;
     const arrOfBooks = await handlePromiseArray(data);
     if (!arrOfBooks.length) {
       throw new Error();
     }
-    refs.shopList.innerHTML = renderShopBookCards(arrOfBooks);
+    refs.paginationBlock.style.display = 'block';
+    refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 3));
     storagePaginationHolder = createLibraryPagination(
       arrOfBooks,
       arrOfBooks.length
     );
-    console.log(arrOfBooks);
   } catch (e) {
     refs.shopList.innerHTML = renderError(
       `This page is empty, add some books and proceed to order.`
@@ -37,7 +38,7 @@ const createShopList = async () => {
 
 window.addEventListener('load', createShopList);
 
-async function handlePromiseArray(arr) {
+export async function handlePromiseArray(arr) {
   const newArr = arr.map(async id => await getOneBookById(id));
   const markArr = await Promise.all(newArr);
   return markArr;

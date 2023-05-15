@@ -9,6 +9,7 @@
 @import './base/variables';
 @import './base/container';
 @import './base/hidden';
+@import './utils/animations';
 
 @import './components/btns';
 @import './components/card';
@@ -22,7 +23,7 @@
 @import './layout/all-categories-list';
 @import './layout/support-funds';
 @import './layout/shopping-list';
+@import './layout/modal';
 @import './layout/login-modals';
 @import './layout/shopping-list';
-@import './layout/modal';
 @import './layout/footer';
