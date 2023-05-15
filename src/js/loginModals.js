@@ -23,6 +23,7 @@ function openLoginModal(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
+  console.log(`fork`)
   const currentModalData = event.target.dataset.login;
   let currentModal;
   if (currentModalData === 'sign-up') {
@@ -35,8 +36,8 @@ function openLoginModal(event) {
   openModal(currentModal);
 }
 
-if (refs.loginModalOpenBtns) {
-  refs.loginModalOpenBtns.addEventListener('click', openLoginModal);
+if (refs.elmsNonAuth) {
+  refs.elmsNonAuth.forEach(btns => btns.addEventListener('click', openLoginModal));
 }
 
 export function changeModal(event) {
