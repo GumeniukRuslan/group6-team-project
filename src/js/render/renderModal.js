@@ -34,7 +34,7 @@ export function renderModal({
               <p class="modal-book__description">${
                 description
                   ? description
-                  : `Unfortunately, there is no description`
+                  : `Unfortunately, there is no description.`
               }</p>
               <ul class="modal-book__links">
                 <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}">

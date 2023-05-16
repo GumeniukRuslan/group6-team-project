@@ -30,7 +30,7 @@ export const renderShopBookCards = data => {
               <p class="book_descriprion">${
                 description
                   ? description
-                  : 'Unfortunately, there is no description'
+                  : 'Unfortunately, there is no description.'
               }</p>
             </div>
             <div class="book_links-and-author">

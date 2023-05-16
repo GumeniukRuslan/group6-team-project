@@ -9,23 +9,29 @@ import { closeModalBackdrop } from './components/closeModalBackdrop';
 
 import { addBookToShopList } from './helpers/addBookToShopList';
 
-import { alreadyInShopList, backendError, cleanModal, notInShopList, unloggedUserShopList } from './helpers/modalHelpers';
-import { getBksFrmShpLst, userCurrent} from './firebase';
+import {
+  alreadyInShopList,
+  backendError,
+  cleanModal,
+  notInShopList,
+  unloggedUserShopList,
+} from './helpers/modalHelpers';
+import { getBksFrmShpLst, userCurrent } from './firebase';
 
-export const openModalBook = async (id) => {
+export const openModalBook = async id => {
   const dataBook = await getOneBookById(id);
   refs.backdrop.innerHTML = renderModal(dataBook);
 
   const btns = document.querySelector('.modal-book__btns');
   if (!userCurrent) {
-      btns.innerHTML = unloggedUserShopList();
+    btns.innerHTML = unloggedUserShopList();
   } else {
     try {
       const booksInShopList = await getBksFrmShpLst();
-      if ( booksInShopList && booksInShopList.includes(id)) {
-          btns.innerHTML = alreadyInShopList();
+      if (booksInShopList && booksInShopList.includes(id)) {
+        btns.innerHTML = alreadyInShopList();
       } else {
-          btns.innerHTML = notInShopList();
+        btns.innerHTML = notInShopList();
       }
     } catch (e) {
       btns.innerHTML = backendError();
@@ -33,34 +39,30 @@ export const openModalBook = async (id) => {
   }
   const btnClose = document.querySelector('[data-modal-close]');
   btnClose.addEventListener('click', closeModal);
-  refs.backdrop.addEventListener("click", closeModalBackdrop);
+  refs.backdrop.addEventListener('click', closeModalBackdrop);
   document.body.classList.add('lock');
   window.addEventListener('keydown', onKeyDown);
 
   const btnShop = document.querySelector('.modal-book__btn');
   if (btnShop.disabled === false) {
-    btnShop.addEventListener("click", addBookToShopList);
+    btnShop.addEventListener('click', addBookToShopList);
   }
   refs.backdrop.classList.remove('is-hidden');
-}
+};
 
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
     return;
   }
   cleanModal();
-  startLoading();
+
   const bookId = evt.target.closest('.card').dataset.book;
   try {
-    openModalBook(bookId)
+    openModalBook(bookId);
   } catch (e) {
-    refs.backdrop.innerHTML = renderError(
-      `Something went wrong`
-    );
+    refs.backdrop.innerHTML = renderError(`Something went wrong`);
   }
-  removeLoading();
 };
-
 
 if (refs.booksHandler) {
   refs.booksHandler.addEventListener('click', createModal);
