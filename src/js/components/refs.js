@@ -42,4 +42,5 @@ export const refs = {
   openTeamBtn: document.querySelector('.js-students'),
   teamList: document.querySelector('.team__list'),
   btnTeamModalClose: document.querySelector('.js-team-close'),
+  teamModal: document.querySelector('.team__backdrop'),
 };
