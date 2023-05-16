@@ -1,0 +1,53 @@
+<div class="modal-overlay js-sign-up">
+  <div class="modal">
+    <button class="modal__close">
+      <svg width="20" height="20">
+        <use href="./images/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal__content">
+      <form class="login__form js-regForm">
+        <div class="login__container">
+          <input
+            class="login__input"
+            type="name"
+            name="name"
+            placeholder="name"
+          />
+        </div>
+        <div class="login__container">
+          <input
+            class="login__input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <svg width="18" height="18" class="login__icon">
+            <use href="./images/icons.svg#icon-mail"></use>
+          </svg>
+        </div>
+        <div class="login__container">
+          <input
+            class="login__input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            minlength="6"
+            required
+          />
+          <svg width="18" height="18" class="login__icon">
+            <use href="./images/icons.svg#icon-lock"></use>
+          </svg>
+        </div>
+        <button class="login__btn" type="submit">Sign up</button>
+      </form>
+      <div class="login__switch">
+        <p class="login__switch-label" data-login="sign-in">Sign in</p>
+        <p class="login__switch-label active-label" data-login="sign-up">
+          Sign Up
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

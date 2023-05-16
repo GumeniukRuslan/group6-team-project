@@ -4,27 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookshelf</title>
+    <link
+      rel="icon"
+      href="/src/images/fuvicon.png"
+      type="image/png"
+      sizes="32x32"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    
     <include src="./HTMLpartials/header.html"></include>
-    <a href="./shoping-list.html">test</a>
     <include src="./HTMLpartials/mobile-menu.html"></include>
     <main>
       <div id="top-target"></div>
       <div class="container books--flex">
         <aside class="books__aside">
+          <include src="./HTMLpartials/all-categories-list.html"></include>
           <include src="./HTMLpartials/support-funds.html"></include>
         </aside>
         <include src="./HTMLpartials/books-list.html"></include>
       </div>
+      <include src="./HTMLpartials/modal.html"></include>
     </main>
+    <include src="./HTMLpartials/footer.html"></include>
     <button type="button" class="btn-top hidden">
       <svg width="24" height="24" class="btn-top__svg">
         <use href="./images/icons.svg#icon-arrow-up">
       </svg>
     </button>
+    <include src="./HTMLpartials/sign-up.html"></include>
+    <include src="./HTMLpartials/sign-in.html"></include>
   </body>
 </html>
