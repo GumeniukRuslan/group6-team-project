@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  deleteUser,
 } from 'firebase/auth';
 
 import {
@@ -15,6 +16,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  deleteDoc,
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
@@ -48,6 +50,9 @@ if (
 }
 refs.logOutButtons.forEach(button => {
   button.addEventListener('click', logOut);
+});
+refs.dltAccntButtons.forEach(button => {
+  button.addEventListener('click', dltUser);
 });
 
 /**
@@ -158,12 +163,34 @@ function logOut(evt) {
         location.assign('/group6-team-project/index.html');
         return;
       }
-      renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
       console.log('Log out');
       location.reload();
     })
     .catch(error => {
       console.log(error, 'Log out error');
+    });
+}
+
+/**
+ * Функция для удаления аккаунта
+ * @param {click} evt
+ */
+async function dltUser(evt) {
+  await deleteDoc(doc(db, `names/${userCurrent}`));
+  await deleteDoc(doc(db, `shoplist/${userCurrent}`));
+  await deleteUser(auth.currentUser)
+    .then(() => {
+      if (
+        window.location.pathname === '/shopping-list.html' ||
+        window.location.pathname === '/group6-team-project/shopping-list.html'
+      ) {
+        location.assign('/index.html' || '/group6-team-project/index.html');
+        return;
+      }
+      location.reload();
+    })
+    .catch(error => {
+      console.log(error);
     });
 }
 
