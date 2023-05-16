@@ -30,7 +30,8 @@ html[data-theme='light'] {
   --additional-text-color: #b4afaf;
   --heder-bcg: #ffffff;
   --modal-bcg: #f6f6f6;
-  --amazon-filter: grayscale(100%);
+  --amazon-bcg: url('/src/images/amazon.png');
+  // --amazon-filter: grayscale(100%);
 }
 
 /* define dark theme */
@@ -44,5 +45,7 @@ html[data-theme='dark'] {
   --additional-text-color: #b4afaf;
   --heder-bcg: #111111;
   --modal-bcg: #202024;
-  --amazon-filter: grayscale(100%) invert(100%);
+  --amazon-filter: brightness(0);
+  --amazon-bcg: url('/src/images/amazon-white.png');
+  // --amazon-filter: grayscale(100%) invert(100%);
 }

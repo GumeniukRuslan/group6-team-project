@@ -36,7 +36,7 @@ export const renderShopBookCards = data => {
             <div class="book_links-and-author">
               <p class="book_author">${author}</p>
               <ul class="book_shopping-links">
-                <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
+                <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="" alt=""></a></li>
                 <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
                   appleURL[0].url
                 }"><img class="book1_img" src="${book1}" alt=""></a></li>
