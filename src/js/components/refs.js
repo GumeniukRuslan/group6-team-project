@@ -12,7 +12,7 @@ export const refs = {
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
   logForm: document.querySelector('.js-logForm'),
-  logOutButton: document.querySelector('.js-logOutButton'),
+  logOutButtons: document.querySelectorAll('.js-logOutButton'),
 
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),

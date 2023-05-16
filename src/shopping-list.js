@@ -4,6 +4,7 @@ import './js/firebase';
 import './js/createSupportList';
 import './js/createShopList';
 import './js/switch';
+import './js/render/dropdown';
 
 import Pagination from 'tui-pagination';
 

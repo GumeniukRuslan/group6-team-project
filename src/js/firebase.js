@@ -36,15 +36,18 @@ const db = getFirestore(app);
 
 export let userCurrent = null;
 
-handleAuthStateChanged();
 if (
   window.location.pathname !== '/shopping-list.html' &&
   window.location.pathname !== '/group6-team-project/shopping-list.html'
 ) {
+  handleAuthStateChanged();
+
   refs.regForm.addEventListener('submit', registerNewUser);
   refs.logForm.addEventListener('submit', signIn);
 }
-refs.logOutButton.addEventListener('click', logOut);
+refs.logOutButtons.forEach(button => {
+  button.addEventListener('click', logOut);
+});
 
 /**
  * Функция для взаимодействия со статусом пользователя(авторизован/неавторизован)
@@ -62,10 +65,16 @@ export async function handleAuthStateChanged() {
         resolve(userCurrent);
 
         getUserName(user.email)
-          .then(data => setUserName(refs.userName, data.name))
+          .then(data => {
+            if (!data) {
+              return;
+            }
+            setUserName(refs.userName, data.name);
+          })
           .catch(error => console.error('Error adding document: ', error));
 
         renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
+
         return userCurrent;
       } else {
         reject('Anyone logged in');
@@ -130,7 +139,10 @@ async function signIn(evt) {
 function logOut(evt) {
   signOut(auth)
     .then(() => {
-      if (window.location.pathname === '/shopping-list.html') {
+      if (
+        window.location.pathname === '/shopping-list.html' ||
+        window.location.pathname === '/group6-team-project/shopping-list.html'
+      ) {
         location.assign('/index.html');
       }
       renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
@@ -149,6 +161,10 @@ function logOut(evt) {
  */
 async function addUserName(userEmail, userName) {
   try {
+    if (!userName) {
+      location.reload();
+      return;
+    }
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
       name: `${userName}`,
     });
@@ -219,9 +235,8 @@ export async function rmvFrmShopList(evt) {
  */
 export async function getBksFrmShpLst() {
   try {
-    const user = await handleAuthStateChanged();
-    const docRef = await getDoc(doc(db, `shoplist/${user}`));
-    const data = await docRef.data();
+    const docRef = await getDoc(doc(db, `shoplist/${userCurrent}`));
+    const data = docRef.data();
     const booksArray = data.books;
 
     return booksArray;
