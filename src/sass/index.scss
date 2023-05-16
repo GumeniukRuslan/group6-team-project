@@ -29,3 +29,10 @@
 @import './layout/footer';
 @import './layout/team-modal';
 @import './components/tui-pagination';
+
+@import '~swiper/swiper.scss';
+@import '~swiper/modules/navigation/navigation';
+@import '~swiper/modules/effect-coverflow/effect-coverflow';
+@import '~swiper/modules/autoplay/autoplay';
+// @import '~swiper/modules/autoplay/autoplay';
+@import './layout/top-slider.scss';

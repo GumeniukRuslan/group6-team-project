@@ -31,6 +31,7 @@ html[data-theme='light'] {
   --heder-bcg: #ffffff;
   --modal-bcg: #f6f6f6;
   --amazon-filter: grayscale(100%);
+  --arrow-color: rgba(255, 255, 255, 0.6);
 }
 
 /* define dark theme */
@@ -45,4 +46,5 @@ html[data-theme='dark'] {
   --heder-bcg: #111111;
   --modal-bcg: #202024;
   --amazon-filter: grayscale(100%) invert(100%);
+  --arrow-color: rgba(17, 17, 17, 0.6);
 }

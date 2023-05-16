@@ -15,3 +15,4 @@ import './js/render/dropdown';
 import './js/components/swiper';
 import './js/activePage';
 import './js/teamModal';
+import './js/render/topSliper';
