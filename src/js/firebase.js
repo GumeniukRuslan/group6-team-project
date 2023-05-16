@@ -177,8 +177,8 @@ function dltUser(evt) {
   Confirm.show(
     'Delete your account',
     'Are you sure?',
-    'No worries',
-    'Noop',
+    'Delete account',
+    'Reject',
     Yes,
     () => {},
     NOTIFY_OPTIONS

@@ -56,3 +56,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.notiflix-confirm-content {
+  border: 2px solid var(--main-text-color);
+  font-family: 'DM Sans', sans-serif;
+  .notiflix-confirm-head > h5 {
+    border-bottom: 1px solid var(--main-text-color)!important;
+  }
+}
