@@ -14,3 +14,4 @@ import './js/render/renderModal';
 import './js/render/dropdown';
 import './js/components/swiper';
 import './js/activePage';
+import './js/teamModal';

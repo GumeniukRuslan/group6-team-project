@@ -1,19 +1,19 @@
 import svgPath from '../../images/icons.svg';
+import sample from '../../images/icon-programmer.png'
 
 export const renderTeamMember = (data) => {
-    console.log(typeof data)
     const members = data.map(({name, photo, position, links: [github, linkedin]}) => {
         return `<li class="team__member">
         <div class="team__thumb">
-            <img src="${photo}" alt="" class="team__img">
+            <img src="${photo ? photo : sample}" alt="" class="team__img">
             <div class="team__layout">
-                <a href="${github.url}" class="team__link">
-                    <svg>
+                <a href="${github.url}" class="team__link" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20">
                         <use href="${svgPath}#icon-github">
                     </svg>
                 </a>
-                <a href="${linkedin.url}" class="team__link">
-                    <svg>
+                <a href="${linkedin.url}" class="team__link" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20">
                     <use href="${svgPath}#icon-linkedin">
                     </svg>
                 </a>
