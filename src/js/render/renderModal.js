@@ -38,7 +38,9 @@ export function renderModal({
               }</p>
               <ul class="modal-book__links">
                 <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}">
-                  <img class="amazon" src="${amazon}" alt="amazon-logo"></a></li>
+                  <div class="amazon"></div>
+                  </a>
+                  </li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
                   appleURL[0].url
                 }">
