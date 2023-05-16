@@ -18,6 +18,7 @@ import {
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import renderOnAuth from './render/renderOnAuth';
 import setUserName from './render/setUserName';
 
@@ -71,13 +72,13 @@ export async function handleAuthStateChanged() {
             }
             setUserName(refs.userName, data.name);
           })
-          .catch(error => console.error('Error adding document: ', error));
+          .catch(error => console.error('Error getting username: ', error));
 
         renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
 
         return userCurrent;
       } else {
-        reject('Anyone logged in');
+        // reject('Anyone logged in');
       }
     });
   });
@@ -91,23 +92,26 @@ async function registerNewUser(evt) {
   evt.preventDefault();
 
   let data = formValuesGet(evt.target);
-  console.log(data);
 
   await createUserWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
-      // Signed in
-      // const user = userCredential.user;
-      addUserName(data.email, data.name);
+      evt.target.reset();
+      if (data.name) {
+        addUserName(data.email, data.name);
+      } else location.reload();
     })
     .catch(error => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
+
+      if (errorCode === 'auth/email-already-in-use') {
+        Notify.failure('Oops, this email is already used');
+      }
     });
 }
 
 /**
- * Функция для логина!
+ * Функция для логина
  * @param {submit} evt
  */
 async function signIn(evt) {
@@ -117,19 +121,27 @@ async function signIn(evt) {
 
   await signInWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
-      // Signed in
-
-      const user = userCredential.user;
-
-      console.log('Signed in');
+      evt.target.reset();
+      location.reload();
     })
     .catch(error => {
-      console.log(error.code, 'Not signed in');
       const errorCode = error.code;
       const errorMessage = error.message;
-      //Обработать ошибку error.code = auth/user-not-found
+
+      switch (errorCode) {
+        case 'auth/user-not-found':
+          Notify.failure('Oops, user with this email not found');
+          break;
+
+        case 'auth/wrong-password':
+          Notify.failure('Oops, wrong password');
+          break;
+
+        default:
+          Notify.failure(errorCode);
+          break;
+      }
     });
-  location.reload();
 }
 
 /**
@@ -144,9 +156,11 @@ function logOut(evt) {
         window.location.pathname === '/group6-team-project/shopping-list.html'
       ) {
         location.assign('/index.html' || '/group6-team-project/index.html');
+        return;
       }
       renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
       console.log('Log out');
+      location.reload();
     })
     .catch(error => {
       console.log(error, 'Log out error');
@@ -161,10 +175,6 @@ function logOut(evt) {
  */
 async function addUserName(userEmail, userName) {
   try {
-    if (!userName) {
-      location.reload();
-      return;
-    }
     const docRef = await setDoc(doc(db, `names/${userEmail}`), {
       name: `${userName}`,
     });
@@ -181,7 +191,7 @@ async function addUserName(userEmail, userName) {
  */
 async function getUserName(userEmail) {
   const docRef = await getDoc(doc(db, `names/${userEmail}`));
-  const data = await docRef.data();
+  const data = docRef.data();
 
   return data;
 }
@@ -194,7 +204,6 @@ export async function addToShopList(evt) {
   const book = evt.target.closest('.modal-book__content');
 
   if (userCurrent) {
-    console.log(book.dataset.book);
     try {
       const docRef = await setDoc(
         doc(db, `shoplist/${userCurrent}`),
@@ -218,7 +227,6 @@ export async function rmvFrmShopList(evt) {
     evt.target.closest('li') || evt.target.closest('.modal-book__content');
 
   if (userCurrent) {
-    console.log(li.dataset.book);
     try {
       const docRef = await updateDoc(doc(db, `shoplist/${userCurrent}`), {
         books: arrayRemove(`${li.dataset.book}`),
