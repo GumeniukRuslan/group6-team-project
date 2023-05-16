@@ -41,39 +41,4 @@ export async function deleteBook(evt) {
     );
     removeLoading();
   }
-
-  // if (!refs.shopList.children.length) {
-  //   if (!data.length) {
-  //     console.log(data);
-  //     refs.paginationBlock.style.display = 'none';
-  //     return (refs.shopList.innerHTML = renderError(
-  //       `This page is empty, add some books and proceed to order.`
-  //     ));
-  //   }
-  //   if (storagePaginationHolder._currentPage === 1) {
-  //     storagePaginationHolder.movePageTo(
-  //       storagePaginationHolder.getCurrentPage() + 1
-  //     );
-  //   } else if (
-  //     !(
-  //       storagePaginationHolder._currentPage <
-  //       storagePaginationHolder._options.visiblePages
-  //     )
-  //   ) {
-  //     storagePaginationHolder.movePageTo(
-  //       storagePaginationHolder.getCurrentPage() - 1
-  //     );
-  //   } else if (
-  //     storagePaginationHolder._currentPage <
-  //     storagePaginationHolder._options.visiblePages
-  //   ) {
-  //     storagePaginationHolder.movePageTo(
-  //       storagePaginationHolder.getCurrentPage() + 1
-  //     );
-
-  //     if (storagePaginationHolder._options.visiblePages === 1) {
-  //       refs.paginationBlock.style.display = 'none';
-  //     }
-  //   }
-  // }
 }
