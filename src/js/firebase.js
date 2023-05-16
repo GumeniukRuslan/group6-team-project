@@ -155,7 +155,7 @@ function logOut(evt) {
         window.location.pathname === '/shopping-list.html' ||
         window.location.pathname === '/group6-team-project/shopping-list.html'
       ) {
-        location.assign('/index.html' || '/group6-team-project/index.html');
+        location.assign('/group6-team-project/index.html');
         return;
       }
       renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
