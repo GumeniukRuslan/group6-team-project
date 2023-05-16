@@ -6,6 +6,7 @@
   opacity: 1;
   pointer-events: all;
   visibility: visible;
+  backdrop-filter: blur(2px);
   transition: all 0.8s ease 0s;
   &.is-hidden {
     transition: all 0.8s ease 0s;
