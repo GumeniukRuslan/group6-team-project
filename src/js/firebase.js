@@ -193,7 +193,7 @@ async function Yes() {
         window.location.pathname === '/shopping-list.html' ||
         window.location.pathname === '/group6-team-project/shopping-list.html'
       ) {
-        location.assign('/index.html' || '/group6-team-project/index.html');
+        location.assign('/group6-team-project/index.html');
         return;
       }
       location.reload();
@@ -221,7 +221,7 @@ function addUserName(userName) {
 }
 
 /**
- * Функция для добавления книги в database Шопинг-лист по клику на (пока на картинку)
+ * Функция для добавления книги в database Шопинг-лист по клику
  * @param {event} evt
  */
 export async function addToShopList(evt) {
@@ -243,7 +243,7 @@ export async function addToShopList(evt) {
 }
 
 /**
- * Функция для удаления книги с database Шопинг-листа по клику на (пока на тайтл)
+ * Функция для удаления книги с database Шопинг-листа по клику
  * @param {event} evt
  */
 export async function rmvFrmShopList(evt) {
