@@ -24,18 +24,28 @@ export function renderModal({
   <div class="modal-book__content" data-book="${_id}">
       <div class="modal-book--flex">
           <div class="modal-book__thumb">
-              <img class="modal-book__img" src="${book_image ? book_image : sample}" alt="aaa" loading="lazy">
+              <img class="modal-book__img" src="${
+                book_image ? book_image : sample
+              }" alt="${title}" loading="lazy">
           </div>
           <div class="modal-book__text">
               <h2 class="modal-book__title">${title}</h2>
               <p class="modal-book__author">${author}</p>
-              <p class="modal-book__description">${description ? description : `Unfortunately, there is no description`}</p>
+              <p class="modal-book__description">${
+                description
+                  ? description
+                  : `Unfortunately, there is no description`
+              }</p>
               <ul class="modal-book__links">
                 <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}">
                   <img class="amazon" src="${amazon}" alt="amazon-logo"></a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="${appleURL}">
+                <li><a target="_blank" rel="noopener noreferrer" href="${
+                  appleURL[0].url
+                }">
                   <img class="book-first"src="${book1}" alt=""></a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="${bookShop}">
+                <li><a target="_blank" rel="noopener noreferrer" href="${
+                  bookShop[0].url
+                }">
                   <img class="book-second"src="${book2}" alt=""></a></li>
               </ul>
           </div>
