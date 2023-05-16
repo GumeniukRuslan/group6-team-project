@@ -143,7 +143,7 @@ function logOut(evt) {
         window.location.pathname === '/shopping-list.html' ||
         window.location.pathname === '/group6-team-project/shopping-list.html'
       ) {
-        location.assign('/index.html');
+        location.assign('/index.html' || '/group6-team-project/index.html');
       }
       renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
       console.log('Log out');

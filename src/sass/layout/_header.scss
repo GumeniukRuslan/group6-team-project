@@ -242,6 +242,11 @@
 }
 
 //Dropdown
+.dropdown {
+  @include max_767 {
+    display: none;
+  }
+}
 .dropdown-container {
   position: relative;
   max-width: 240px;

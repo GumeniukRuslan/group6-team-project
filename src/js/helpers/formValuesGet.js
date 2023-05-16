@@ -8,5 +8,7 @@ export default function formValuesGet(formSubmitted) {
     data[key] = form.get(key);
     key = keys.next().value;
   }
+  formSubmitted.reset();
+
   return data;
 }
