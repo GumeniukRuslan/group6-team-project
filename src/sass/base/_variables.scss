@@ -44,5 +44,5 @@ html[data-theme='dark'] {
   --additional-text-color: #b4afaf;
   --heder-bcg: #111111;
   --modal-bcg: #202024;
-  --amazon-filter: grayscale(100%) invert(100%);
+  --amazon-filter: invert() sepia() saturate(0%) brightness(7.5);
 }
