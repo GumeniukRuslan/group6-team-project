@@ -265,6 +265,10 @@
     &:focus {
       background-color: var(--additional-btn-color);
     }
+
+    .user__name {
+      white-space: nowrap;
+    }
   }
 
   .dropdown-menu {
