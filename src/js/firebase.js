@@ -177,6 +177,7 @@ function logOut(evt) {
  */
 async function dltUser(evt) {
   await deleteDoc(doc(db, `names/${userCurrent}`));
+  await deleteDoc(doc(db, `shoplist/${userCurrent}`));
   await deleteUser(auth.currentUser)
     .then(() => {
       if (
