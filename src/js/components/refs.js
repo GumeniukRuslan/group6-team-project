@@ -18,6 +18,7 @@ export const refs = {
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
   elmsAuth: document.querySelectorAll('.js-elmsAuth'),
   userName: document.querySelectorAll('.js-userName'),
+  headerPages: document.querySelector('.header__buttons-nav.js-elmsAuth'),
 
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),
@@ -39,4 +40,6 @@ export const refs = {
   buttonRemove: document.querySelector('.remove_from_list'),
   // team modal
   openTeamBtn: document.querySelector('.js-students'),
+  teamList: document.querySelector('.team__list'),
+  btnTeamModalClose: document.querySelector('.js-team-close'),
 };

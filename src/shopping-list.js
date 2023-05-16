@@ -5,6 +5,7 @@ import './js/createSupportList';
 import './js/createShopList';
 import './js/switch';
 import './js/render/dropdown';
+import './js/activePage';
 
 import Pagination from 'tui-pagination';
 

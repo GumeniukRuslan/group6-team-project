@@ -4,7 +4,6 @@ import { changeModal } from '../loginModals';
 import { closeLoginModalBackdrop, closeModalBackdrop } from './closeModalBackdrop';
 
 import { addBookToShopList } from '../helpers/addBookToShopList';
-import { cleanModal } from '../helpers/modalHelpers';
 
 export function closeModal() {
   const closeBtn = document.querySelector('[data-modal-close]');
@@ -17,7 +16,6 @@ export function closeModal() {
   if (btnShop.disabled === false) {
     btnShop.removeEventListener("click", addBookToShopList);
   }
-  cleanModal();
 }
 
 export const closeLoginModal = () => {

@@ -21,3 +21,10 @@ export const unloggedUserShopList = () => {
      You need to sign in to be able to add books to your shopping list.
     </p>`;
 }
+
+export const backendError = () => {
+    return `<button class="btn--violet modal-book__btn" type="button" disabled>add to shopping list</button>
+    <p class="modal-book__notification">
+     Something went wrong.
+    </p>`;
+}
