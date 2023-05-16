@@ -9,7 +9,7 @@ import { closeModalBackdrop } from './components/closeModalBackdrop';
 
 import { addBookToShopList } from './helpers/addBookToShopList';
 
-import { alreadyInShopList, cleanModal, notInShopList, unloggedUserShopList } from './helpers/modalHelpers';
+import { alreadyInShopList, backendError, cleanModal, notInShopList, unloggedUserShopList } from './helpers/modalHelpers';
 import { getBksFrmShpLst, userCurrent} from './firebase';
 
 export const openModalBook = async (id) => {
@@ -20,12 +20,16 @@ export const openModalBook = async (id) => {
   if (!userCurrent) {
       btns.innerHTML = unloggedUserShopList();
   } else {
-    const booksInShopList = await getBksFrmShpLst();
+    try {
+      const booksInShopList = await getBksFrmShpLst();
       if ( booksInShopList && booksInShopList.includes(id)) {
           btns.innerHTML = alreadyInShopList();
       } else {
           btns.innerHTML = notInShopList();
       }
+    } catch (e) {
+      btns.innerHTML = backendError();
+    }
   }
   const btnClose = document.querySelector('[data-modal-close]');
   btnClose.addEventListener('click', closeModal);
