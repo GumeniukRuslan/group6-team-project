@@ -1,6 +1,6 @@
 export const NOTIFY_OPTIONS = {
-  backgroundColor: '#4f2ee8',
-  titleColor: '#ff0000',
-  messageColor: '#fff',
-  cancelButtonBackground: '#ff0000',
+  backgroundColor: 'var(--modal-bcg)',
+  titleColor: 'var(--main-text-color)',
+  messageColor: 'var(--main-text-color)',
+  okButtonBackground: '#ab1f31'
 };

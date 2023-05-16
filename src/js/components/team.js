@@ -1,4 +1,4 @@
-import HumeniukRuslan from '../../images/HumeniukRuslan.png';
+import HumeniukRuslan from '../../images/HumeniukRuslan.jpg';
 import PolishchukOlexandra from '../../images/PolishchukOlexandra.jpg';
 import VorobiovArtem from '../../images/VorobiovArtem.jpg';
 import ArturHlebov from '../../images/ArturHlebov.jpg';
