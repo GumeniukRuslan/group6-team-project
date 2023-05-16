@@ -273,7 +273,7 @@
 
   .dropdown-menu {
     width: 100%;
-    border-radius: 36px;
+    border-radius: 10px;
 
     margin-top: 10px;
     position: absolute;
@@ -285,7 +285,8 @@
 
     ul {
       overflow: hidden;
-      border-radius: 36px;
+      border-radius: 10px;
+
       z-index: 10;
       outline: var(--secondary-color) solid 2px;
     }

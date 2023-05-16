@@ -8,9 +8,11 @@
   padding-top: 104px;
   z-index: 99;
   background-image: url(../images/mobile-menu-bg.png),
-    radial-gradient(183.6% 183.01% at 59.76% -23.42%,
+    radial-gradient(
+      183.6% 183.01% at 59.76% -23.42%,
       #4f2ee8 18.03%,
-      #ffffff 100%);
+      #ffffff 100%
+    );
   background-repeat: no-repeat;
   background-position: center bottom;
 
@@ -24,6 +26,19 @@
 
     .header__buttons-nav {
       align-items: flex-start;
+    }
+
+    .mobile-menu__buttons-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      & button {
+        width: auto;
+        gap: 4px;
+        margin-bottom: 0;
+      }
     }
   }
 
