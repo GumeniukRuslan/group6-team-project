@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
   deleteUser,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -21,6 +22,8 @@ import {
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+import { NOTIFY_OPTIONS } from './components/notifyOptions';
 import renderOnAuth from './render/renderOnAuth';
 import setUserName from './render/setUserName';
 
@@ -70,14 +73,9 @@ export async function handleAuthStateChanged() {
         console.log(user);
         resolve(userCurrent);
 
-        getUserName(user.email)
-          .then(data => {
-            if (!data) {
-              return;
-            }
-            setUserName(refs.userName, data.name);
-          })
-          .catch(error => console.error('Error getting username: ', error));
+        if (user.displayName) {
+          setUserName(refs.userName, user.displayName);
+        }
 
         renderOnAuth(refs.elmsNonAuth, refs.elmsAuth);
 
@@ -102,7 +100,7 @@ async function registerNewUser(evt) {
     .then(userCredential => {
       evt.target.reset();
       if (data.name) {
-        addUserName(data.email, data.name);
+        addUserName(data.name);
       } else location.reload();
     })
     .catch(error => {
@@ -175,8 +173,19 @@ function logOut(evt) {
  * Функция для удаления аккаунта
  * @param {click} evt
  */
-async function dltUser(evt) {
-  await deleteDoc(doc(db, `names/${userCurrent}`));
+function dltUser(evt) {
+  Confirm.show(
+    'Delete your account',
+    'Are you sure?',
+    'No worries',
+    'Noop',
+    Yes,
+    () => {},
+    NOTIFY_OPTIONS
+  );
+}
+
+async function Yes() {
   await deleteDoc(doc(db, `shoplist/${userCurrent}`));
   await deleteUser(auth.currentUser)
     .then(() => {
@@ -194,33 +203,21 @@ async function dltUser(evt) {
     });
 }
 
-//
 /**
- * Функция для добавления имени пользователя в database
- * @param {string} userEmail
+ * Функция для добавления имени пользователя в аккаунт
  * @param {string} userName
  */
-async function addUserName(userEmail, userName) {
-  try {
-    const docRef = await setDoc(doc(db, `names/${userEmail}`), {
-      name: `${userName}`,
+function addUserName(userName) {
+  updateProfile(auth.currentUser, {
+    displayName: userName,
+  })
+    .then(() => {
+      location.reload();
+      console.log('Profile updated!');
+    })
+    .catch(error => {
+      console.log(error);
     });
-    location.reload();
-  } catch (e) {
-    console.error('Error adding username: ', e);
-  }
-}
-
-/**
- * Функция для получения имени с database
- * @param {string} userEmail
- * @returns
- */
-async function getUserName(userEmail) {
-  const docRef = await getDoc(doc(db, `names/${userEmail}`));
-  const data = docRef.data();
-
-  return data;
 }
 
 /**
