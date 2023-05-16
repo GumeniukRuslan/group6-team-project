@@ -9,7 +9,6 @@ import { renderError } from '../render/renderError';
 import { getBksFrmShpLst } from '../firebase';
 import { createLibraryPagination } from '../render/renderPagination';
 import { handlePromiseArray } from '../createShopList';
-import { handleAuthStateChanged } from '../firebase';
 
 export async function deleteBook(evt) {
   if (!evt.target.closest('.delete-btn')) {
@@ -20,7 +19,6 @@ export async function deleteBook(evt) {
   await rmvFrmShopList(evt);
   try {
     let currentPage = storagePaginationHolder.getCurrentPage();
-    const user = await handleAuthStateChanged();
     const data = await getBksFrmShpLst();
     const arrOfBooks = await handlePromiseArray(data);
     console.log();
@@ -34,6 +32,7 @@ export async function deleteBook(evt) {
     );
     storagePaginationHolderAfter.movePageTo(currentPage);
     currentPage = storagePaginationHolderAfter.getCurrentPage();
+
     removeLoading();
   } catch (e) {
     refs.shopList.innerHTML = renderError(

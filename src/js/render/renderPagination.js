@@ -10,6 +10,10 @@ export const createLibraryPagination = (data, amount) => {
     refs.shopList.innerHTML = renderShopBookCards(
       data.slice(page * 3 - 3, page * 3)
     );
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
     removeLoading();
   });
   return pagination;
