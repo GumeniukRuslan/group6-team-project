@@ -11,3 +11,4 @@ import './js/loginModals';
 import './js/switch';
 import './js/createModal';
 import './js/render/renderModal';
+import './js/components/swiper';

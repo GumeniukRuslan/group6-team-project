@@ -1,7 +1,7 @@
 export function renderSupportList(data) {
   const funds = data
     .map(({ title, url, img }, idx) => {
-      return `<li class="support-item"><a class="support-link" href="${url}" target="_blank"
+      return `<li class="support-item swiper-slide"><a class="support-link" href="${url}" target="_blank"
                   rel="noopener noreferrer">${(idx + 1)
                     .toString()
                     .padStart(

@@ -9,6 +9,7 @@
     overflow: hidden;
     position: sticky;
     top: 50px;
+    
     @include min_768 {
         width: 335px;
         height: 472px;
@@ -47,7 +48,7 @@
 .support__list{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    //gap: 20px;
 }
 
 .support-item {
