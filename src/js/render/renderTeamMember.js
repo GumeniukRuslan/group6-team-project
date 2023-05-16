@@ -5,7 +5,7 @@ export const renderTeamMember = (data) => {
     const members = data.map(({name, photo, position, links: [github, linkedin]}) => {
         return `<li class="team__member">
         <div class="team__thumb">
-            <img src="${photo ? photo : sample}" alt="" class="team__img">
+            <img src="${photo ? photo : sample}" alt="" class="team__img" width="100">
             <div class="team__layout">
                 <a href="${github.url}" class="team__link" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20">

@@ -26,7 +26,7 @@ export function renderModal({
           <div class="modal-book__thumb">
               <img class="modal-book__img" src="${
                 book_image ? book_image : sample
-              }" alt="${title}" loading="lazy">
+              }" alt="${title}" loading="lazy" width="192">
           </div>
           <div class="modal-book__text">
               <h2 class="modal-book__title">${title}</h2>
@@ -38,15 +38,15 @@ export function renderModal({
               }</p>
               <ul class="modal-book__links">
                 <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}">
-                  <img class="amazon" src="${amazon}" alt="amazon-logo"></a></li>
+                  <img class="amazon" src="${amazon}" alt="amazon-logo" width="62"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
                   appleURL[0].url
                 }">
-                  <img class="book-first"src="${book1}" alt=""></a></li>
+                  <img class="book-first"src="${book1}" alt="apple-shop" width="33"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
                   bookShop[0].url
                 }">
-                  <img class="book-second"src="${book2}" alt=""></a></li>
+                  <img class="book-second"src="${book2}" alt="bookskop" width="38"></a></li>
               </ul>
           </div>
       </div>
