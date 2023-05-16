@@ -50,7 +50,7 @@ export const team = [
             url: 'https://github.com/ArtemVorobiov',
         }, {
             name: 'linkedin',
-            url: null,
+            url: 'https://www.linkedin.com/in/%D0%B0%D1%80%D1%82%D0%B5%D0%BC-%D0%B2%D0%BE%D1%80%D0%BE%D0%B1%D1%8C%D0%B5%D0%B2-228a55276',
         }],
     },
     {

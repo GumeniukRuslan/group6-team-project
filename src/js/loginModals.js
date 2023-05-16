@@ -1,11 +1,10 @@
 import {
   closeLoginModalOnClick,
-  closeLoginModalBackdrop,
   closeLoginModal,
 } from './components/closeModalBtn';
 import { closeLoginModalEsc } from './components/closeModalOnEsc';
 import { refs } from './components/refs';
-import './switch';
+import { closeLoginModalBackdrop } from './components/closeModalBackdrop';
 
 const openModal = currentModal => {
   currentModal.classList.add('open');
@@ -23,7 +22,6 @@ function openLoginModal(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-  console.log(`fork`)
   const currentModalData = event.target.dataset.login;
   let currentModal;
   if (currentModalData === 'sign-up') {

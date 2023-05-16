@@ -15,12 +15,11 @@ const createShopList = async () => {
   try {
     const user = await handleAuthStateChanged();
     const data = await getBksFrmShpLst();
-    storageItemsQuantity = data;
     const arrOfBooks = await handlePromiseArray(data);
     if (!arrOfBooks.length) {
       throw new Error();
     }
-    refs.paginationBlock.style.display = 'block';
+    refs.paginationBlock.style.display = 'flex';
     refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 3));
     storagePaginationHolder = createLibraryPagination(
       arrOfBooks,

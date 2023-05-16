@@ -10,7 +10,7 @@ export const createPagination = (itemsPerPage, totalItems, page) => {
   };
   const pagination = new Pagination(refs.paginationBlock, options);
   if (page > 1) {
-    refs.paginationBlock.style.display = 'block';
+    refs.paginationBlock.style.display = 'flex';
   } else {
     refs.paginationBlock.style.display = 'none';
   }
