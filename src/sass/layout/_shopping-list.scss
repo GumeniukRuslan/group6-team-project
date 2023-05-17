@@ -9,6 +9,53 @@
     margin-right: 40px;
   }
 }
+.title-wraper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.shop-list__title{
+  font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1875;
+    text-transform: capitalize;
+
+    letter-spacing: -0.04em;
+  
+    &-last {
+      color: var(--secondary-color);
+    }
+  
+    @include min_768 {
+      font-size: 48px;
+    }
+}
+.deleteAllBtn{
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--secondary-color);
+  color: var(--main-color);
+  cursor: pointer;
+  background-color: #0000;
+  border-radius: 40px;
+  font-family: DM Sans;
+  width: auto;
+  height: auto;
+  padding: 5px 14px;
+  transition: all .25s cubic-bezier(.4, 0, .2, 1);
+  &:hover{
+    background-color: var(--secondary-color);
+    color: var(--primary-bcg)
+  }
+  @include min_768 {
+      font-size: 14px;
+      padding: 10px 28px;
+      font-weight: 700;
+    }
+}
 
 .shopping-list_book {
   display: flex;

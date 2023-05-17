@@ -7,10 +7,11 @@ import { getBksFrmShpLst } from './firebase';
 import { handleAuthStateChanged } from './firebase';
 import { createLibraryPagination } from './render/renderPagination';
 import { deleteBook } from './helpers/deleteBook';
+import { deleteAllBooks } from './helpers/deleteAllBooks';
 
 export let storagePaginationHolder;
 
-const createShopList = async () => {
+export const createShopList = async () => {
   startLoading();
   try {
     const user = await handleAuthStateChanged();
@@ -19,6 +20,7 @@ const createShopList = async () => {
     if (!arrOfBooks.length) {
       throw new Error();
     }
+    refs.deleteAllBtn.classList.remove('hidden');
     refs.paginationBlock.style.display = 'flex';
     if (window.matchMedia('(min-width: 768px)').matches) {
       refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 3));
@@ -35,6 +37,7 @@ const createShopList = async () => {
       `This page is empty, add some books and proceed to order.`
     );
   }
+  refs.deleteAllBtn.addEventListener('click', deleteAllBooks);
   refs.shopList.addEventListener('click', deleteBook);
   removeLoading();
 };

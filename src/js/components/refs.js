@@ -13,7 +13,8 @@ export const refs = {
   regForm: document.querySelector('.js-regForm'),
   logForm: document.querySelector('.js-logForm'),
   logOutButtons: document.querySelectorAll('.js-logOutButton'),
-  dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  // dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  updateUsrnameButtons: document.querySelectorAll('.js-updateUsrnameButton'),
 
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
@@ -39,6 +40,7 @@ export const refs = {
 
   buttonAdd: document.querySelector('.add_to_list'),
   buttonRemove: document.querySelector('.remove_from_list'),
+  deleteAllBtn: document.querySelector('.deleteAllBtn'),
   // team modal
   openTeamBtn: document.querySelector('.js-students'),
   teamList: document.querySelector('.team__list'),
