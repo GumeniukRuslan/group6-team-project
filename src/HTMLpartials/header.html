@@ -9,7 +9,11 @@
       </a>
 
       <ul class="header__buttons-nav js-elmsAuth hidden">
-        <li><a class="buttons-nav__item" href="./index.html" data-page="home">Home</a></li>
+        <li>
+          <a class="buttons-nav__item" href="./index.html" data-page="home"
+            >Home</a
+          >
+        </li>
         <li>
           <a
             class="buttons-nav__item buttons-nav__shop-list"
@@ -78,6 +82,14 @@
           <div class="dropdown-menu">
             <ul>
               <li>
+                <button class="js-updateUsrnameButton js-elmsAuth hidden">
+                  Update username
+                  <svg width="20" height="20">
+                    <use href="./images/icons.svg#icon-arrow-right"></use>
+                  </svg>
+                </button>
+              </li>
+              <li>
                 <button class="js-logOutButton js-elmsAuth hidden">
                   Log Out
                   <svg width="20" height="20">
@@ -85,14 +97,14 @@
                   </svg>
                 </button>
               </li>
-              <li>
+              <!-- <li>
                 <button class="js-dltAccntButton js-elmsAuth hidden">
                   Delete account
                   <svg width="20" height="20">
                     <use href="./images/icons.svg#icon-arrow-right"></use>
                   </svg>
                 </button>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>

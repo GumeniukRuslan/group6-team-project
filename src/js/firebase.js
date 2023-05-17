@@ -47,15 +47,17 @@ if (
   window.location.pathname !== '/group6-team-project/shopping-list.html'
 ) {
   handleAuthStateChanged();
-
   refs.regForm.addEventListener('submit', registerNewUser);
   refs.logForm.addEventListener('submit', signIn);
 }
 refs.logOutButtons.forEach(button => {
   button.addEventListener('click', logOut);
 });
-refs.dltAccntButtons.forEach(button => {
-  button.addEventListener('click', dltUser);
+// refs.dltAccntButtons.forEach(button => {
+//   button.addEventListener('click', dltUser);
+// });
+refs.updateUsrnameButtons.forEach(button => {
+  button.addEventListener('click', updateUsername);
 });
 
 /**
@@ -145,6 +147,7 @@ async function signIn(evt) {
           break;
       }
     });
+  credentials = data;
 }
 
 /**
@@ -173,35 +176,35 @@ function logOut(evt) {
  * Функция для удаления аккаунта
  * @param {click} evt
  */
-function dltUser(evt) {
-  Confirm.show(
-    'Delete your account',
-    'Are you sure?',
-    'Delete account',
-    'Reject',
-    Yes,
-    () => {},
-    NOTIFY_OPTIONS
-  );
-}
+// function dltUser(evt) {
+//   Confirm.show(
+//     'Delete your account',
+//     'Are you sure?',
+//     'Delete account',
+//     'Reject',
+//     Yes,
+//     () => {},
+//     NOTIFY_OPTIONS
+//   );
+// }
 
-async function Yes() {
-  await deleteDoc(doc(db, `shoplist/${userCurrent}`));
-  await deleteUser(auth.currentUser)
-    .then(() => {
-      if (
-        window.location.pathname === '/shopping-list.html' ||
-        window.location.pathname === '/group6-team-project/shopping-list.html'
-      ) {
-        location.assign('/group6-team-project/index.html');
-        return;
-      }
-      location.reload();
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
+// async function Yes() {
+//   await deleteDoc(doc(db, `shoplist/${userCurrent}`));
+//   await deleteUser(auth.currentUser)
+//     .then(() => {
+//       if (
+//         window.location.pathname === '/shopping-list.html' ||
+//         window.location.pathname === '/group6-team-project/shopping-list.html'
+//       ) {
+//         location.assign('/group6-team-project/index.html');
+//         return;
+//       }
+//       location.reload();
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
 
 /**
  * Функция для добавления имени пользователя в аккаунт
@@ -218,6 +221,29 @@ function addUserName(userName) {
     .catch(error => {
       console.log(error);
     });
+}
+
+function updateUsername() {
+  Confirm.prompt(
+    'Update username',
+    'Which name do you want?',
+    '',
+    'Change',
+    'Cancel',
+    clientAnswer => {
+      updateProfile(auth.currentUser, {
+        displayName: clientAnswer,
+      })
+        .then(() => {
+          location.reload();
+          console.log('Profile updated!');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    () => {}
+  );
 }
 
 /**
