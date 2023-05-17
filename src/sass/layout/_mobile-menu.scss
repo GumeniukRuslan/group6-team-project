@@ -89,7 +89,6 @@
 
 .showButton {
   @include max_767 {
-    // display: block;
     visibility: visible;
     pointer-events: all;
     opacity: 1;
@@ -98,7 +97,6 @@
 
 .hideButton {
   @include max_767 {
-    // display: none;
     visibility: hidden;
     pointer-events: none;
     opacity: 0;

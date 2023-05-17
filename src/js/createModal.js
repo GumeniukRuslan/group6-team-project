@@ -1,7 +1,7 @@
 import { refs } from './components/refs';
 import { getOneBookById } from './api/fetchLogic';
 import { renderModal } from './render/renderModal';
-import { removeLoading, startLoading } from './helpers/spinner';
+import { LoaderBackdropStart, removeLoading, startLoading } from './helpers/spinner';
 import { renderError } from './render/renderError';
 import { closeModal } from './components/closeModalBtn';
 import { onKeyDown } from './components/closeModalOnEsc';
@@ -19,6 +19,7 @@ import {
 import { getBksFrmShpLst, userCurrent } from './firebase';
 
 export const openModalBook = async id => {
+  LoaderBackdropStart();
   const dataBook = await getOneBookById(id);
   refs.backdrop.innerHTML = renderModal(dataBook);
 
@@ -48,10 +49,12 @@ export const openModalBook = async id => {
     btnShop.addEventListener('click', addBookToShopList);
   }
   refs.backdrop.classList.remove('is-hidden');
+  removeLoading();
 };
 
 const createModal = async evt => {
   if (!evt.target.closest('.card')) {
+    removeLoading();
     return;
   }
   cleanModal();

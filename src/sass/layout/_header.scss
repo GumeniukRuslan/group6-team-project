@@ -258,6 +258,7 @@
 
 //Dropdown
 .dropdown {
+  min-width: 170px;
   @include max_767 {
     display: none;
   }
@@ -271,6 +272,7 @@
   }
 
   .dropdown-toggle {
+    min-width: 170px;
     cursor: pointer;
     position: relative;
     transition: all ease-in-out 0.3s;
