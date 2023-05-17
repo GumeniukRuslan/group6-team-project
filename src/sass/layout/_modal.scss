@@ -88,7 +88,7 @@
     border-radius: 8px;
     flex-shrink: 0;
     @include min_768 {
-        width: 192px;
+      width: 192px;
     }
   }
   &__img {
@@ -138,8 +138,7 @@
     margin-top: 18px;
     letter-spacing: -0.04em;
     @include min_768 {
-        margin-top: 20px;
-
+      margin-top: 20px;
     }
   }
   &__links {
@@ -149,7 +148,7 @@
     gap: 20px;
     margin-top: 14px;
     @include min_768 {
-        margin-top: 20px;
+      margin-top: 20px;
     }
   }
   &__btns {
@@ -167,9 +166,9 @@
     line-height: calc(18 / 14);
     letter-spacing: -0.01em;
     @include min_768 {
-        width: 100%;
-        font-size: 18px;
-        padding: 20px 0;
+      width: 100%;
+      font-size: 18px;
+      padding: 20px 0;
     }
   }
   &__notification {
@@ -182,8 +181,20 @@
     max-width: 242px;
     transition: all 0.6s ease 0s;
     @include min_768 {
-        max-width: 324px;
-        font-size: 12px;
+      max-width: 324px;
+      font-size: 12px;
+    }
+  }
+  &__link {
+    & > img {
+      @extend %transition;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      & > img {
+        filter: none;
+      }
     }
   }
 }

@@ -12,9 +12,7 @@
     width: 100%;
   }
   @include min_1440 {
-    position: sticky;
-    top: 570px;
-    margin-top: 40px;
+    margin-top: 25px;
     width: 356px;
   }
   &__title {

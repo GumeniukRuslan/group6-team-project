@@ -37,15 +37,15 @@ export function renderModal({
                   : `Unfortunately, there is no description.`
               }</p>
               <ul class="modal-book__links">
-                <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}">
+                <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}" class="modal-book__link">
                   <img class="amazon" src="${amazon}" alt="amazon-logo" width="62"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
                   appleURL[0].url
-                }">
+                }" class="modal-book__link">
                   <img class="book-first"src="${book1}" alt="apple-shop" width="33"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
                   bookShop[0].url
-                }">
+                }" class="modal-book__link">
                   <img class="book-second"src="${book2}" alt="bookskop" width="38"></a></li>
               </ul>
           </div>
