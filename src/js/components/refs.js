@@ -39,6 +39,7 @@ export const refs = {
 
   buttonAdd: document.querySelector('.add_to_list'),
   buttonRemove: document.querySelector('.remove_from_list'),
+  deleteAllBtn: document.querySelector('.deleteAllBtn'),
   // team modal
   openTeamBtn: document.querySelector('.js-students'),
   teamList: document.querySelector('.team__list'),

@@ -261,6 +261,18 @@ export async function rmvFrmShopList(evt) {
   }
 }
 
+export async function rmvAllFrmShopList() {
+  if (userCurrent) {
+    try {
+      const docRef = await setDoc(doc(db, `shoplist/${userCurrent}`), {
+        books: [],
+      });
+    } catch (e) {
+      console.error('Error removing book: ', e);
+    }
+  }
+}
+
 /**
  * Функция для получения книг с database Шопинг-листа по загрузке страницы
  * @returns масив книг
