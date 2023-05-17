@@ -1,4 +1,7 @@
+import { Navigation } from 'swiper';
+
 export const swiperOptions = {
+  modules: [Navigation],
   direction: 'vertical',
   loop: true,
   initialSlide: 0,
@@ -9,10 +12,10 @@ export const swiperOptions = {
   navigation: {
     nextEl: '.buttons-slider',
   },
-
   breakpoints: {
     768: {
+      rewind: true,
       slidesPerView: 6,
-    },
-  },
+    }
+  }
 };
