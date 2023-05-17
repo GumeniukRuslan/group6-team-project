@@ -106,9 +106,6 @@
   background-color: #EAC645;
   &:hover{
     background-color: #111;
-    .tui-ico-last, .tui-ico-next{
-      filter: brightness(0) invert(1);
-    }
   }
   
 };
@@ -116,18 +113,30 @@
 .tui-ico-prev {
   filter: brightness(0) invert(1);
 }
+
+a.tui-page-btn:hover .tui-ico-first,
+a.tui-page-btn:hover .tui-ico-prev {
+  filter: brightness(0%) invert(0);
+}
+
+.tui-ico-last,
+.tui-ico-next{
+  filter: brightness(0%) invert(0);
+}
+span .tui-next:hover .tui-ico-next,
+span .tui-last:hover .tui-ico-last{
+  filter: brightness(0%) invert(1);
+}
+a.tui-page-btn:hover .tui-ico-next,
+a.tui-page-btn:hover .tui-ico-last{
+  filter: brightness(0%) invert(1);
+}
+
 .tui-pagination .tui-first,
 .tui-pagination .tui-prev{
   background-color: #111;
-  
-    &:hover {
-      background-color: #EAC645;
-      .tui-ico-first,
-      .tui-ico-prev {
-        filter: none;
-      }
     
-}}
+    }
 
 
 
@@ -185,9 +194,6 @@
 
 .tui-pagination .tui-is-disabled:hover {
   background: #111;
-   .tui-ico-prev{
-     filter: none;
-  }
  
   cursor: default
 }
@@ -217,3 +223,11 @@
   padding: 8px 0 6px;
   vertical-align: top
 }
+
+
+.tui-is-disabled.tui-next:hover,
+.tui-is-disabled.tui-last:hover{
+  background: #EAC645;
+
+}
+
