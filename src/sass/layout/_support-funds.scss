@@ -16,10 +16,8 @@
     height: 472px;
   }
   @include min_1440 {
-    position: sticky;
     width: 356px;
     height: 490px;
-    top: 20px;
   }
   &__title {
     font-family: 'DM Sans';

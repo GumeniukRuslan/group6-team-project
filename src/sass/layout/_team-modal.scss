@@ -94,7 +94,7 @@
     height: 100px;
     object-fit: cover;
     object-position: center;
-    border-radius: 30%;
+    border-radius: 50%;
     @include max_767 {
       border: 2px solid var(--main-text-color);
     }
@@ -124,7 +124,10 @@
     }
   }
   &__link {
-    fill: var(--dark-main-color);
+    @include max_767 {
+      fill: var(--main-text-color)
+    }
+    fill: var(--primary-bcg);
     @extend %transition;
     &:hover,
     &:focus,

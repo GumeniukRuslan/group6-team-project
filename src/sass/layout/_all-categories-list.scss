@@ -33,6 +33,11 @@
     row-gap: 40px;
     justify-content: space-between;
   }
+  @include min_1440 {
+    position: sticky;
+    top: -510px;
+    height: 100%;
+  }
 }
 .categories__item {
   font-family: 'DM Sans';

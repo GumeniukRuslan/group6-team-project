@@ -226,7 +226,7 @@ function addUserName(userName) {
 function updateUsername() {
   Confirm.prompt(
     'Update username',
-    'Which name do you want?',
+    'Please, enter new username',
     '',
     'Change',
     'Cancel',
@@ -242,7 +242,8 @@ function updateUsername() {
           console.log(error);
         });
     },
-    () => {}
+    () => {},
+    NOTIFY_OPTIONS
   );
 }
 
