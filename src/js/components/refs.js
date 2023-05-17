@@ -49,4 +49,7 @@ export const refs = {
   swiperContainer: document.querySelector('.swiper-container'),
   swiper: document.querySelector('.swiper-wrapper'),
   swiperButton: document.querySelector('.buttons-slider'),
+  
+  quoteText: document.querySelector('.js-quote'),
+  quoteAuthor: document.querySelector('.js-author'),
 };
