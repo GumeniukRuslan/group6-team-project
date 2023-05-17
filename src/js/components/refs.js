@@ -44,4 +44,9 @@ export const refs = {
   teamList: document.querySelector('.team__list'),
   btnTeamModalClose: document.querySelector('.js-team-close'),
   teamModal: document.querySelector('.team__backdrop'),
+
+  //swiper
+  swiperContainer: document.querySelector('.swiper-container'),
+  swiper: document.querySelector('.swiper-wrapper'),
+  swiperButton: document.querySelector('.buttons-slider'),
 };
