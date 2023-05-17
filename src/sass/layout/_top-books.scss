@@ -2,11 +2,13 @@
     display: flex;
     gap: 40px;
     flex-direction: column;
+    transition: all 0.8s ease 0s;
 }
 
 .category__list {
   display: flex;
   flex-direction: row;
+  transition: all 0.8s ease 0s;
   @include min_768 {
     gap: 25px;
   }

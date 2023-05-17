@@ -233,6 +233,10 @@
 .buttons-auth__menu {
   border: 0;
   background-color: inherit;
+  cursor: pointer;
+  position: relative;
+  width: 28px;
+  height: 28px;
 
   @include min_768 {
     display: none;
@@ -240,6 +244,15 @@
 
   .menu__img {
     stroke: var(--main-color);
+    @extend %transition;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:hover, &:focus, &:active {
+    .menu__img {
+      stroke: var(--secondary-color);
+    }
   }
 }
 
