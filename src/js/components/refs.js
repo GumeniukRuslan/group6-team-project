@@ -13,7 +13,8 @@ export const refs = {
   regForm: document.querySelector('.js-regForm'),
   logForm: document.querySelector('.js-logForm'),
   logOutButtons: document.querySelectorAll('.js-logOutButton'),
-  dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  // dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  updateUsrnameButtons: document.querySelectorAll('.js-updateUsrnameButton'),
 
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
