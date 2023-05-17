@@ -20,7 +20,12 @@ const createShopList = async () => {
       throw new Error();
     }
     refs.paginationBlock.style.display = 'flex';
-    refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 3));
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 3));
+    } else {
+      refs.shopList.innerHTML = renderShopBookCards(arrOfBooks.slice(0, 4));
+    }
+
     storagePaginationHolder = createLibraryPagination(
       arrOfBooks,
       arrOfBooks.length
