@@ -19,5 +19,7 @@ export const scrollToTop = () => {
 
 const toTopObserver = new IntersectionObserver(observeTop);
 
-toTopObserver.observe(refs.scrollTopTarget);
-refs.scrollTopBtn.addEventListener("click", scrollToTop)
+if (refs.scrollTopBtn && refs.scrollTopTarget) {
+    toTopObserver.observe(refs.scrollTopTarget);
+    refs.scrollTopBtn.addEventListener("click", scrollToTop)
+}
