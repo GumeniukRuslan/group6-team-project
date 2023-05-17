@@ -33,7 +33,6 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  transform: translate(-50% -50%);
   width: 28px;
   height: 28px;
   border: none;
@@ -42,6 +41,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  @extend %transition;
+  &:hover, &:focus, &:active {
+    background-color: var(--additional-btn-color);
+  }
   @include min_768 {
     width: 34px;
     height: 34px;
