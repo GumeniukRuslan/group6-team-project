@@ -19,7 +19,7 @@ export const refs = {
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
   elmsAuth: document.querySelectorAll('.js-elmsAuth'),
   userName: document.querySelectorAll('.js-userName'),
-  headerPages: document.querySelector('.header__buttons-nav.js-elmsAuth'),
+  headerPages: document.querySelectorAll('.header__buttons-nav'),
 
   allCategoriesList: document.querySelector('.categories__list'),
   suppList: document.querySelector('.support__list'),

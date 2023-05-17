@@ -16,8 +16,7 @@
   background-repeat: no-repeat;
   background-position: center bottom;
 
-  transition: transform 0.2s;
-
+  transition: transform 0.4s ease-out;
   .mobile-menu__box {
     height: 100%;
     display: flex;
@@ -69,7 +68,7 @@
     @extend %transition;
 
     &:hover,
-    &:focus {
+    &:focus, &.active-page {
       background-color: var(--additional-btn-color);
       color: var(--main-color);
       fill: var(--main-color);
@@ -90,13 +89,19 @@
 
 .showButton {
   @include max_767 {
-    display: block;
+    // display: block;
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
   }
 }
 
 .hideButton {
   @include max_767 {
-    display: none;
+    // display: none;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
   }
 }
 

@@ -7,7 +7,7 @@ export const renderBookCard = data => {
         <div class="card__thumb">
             <img src="${
               book_image ? book_image : sample
-            }" loading="lazy" alt="${title}" class="card__img">
+            }" loading="lazy" alt="${title}" class="card__img" width="180">
             <div class="card__text">
                 <p class="card__text-inner">quick view</p>
             </div>

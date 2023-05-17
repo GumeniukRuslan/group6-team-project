@@ -9,6 +9,7 @@ export function addBookToShopList(evt) {
     try {
       addToShopList(evt);
       evt.target.dataset.action = 'delete';
+      evt.target.ariaLabel = "delete";
       evt.target.textContent = 'remove from shopping list'
       btnsHolder.insertAdjacentHTML("beforeend", `<p class="modal-book__notification">
       Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.
@@ -20,6 +21,7 @@ export function addBookToShopList(evt) {
     try {
       rmvFrmShopList(evt);
       evt.target.dataset.action = 'add';
+      evt.target.ariaLabel = "add";
       evt.target.textContent = 'add to the shopping list';
       document.querySelector('.modal-book__notification').remove();
     } catch (e) {

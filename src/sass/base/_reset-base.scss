@@ -7,6 +7,7 @@ body {
   &.lock {
     overflow: hidden;
   }
+  overflow: overlay;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

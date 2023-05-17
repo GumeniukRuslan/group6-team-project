@@ -81,7 +81,7 @@ export async function handleAuthStateChanged() {
 
         return userCurrent;
       } else {
-        // reject('Anyone logged in');
+        return;
       }
     });
   });
