@@ -10,7 +10,6 @@ const createQuotes = async () => {
     let quote;
     if (isQouteLoaded) {
         quote = JSON.parse(localStorage.getItem(QUOTE_KEY));
-        console.log(quote)
         renderQuote(quote)
     } else {
         try {
