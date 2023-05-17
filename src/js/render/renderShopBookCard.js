@@ -46,7 +46,7 @@ export const renderShopBookCards = data => {
               </ul>
             </div>
           </div>
-          <button class="delete-btn" type="button">
+          <button class="delete-btn" type="button" aria-label="delete-book" id="al">
             <svg class="shopping-trash__svg">
              <use href="${trashIcon}#icon-bin"></use
             </svg>

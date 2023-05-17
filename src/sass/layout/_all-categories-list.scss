@@ -1,11 +1,8 @@
 .categories {
-  margin-bottom: 40px;
   @extend %transition;
   @include min_768 {
-    margin-right: 32px;
     margin-bottom: 0;
   }
-
   @include min_1440 {
     margin-right: 0;
     margin-bottom: 86px;
@@ -20,10 +17,21 @@
   @include min_768 {
     height: 472px;
   }
+  @include max_1439 {
+    padding-right: 32px;
+  }
 }
 .books__aside {
+  display: flex;
+  flex-direction: column;
+  @include max_767 {
+    gap: 40px;
+  }
   @include between_768_1439 {
-    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 40px;
+    justify-content: space-between;
   }
 }
 .categories__item {
