@@ -7,9 +7,8 @@
   pointer-events: all;
   visibility: visible;
   backdrop-filter: blur(2px);
-  transition: all 0.8s ease 0s;
+  transition: all 0.6s ease 0s;
   &.is-hidden {
-    transition: all 0.8s ease 0s;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -17,9 +16,6 @@
 }
 
 .modal-book {
-  &__content {
-    transition: all 0.8s ease 0s;
-  }
   border: 2px solid var(--main-text-color);
   border-radius: 18px;
   position: absolute;
