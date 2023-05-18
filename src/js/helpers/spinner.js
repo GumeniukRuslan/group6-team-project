@@ -14,8 +14,8 @@ const removeLoading = () => {
 const LoaderBackdropStart = () => {
   Loading.pulse({
     svgColor: '#4F2EE8',
-    backgroundColor: 'rgba(17, 17, 17, 0.6)',
+    backgroundColor: 'rgba(17, 17, 17, 0.1)',
   });
-}
+};
 
 export { startLoading, removeLoading, LoaderBackdropStart };
