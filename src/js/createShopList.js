@@ -2,7 +2,7 @@ import { getOneBookById } from './api/fetchLogic';
 import { refs } from './components/refs';
 import { renderShopBookCards } from './render/renderShopBookCard';
 import { removeLoading, startLoading } from './helpers/spinner';
-import { renderError } from './render/renderError';
+import { renderErrorShopList } from './render/renderError';
 import { getBksFrmShpLst } from './firebase';
 import { handleAuthStateChanged } from './firebase';
 import { createLibraryPagination } from './render/renderPagination';
@@ -33,7 +33,7 @@ export const createShopList = async () => {
       arrOfBooks.length
     );
   } catch (e) {
-    refs.shopList.innerHTML = renderError(
+    refs.shopList.innerHTML = renderErrorShopList(
       `This page is empty, add some books and proceed to order.`
     );
   }
