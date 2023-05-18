@@ -36,7 +36,7 @@
           type="checkbox"
           id="switch"
         />
-        <label class="buttons__switcher-label" for="switch">Toggle</label>
+        <label class="buttons__switcher-label" for="switch" aria-label="switch">Toggle</label>
       </li>
 
       <li class="buttons-auth__sign-block js-elmsNonAuth">
@@ -54,7 +54,7 @@
         </button>
       </li>
       <li class="buttons-auth__item">
-        <button class="buttons-auth__menu js-burger">
+        <button class="buttons-auth__menu js-burger" aria-label="mobile-menu">
           <svg
             class="menu__img js-burgerMenu showButton"
             width="28"
@@ -82,7 +82,7 @@
           <div class="dropdown-menu">
             <ul>
               <li>
-                <button class="js-updateUsrnameButton js-elmsAuth hidden">
+                <button class="js-updateUsrnameButton js-elmsAuth hidden" aria-label="update-username">
                   Update username
                   <svg width="20" height="20">
                     <use href="./images/icons.svg#icon-arrow-right"></use>
@@ -90,21 +90,13 @@
                 </button>
               </li>
               <li>
-                <button class="js-logOutButton js-elmsAuth hidden">
+                <button class="js-logOutButton js-elmsAuth hidden" aria-label="log-out">
                   Log Out
                   <svg width="20" height="20">
                     <use href="./images/icons.svg#icon-arrow-right"></use>
                   </svg>
                 </button>
               </li>
-              <!-- <li>
-                <button class="js-dltAccntButton js-elmsAuth hidden">
-                  Delete account
-                  <svg width="20" height="20">
-                    <use href="./images/icons.svg#icon-arrow-right"></use>
-                  </svg>
-                </button>
-              </li> -->
             </ul>
           </div>
         </div>
