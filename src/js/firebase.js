@@ -310,7 +310,5 @@ export async function getBksFrmShpLst() {
     const booksArray = data.books;
 
     return booksArray;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }
