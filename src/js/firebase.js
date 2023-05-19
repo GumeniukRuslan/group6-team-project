@@ -72,7 +72,6 @@ export async function handleAuthStateChanged() {
     onAuthStateChanged(auth, user => {
       if (user) {
         userCurrent = user.email;
-        console.log(user);
         resolve(userCurrent);
 
         if (user.displayName) {
