@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
   deleteUser,
   updateProfile,
+  updateEmail,
+  updatePassword,
 } from 'firebase/auth';
 
 import {
@@ -26,6 +28,8 @@ import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
 import { NOTIFY_OPTIONS } from './components/notifyOptions';
 import renderOnAuth from './render/renderOnAuth';
 import setUserName from './render/setUserName';
+import { openLoginModal } from './loginModals';
+import { closeLoginModal } from './components/closeModalBtn';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCFbDfMxvAAm2TBu0RcI8fVQFaZMghyfcY',
@@ -48,16 +52,18 @@ if (
 ) {
   handleAuthStateChanged();
   refs.regForm.addEventListener('submit', registerNewUser);
-  refs.logForm.addEventListener('submit', signIn);
 }
+refs.logForm.addEventListener('submit', signIn);
 refs.logOutButtons.forEach(button => {
   button.addEventListener('click', logOut);
 });
-// refs.dltAccntButtons.forEach(button => {
-//   button.addEventListener('click', dltUser);
-// });
+
 refs.updateUsrnameButtons.forEach(button => {
   button.addEventListener('click', updateUsername);
+});
+
+refs.updateAccountButtons.forEach(button => {
+  button.addEventListener('click', openLoginModal);
 });
 
 /**
@@ -72,7 +78,6 @@ export async function handleAuthStateChanged() {
     onAuthStateChanged(auth, user => {
       if (user) {
         userCurrent = user.email;
-        console.log(user);
         resolve(userCurrent);
 
         if (user.displayName) {
@@ -127,7 +132,29 @@ async function signIn(evt) {
   await signInWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
       evt.target.reset();
-      location.reload();
+
+      switch (evt.target.dataset.target) {
+        case 'sign-in':
+          location.reload();
+          break;
+
+        case 'delete-account':
+          dltUser(data);
+          break;
+
+        case 'change-email':
+          closeLoginModal();
+          setTimeout(changeEmail, 500);
+          break;
+
+        case 'change-password':
+          closeLoginModal();
+          setTimeout(changePassword, 500);
+          break;
+
+        default:
+          throw new Error();
+      }
     })
     .catch(error => {
       const errorCode = error.code;
@@ -147,7 +174,6 @@ async function signIn(evt) {
           break;
       }
     });
-  credentials = data;
 }
 
 /**
@@ -164,47 +190,10 @@ function logOut(evt) {
         location.assign('/group6-team-project/index.html');
         return;
       }
-      console.log('Log out');
       location.reload();
     })
-    .catch(error => {
-      console.log(error, 'Log out error');
-    });
+    .catch(error => {});
 }
-
-/**
- * Функция для удаления аккаунта
- * @param {click} evt
- */
-// function dltUser(evt) {
-//   Confirm.show(
-//     'Delete your account',
-//     'Are you sure?',
-//     'Delete account',
-//     'Reject',
-//     Yes,
-//     () => {},
-//     NOTIFY_OPTIONS
-//   );
-// }
-
-// async function Yes() {
-//   await deleteDoc(doc(db, `shoplist/${userCurrent}`));
-//   await deleteUser(auth.currentUser)
-//     .then(() => {
-//       if (
-//         window.location.pathname === '/shopping-list.html' ||
-//         window.location.pathname === '/group6-team-project/shopping-list.html'
-//       ) {
-//         location.assign('/group6-team-project/index.html');
-//         return;
-//       }
-//       location.reload();
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 
 /**
  * Функция для добавления имени пользователя в аккаунт
@@ -216,13 +205,86 @@ function addUserName(userName) {
   })
     .then(() => {
       location.reload();
-      console.log('Profile updated!');
     })
-    .catch(error => {
-      console.log(error);
-    });
+    .catch(error => {});
 }
 
+/**
+ * Функция для удаления аккаунта
+ */
+async function dltUser() {
+  await deleteDoc(doc(db, `shoplist/${userCurrent}`));
+  await deleteUser(auth.currentUser)
+    .then(() => {
+      if (
+        window.location.pathname === '/shopping-list.html' ||
+        window.location.pathname === '/group6-team-project/shopping-list.html'
+      ) {
+        location.assign('/group6-team-project/index.html');
+        return;
+      }
+      location.reload();
+    })
+    .catch(error => {});
+}
+
+/**
+ * Функция для смены email
+ */
+function changeEmail() {
+  Confirm.prompt(
+    'Change email',
+    'Please, enter new email',
+    '',
+    'Change',
+    'Cancel',
+    clientAnswer => {
+      updateEmail(auth.currentUser, clientAnswer)
+        .then(() => {
+          location.reload();
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            Notify.failure('Oops, this email is already used');
+            changeEmail();
+          }
+        });
+    },
+    () => {},
+    NOTIFY_OPTIONS
+  );
+}
+
+/**
+ * Функция для смены пароля
+ */
+function changePassword() {
+  Confirm.prompt(
+    'Change password',
+    'Please, enter new password',
+    '',
+    'Change',
+    'Cancel',
+    clientAnswer => {
+      updatePassword(auth.currentUser, clientAnswer)
+        .then(() => {
+          location.reload();
+        })
+        .catch(error => {
+          if (error.code === 'auth/weak-password') {
+            Notify.failure('Oops, password should be at least 6 characters');
+            changePassword();
+          }
+        });
+    },
+    () => {},
+    NOTIFY_OPTIONS
+  );
+}
+
+/**
+ * Функция для смены имени
+ */
 function updateUsername() {
   Confirm.prompt(
     'Update username',
@@ -236,11 +298,8 @@ function updateUsername() {
       })
         .then(() => {
           location.reload();
-          console.log('Profile updated!');
         })
-        .catch(error => {
-          console.log(error);
-        });
+        .catch(error => {});
     },
     () => {},
     NOTIFY_OPTIONS
@@ -311,7 +370,5 @@ export async function getBksFrmShpLst() {
     const booksArray = data.books;
 
     return booksArray;
-  } catch (error) {
-    console.error(error);
-  }
+  } catch (error) {}
 }

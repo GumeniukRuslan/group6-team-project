@@ -22,16 +22,22 @@ export function closeModal() {
 }
 
 export const closeLoginModal = () => {
-  const switchModalBtns = document.querySelector(
-    '.modal-overlay.open .login__switch'
-  );
-  switchModalBtns.removeEventListener('click', changeModal);
+  if (document.querySelector('.modal-overlay.open .login__switch')) {
+    const switchModalBtns = document.querySelector(
+      '.modal-overlay.open .login__switch'
+    );
+    switchModalBtns.removeEventListener('click', changeModal);
+  }
+
   const currentModal = document.querySelector('.modal-overlay.open');
   currentModal.classList.remove('open');
   document.body.classList.remove('lock');
   currentModal.removeEventListener('click', closeLoginModalOnClick);
   currentModal.removeEventListener('click', closeLoginModalBackdrop);
   currentModal.addEventListener('keydown', closeLoginModalEsc);
+  if (currentModal.querySelector('.modal__warning-message')) {
+    currentModal.querySelector('.modal__warning-message').remove();
+  }
 };
 
 export const closeLoginModalOnClick = event => {

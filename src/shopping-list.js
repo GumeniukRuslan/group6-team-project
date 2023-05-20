@@ -11,3 +11,5 @@ import './js/components/swiper';
 import './js/activePage';
 import './js/teamModal';
 import './js/createQuote';
+
+import './js/loginModals';

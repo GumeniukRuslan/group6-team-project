@@ -13,7 +13,8 @@ export const refs = {
   regForm: document.querySelector('.js-regForm'),
   logForm: document.querySelector('.js-logForm'),
   logOutButtons: document.querySelectorAll('.js-logOutButton'),
-  // dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
+  updateAccountButtons: document.querySelectorAll('.js-updateAccountButton'),
   updateUsrnameButtons: document.querySelectorAll('.js-updateUsrnameButton'),
 
   //Header`s elements
@@ -51,7 +52,7 @@ export const refs = {
   swiperContainer: document.querySelector('.swiper-container'),
   swiper: document.querySelector('.swiper-wrapper'),
   swiperButton: document.querySelector('.buttons-slider'),
-  
+
   quoteText: document.querySelector('.js-quote'),
   quoteAuthor: document.querySelector('.js-author'),
 };
