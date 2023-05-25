@@ -17,8 +17,8 @@ export const renderShopBookCards = data => {
         description,
         buy_links,
       }) => {
-        const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
-        const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
+        const appleURL = buy_links.find(obj => obj.name === 'Apple Books');
+        const bookShop = buy_links.find(obj => obj.name === 'Bookshop');
         return `<li class="shopping-list_book" data-book="${_id}">
           <img class="book_img" src="${
             book_image ? book_image : sample
@@ -38,10 +38,10 @@ export const renderShopBookCards = data => {
               <ul class="book_shopping-links">
                 <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${amazon_product_url}"><img class="amazon-img" src="${amazon}" alt=""></a></li>
                 <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
-                  appleURL[0].url
+                  appleURL.url
                 }"><img class="book1_img" src="${book1}" alt=""></a></li>
                 <li><a class="shopping-links_link" target="_blank" rel="noopener noreferrer" href="${
-                  bookShop[0].url
+                  bookShop.url
                 }"><img class="book2_img" src="${book2}" alt=""></a></li>
               </ul>
             </div>
