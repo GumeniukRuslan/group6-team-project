@@ -27,6 +27,22 @@
   }
 }
 
+.btn--yellow {
+  text-transform: uppercase;
+  background-color: var(--additional-btn-color);
+  border: 2px solid var(--additional-btn-color);
+  border-radius: 40px;
+  color: var(--main-color);
+  font-weight: 700;
+  cursor: pointer;
+  @extend %transition;
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--body-bcg);
+  }
+}
+
 .btn-top {
   position: fixed;
   bottom: 100px;

@@ -94,6 +94,7 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 1.2;
+    overflow: hidden;
     @include min_1440 {
       padding: 20px 40px;
     }
@@ -102,12 +103,16 @@
       font-size: 16px;
       line-height: 1.2;
       color: var(--main-text-color);
+      transition: all 0.4s ease 0s;
       @include min_1440 {
         font-size: 18px;
       }
     }
     &:focus-within {
       border-color: var(--secondary-color);
+      &::placeholder {
+        transform: translateY(-200%);
+      }
       + .login__icon {
         stroke: var(--secondary-color);
       }
