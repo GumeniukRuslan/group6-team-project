@@ -45,13 +45,24 @@
         background-color: var(--additional-text-color);
         bottom: -7px;
         left: -20px;
+        @include min_1440 {
+          width: 390px;
+        }
     }
+  }
+  &__output {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   &__input {
     @extend .login__input;
-    width: 100%;
+    width: 256px;
     &::placeholder {
       color: var(--dark-additional-text-color);
+    }
+    @include min_1440 {
+      width: 350px;
     }
   }
   &__btns {
