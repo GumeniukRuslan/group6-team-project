@@ -13,8 +13,8 @@ export function renderModal({
   amazon_product_url,
   buy_links,
 }) {
-  const appleURL = buy_links.filter(obj => obj.name === 'Apple Books');
-  const bookShop = buy_links.filter(obj => obj.name === 'Bookshop');
+  const appleURL = buy_links.find(obj => obj.name === 'Apple Books');
+  const bookShop = buy_links.find(obj => obj.name === 'Bookshop');
   return `<div class="modal-book">
   <button class="modal-book__close" type="button" data-modal-close>
     <svg class="modal-book__close-icon" width="24" height="24">
@@ -40,11 +40,11 @@ export function renderModal({
                 <li><a target="_blank" rel="noopener noreferrer" href="${amazon_product_url}" class="modal-book__link">
                   <img class="amazon" src="${amazon}" alt="amazon-logo" width="62"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
-                  appleURL[0].url
+                  appleURL.url
                 }" class="modal-book__link">
                   <img class="book-first"src="${book1}" alt="apple-shop" width="33"></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="${
-                  bookShop[0].url
+                  bookShop.url
                 }" class="modal-book__link">
                   <img class="book-second"src="${book2}" alt="bookskop" width="38"></a></li>
               </ul>

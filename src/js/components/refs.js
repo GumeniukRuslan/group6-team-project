@@ -55,4 +55,9 @@ export const refs = {
 
   quoteText: document.querySelector('.js-quote'),
   quoteAuthor: document.querySelector('.js-author'),
+
+  acceptModal: document.querySelector('.accept__backdrop'),
+  acceptInputUpdate: document.querySelector('.accept__output'),
+  acceptBtnCancel: document.querySelector('.js-cancel-modal'),
+  acceptForm: document.querySelector('.accept__form')
 };
