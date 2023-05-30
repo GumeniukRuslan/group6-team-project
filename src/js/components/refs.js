@@ -61,4 +61,5 @@ export const refs = {
   acceptInputUpdate: document.querySelector('.accept__output'),
   acceptBtnCancel: document.querySelector('.js-cancel-modal'),
   acceptForm: document.querySelector('.accept__form'),
+  acceptValueTitle: document.querySelector('.js-accept-value')
 };
