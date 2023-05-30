@@ -12,10 +12,11 @@ export const refs = {
   //Авторизация
   regForm: document.querySelector('.js-regForm'),
   logForm: document.querySelector('.js-logForm'),
+  reauthForm: document.querySelector('.js-reauthForm'),
+
   logOutButtons: document.querySelectorAll('.js-logOutButton'),
   dltAccntButtons: document.querySelectorAll('.js-dltAccntButton'),
   updateAccountButtons: document.querySelectorAll('.js-updateAccountButton'),
-  updateUsrnameButtons: document.querySelectorAll('.js-updateUsrnameButton'),
 
   //Header`s elements
   elmsNonAuth: document.querySelectorAll('.js-elmsNonAuth'),
@@ -59,5 +60,5 @@ export const refs = {
   acceptModal: document.querySelector('.accept__backdrop'),
   acceptInputUpdate: document.querySelector('.accept__output'),
   acceptBtnCancel: document.querySelector('.js-cancel-modal'),
-  acceptForm: document.querySelector('.accept__form')
+  acceptForm: document.querySelector('.accept__form'),
 };

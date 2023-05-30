@@ -6,34 +6,7 @@ import { closeLoginModalEsc } from './components/closeModalOnEsc';
 import { refs } from './components/refs';
 import { closeLoginModalBackdrop } from './components/closeModalBackdrop';
 
-const openModal = (currentModal, currentModalData) => {
-  if (currentModalData !== 'sign-up' && currentModalData !== 'sign-in') {
-    const content = currentModal.querySelector('.modal__content');
-    if (content.querySelector('.login__switch')) {
-      content.querySelector('.login__switch').remove();
-    }
-    let message = '';
-    switch (currentModalData) {
-      case 'delete-account':
-        message = 'delete your account';
-        break;
-
-      case 'change-email':
-        message = 'change your email';
-        break;
-
-      case 'change-password':
-        message = 'change your password';
-        break;
-
-      default:
-        break;
-    }
-    content.insertAdjacentHTML(
-      'afterbegin',
-      `<p class="modal__warning-message">Before ${message} you must confirm your desicion by Re-authenticate</p>`
-    );
-  }
+const openModal = currentModal => {
   currentModal.classList.add('open');
   document.body.classList.add('lock');
   currentModal.addEventListener('click', closeLoginModalOnClick);
@@ -42,28 +15,23 @@ const openModal = (currentModal, currentModalData) => {
   const switchModalBtns = document.querySelector(
     '.modal-overlay.open .login__switch'
   );
-  if (currentModalData === 'sign-up' || currentModalData === 'sign-in') {
-    switchModalBtns.addEventListener('click', changeModal);
-  }
-
-  currentModal.querySelector('form').dataset.target = currentModalData;
+  switchModalBtns.addEventListener('click', changeModal);
 };
 
-export function openLoginModal(event) {
+function openLoginModal(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-
   const currentModalData = event.target.dataset.login;
   let currentModal;
   if (currentModalData === 'sign-up') {
     currentModal = refs.signUpModal;
-  } else if (currentModalData !== 'sign-up') {
+  } else if (currentModalData === 'sign-in') {
     currentModal = refs.signInModal;
   } else {
     return;
   }
-  openModal(currentModal, currentModalData);
+  openModal(currentModal);
 }
 
 if (refs.elmsNonAuth) {

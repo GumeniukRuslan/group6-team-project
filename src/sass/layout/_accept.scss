@@ -38,23 +38,21 @@
     margin-bottom: 24px;
     position: relative;
     &::before {
-        content: "";
-        position: absolute;
-        width: 295.5px;
-        height: 1px;
-        background-color: var(--additional-text-color);
-        bottom: -7px;
-        left: -20px;
-        @include min_1440 {
-          width: 390px;
-        }
+      content: '';
+      position: absolute;
+      width: 295.5px;
+      height: 1px;
+      background-color: var(--additional-text-color);
+      bottom: -7px;
+      left: -20px;
     }
   }
-  &__output {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+  &__reauth {
+    position: relative;
+    margin-bottom: 20px;
   }
+
   &__input {
     @extend .login__input;
     width: 256px;

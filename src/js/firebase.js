@@ -5,10 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
-  deleteUser,
   updateProfile,
-  updateEmail,
-  updatePassword,
 } from 'firebase/auth';
 
 import {
@@ -19,17 +16,13 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-  deleteDoc,
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
-import { NOTIFY_OPTIONS } from './components/notifyOptions';
 import renderOnAuth from './render/renderOnAuth';
 import setUserName from './render/setUserName';
-import { openLoginModal } from './loginModals';
-import { closeLoginModal } from './components/closeModalBtn';
+import { openAcceptModal } from './accept-modal';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCFbDfMxvAAm2TBu0RcI8fVQFaZMghyfcY',
@@ -41,8 +34,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 export let userCurrent = null;
 
@@ -52,18 +45,14 @@ if (
 ) {
   handleAuthStateChanged();
   refs.regForm.addEventListener('submit', registerNewUser);
+  refs.logForm.addEventListener('submit', signIn);
 }
-refs.logForm.addEventListener('submit', signIn);
 refs.logOutButtons.forEach(button => {
   button.addEventListener('click', logOut);
 });
 
-refs.updateUsrnameButtons.forEach(button => {
-  button.addEventListener('click', updateUsername);
-});
-
 refs.updateAccountButtons.forEach(button => {
-  button.addEventListener('click', openLoginModal);
+  button.addEventListener('click', openAcceptModal);
 });
 
 /**
@@ -133,28 +122,7 @@ async function signIn(evt) {
     .then(userCredential => {
       evt.target.reset();
 
-      switch (evt.target.dataset.target) {
-        case 'sign-in':
-          location.reload();
-          break;
-
-        case 'delete-account':
-          dltUser(data);
-          break;
-
-        case 'change-email':
-          closeLoginModal();
-          setTimeout(changeEmail, 500);
-          break;
-
-        case 'change-password':
-          closeLoginModal();
-          setTimeout(changePassword, 500);
-          break;
-
-        default:
-          throw new Error();
-      }
+      location.reload();
     })
     .catch(error => {
       const errorCode = error.code;
@@ -212,99 +180,7 @@ function addUserName(userName) {
 /**
  * Функция для удаления аккаунта
  */
-async function dltUser() {
-  await deleteDoc(doc(db, `shoplist/${userCurrent}`));
-  await deleteUser(auth.currentUser)
-    .then(() => {
-      if (
-        window.location.pathname === '/shopping-list.html' ||
-        window.location.pathname === '/group6-team-project/shopping-list.html'
-      ) {
-        location.assign('/group6-team-project/index.html');
-        return;
-      }
-      location.reload();
-    })
-    .catch(error => {});
-}
-
-/**
- * Функция для смены email
- */
-function changeEmail() {
-  Confirm.prompt(
-    'Change email',
-    'Please, enter new email',
-    '',
-    'Change',
-    'Cancel',
-    clientAnswer => {
-      updateEmail(auth.currentUser, clientAnswer)
-        .then(() => {
-          location.reload();
-        })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            Notify.failure('Oops, this email is already used');
-            changeEmail();
-          }
-        });
-    },
-    () => {},
-    NOTIFY_OPTIONS
-  );
-}
-
-/**
- * Функция для смены пароля
- */
-function changePassword() {
-  Confirm.prompt(
-    'Change password',
-    'Please, enter new password',
-    '',
-    'Change',
-    'Cancel',
-    clientAnswer => {
-      updatePassword(auth.currentUser, clientAnswer)
-        .then(() => {
-          location.reload();
-        })
-        .catch(error => {
-          if (error.code === 'auth/weak-password') {
-            Notify.failure('Oops, password should be at least 6 characters');
-            changePassword();
-          }
-        });
-    },
-    () => {},
-    NOTIFY_OPTIONS
-  );
-}
-
-/**
- * Функция для смены имени
- */
-function updateUsername() {
-  Confirm.prompt(
-    'Update username',
-    'Please, enter new username',
-    '',
-    'Change',
-    'Cancel',
-    clientAnswer => {
-      updateProfile(auth.currentUser, {
-        displayName: clientAnswer,
-      })
-        .then(() => {
-          location.reload();
-        })
-        .catch(error => {});
-    },
-    () => {},
-    NOTIFY_OPTIONS
-  );
-}
+async function dltUser() {}
 
 /**
  * Функция для добавления книги в database Шопинг-лист по клику

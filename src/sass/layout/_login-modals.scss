@@ -172,16 +172,3 @@
     }
   }
 }
-
-.modal__warning-message {
-  padding: 0px 24px;
-  margin-bottom: 24px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.2;
-  color: var(--main-text-color);
-  @include min_1440 {
-    font-size: 18px;
-  }
-}
