@@ -46,6 +46,9 @@ window.addEventListener('load', createShopList);
 
 export async function handlePromiseArray(arr) {
   const newArr = arr.map(async id => await getOneBookById(id));
-  const markArr = await Promise.all(newArr);
-  return markArr;
+  const markArr = await Promise.allSettled(newArr);
+  const result = markArr
+    .filter(obj => obj.status === 'fulfilled')
+    .map(obj => obj.value);
+  return result;
 }
