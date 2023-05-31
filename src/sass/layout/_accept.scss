@@ -38,20 +38,53 @@
     margin-bottom: 24px;
     position: relative;
     &::before {
-        content: "";
-        position: absolute;
-        width: 295.5px;
-        height: 1px;
-        background-color: var(--additional-text-color);
-        bottom: -7px;
-        left: -20px;
+      content: '';
+      position: absolute;
+      width: 295.5px;
+      height: 1px;
+      background-color: var(--additional-text-color);
+      bottom: -7px;
+      left: -20px;
+      @include min_1440 {
+        width: 390px;
+      }
     }
   }
+  &__message {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
+    color: var(--additional-text-color);
+    margin-bottom: 10px;
+    &.hidden {
+      display: none;
+    }
+  }
+  &__reauth {
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &.unshown {
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+    }
+    .accept__message {
+      margin-bottom: 0;
+    }
+  }
+
   &__input {
     @extend .login__input;
-    width: 100%;
+    width: 256px;
     &::placeholder {
       color: var(--dark-additional-text-color);
+    }
+    @include min_1440 {
+      width: 350px;
     }
   }
   &__btns {

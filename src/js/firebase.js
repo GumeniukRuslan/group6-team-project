@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
-  deleteUser,
   updateProfile,
 } from 'firebase/auth';
 
@@ -17,15 +16,13 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-  deleteDoc,
 } from 'firebase/firestore';
 import { refs } from './components/refs';
 import formValuesGet from './helpers/formValuesGet';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
-import { NOTIFY_OPTIONS } from './components/notifyOptions';
 import renderOnAuth from './render/renderOnAuth';
 import setUserName from './render/setUserName';
+import { openAcceptModal } from './accept-modal';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCFbDfMxvAAm2TBu0RcI8fVQFaZMghyfcY',
@@ -37,8 +34,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 export let userCurrent = null;
 
@@ -53,11 +50,9 @@ if (
 refs.logOutButtons.forEach(button => {
   button.addEventListener('click', logOut);
 });
-// refs.dltAccntButtons.forEach(button => {
-//   button.addEventListener('click', dltUser);
-// });
-refs.updateUsrnameButtons.forEach(button => {
-  button.addEventListener('click', updateUsername);
+
+refs.updateAccountButtons.forEach(button => {
+  button.addEventListener('click', openAcceptModal);
 });
 
 /**
@@ -126,6 +121,7 @@ async function signIn(evt) {
   await signInWithEmailAndPassword(auth, data.email, data.password)
     .then(userCredential => {
       evt.target.reset();
+
       location.reload();
     })
     .catch(error => {
@@ -146,7 +142,6 @@ async function signIn(evt) {
           break;
       }
     });
-  credentials = data;
 }
 
 /**
@@ -163,47 +158,10 @@ function logOut(evt) {
         location.assign('/group6-team-project/index.html');
         return;
       }
-      console.log('Log out');
       location.reload();
     })
-    .catch(error => {
-      console.log(error, 'Log out error');
-    });
+    .catch(error => {});
 }
-
-/**
- * Функция для удаления аккаунта
- * @param {click} evt
- */
-// function dltUser(evt) {
-//   Confirm.show(
-//     'Delete your account',
-//     'Are you sure?',
-//     'Delete account',
-//     'Reject',
-//     Yes,
-//     () => {},
-//     NOTIFY_OPTIONS
-//   );
-// }
-
-// async function Yes() {
-//   await deleteDoc(doc(db, `shoplist/${userCurrent}`));
-//   await deleteUser(auth.currentUser)
-//     .then(() => {
-//       if (
-//         window.location.pathname === '/shopping-list.html' ||
-//         window.location.pathname === '/group6-team-project/shopping-list.html'
-//       ) {
-//         location.assign('/group6-team-project/index.html');
-//         return;
-//       }
-//       location.reload();
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 
 /**
  * Функция для добавления имени пользователя в аккаунт
@@ -215,36 +173,14 @@ function addUserName(userName) {
   })
     .then(() => {
       location.reload();
-      console.log('Profile updated!');
     })
-    .catch(error => {
-      console.log(error);
-    });
+    .catch(error => {});
 }
 
-function updateUsername() {
-  Confirm.prompt(
-    'Update username',
-    'Please, enter new username',
-    '',
-    'Change',
-    'Cancel',
-    clientAnswer => {
-      updateProfile(auth.currentUser, {
-        displayName: clientAnswer,
-      })
-        .then(() => {
-          location.reload();
-          console.log('Profile updated!');
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    () => {},
-    NOTIFY_OPTIONS
-  );
-}
+/**
+ * Функция для удаления аккаунта
+ */
+async function dltUser() {}
 
 /**
  * Функция для добавления книги в database Шопинг-лист по клику

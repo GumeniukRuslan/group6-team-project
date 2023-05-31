@@ -1,16 +1,33 @@
 <div class="accept__backdrop">
   <div class="accept">
-    <h1 class="accept__title">Update Username</h1>
-    <form action="submit" class="accept__form">
+    <h1 class="accept__title"></h1>
+    <form action="submit" class="accept__form js-reauthForm">
+      <div class="accept__reauth">
+        <h2 class="accept__message">Verify your account</h2>
+        <input
+          type="email"
+          name="email"
+          class="accept__input"
+          placeholder="Enter your email"
+        />
+        <input
+          type="password"
+          name="password"
+          class="accept__input"
+          placeholder="Enter your password"
+        />
+      </div>
       <div class="accept__output">
+        <h2 class="accept__message js-accept-value"></h2>
         <input
           type="text"
-          class="accept__input"
-          placeholder="Enter new username"
+          name="answer"
+          class="accept__input js-changeInput"
+          required
         />
       </div>
       <div class="accept__btns">
-        <button class="btn--yellow accept__btn" type="submit">Change</button>
+        <button class="btn--yellow accept__btn" type="submit">Confirm</button>
         <button class="btn--violet accept__btn js-cancel-modal" type="button">
           Cancel
         </button>

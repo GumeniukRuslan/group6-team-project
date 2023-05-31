@@ -35,7 +35,9 @@ function openLoginModal(event) {
 }
 
 if (refs.elmsNonAuth) {
-  refs.elmsNonAuth.forEach(btns => btns.addEventListener('click', openLoginModal));
+  refs.elmsNonAuth.forEach(btns =>
+    btns.addEventListener('click', openLoginModal)
+  );
 }
 
 export function changeModal(event) {
