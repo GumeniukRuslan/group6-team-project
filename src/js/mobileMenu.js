@@ -12,7 +12,7 @@ function toggleMenu() {
     refs.burgerMenuIcon.classList.add('showButton');
     refs.burgerMenuIcon.classList.remove('hideButton');
 
-    document.body.classList.remove('lock');
+    document.body.classList.remove('mobile-menu__lock');
   } else {
     refs.mobileMenu.classList.add('showMenu');
 
@@ -22,7 +22,7 @@ function toggleMenu() {
     refs.burgerMenuIcon.classList.add('hideButton');
     refs.burgerMenuIcon.classList.remove('showButton');
 
-    document.body.classList.add('lock');
+    document.body.classList.add('mobile-menu__lock');
   }
 }
 
@@ -36,5 +36,5 @@ window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   refs.burgerMenuIcon.classList.add('showButton');
   refs.burgerMenuIcon.classList.remove('hideButton');
 
-  document.body.classList.remove('lock');
+  document.body.classList.remove('mobile-menu__lock');
 });

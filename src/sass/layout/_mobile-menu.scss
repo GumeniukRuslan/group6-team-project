@@ -68,7 +68,8 @@
     @extend %transition;
 
     &:hover,
-    &:focus, &.active-page {
+    &:focus,
+    &.active-page {
       background-color: var(--additional-btn-color);
       color: var(--main-color);
       fill: var(--main-color);
@@ -80,6 +81,16 @@
     margin-bottom: 20px;
     background-color: var(--primary-bcg);
     color: var(--primary-text-color);
+
+    &.js-updateAccountButton,
+    &.js-logOutButton {
+      min-width: 162px;
+    }
+
+    &.buttons-auth__delete {
+      background-color: #ff4343;
+      color: var(--primary-bcg);
+    }
   }
 }
 
@@ -103,6 +114,6 @@
   }
 }
 
-body.lock {
+body.mobile-menu__lock {
   overflow: hidden;
 }

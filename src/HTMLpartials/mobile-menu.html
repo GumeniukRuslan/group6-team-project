@@ -2,13 +2,21 @@
 <div class="mobile-menu js-mobileMenu">
   <div class="container mobile-menu__box">
     <div class="mobile-menu__signs-box js-elmsNonAuth">
-      <button class="buttons-auth__sign" data-login="sign-up" aria-label="sign-up">
+      <button
+        class="buttons-auth__sign"
+        data-login="sign-up"
+        aria-label="sign-up"
+      >
         Sign Up
         <svg width="20" height="20">
           <use href="./images/icons.svg#icon-arrow-right"></use>
         </svg>
       </button>
-      <button class="buttons-auth__sign" data-login="sign-in" aria-label="sign-in">
+      <button
+        class="buttons-auth__sign"
+        data-login="sign-in"
+        aria-label="sign-in"
+      >
         Sign In
         <svg class="sign-in__img" width="20" height="20">
           <use href="./images/icons.svg#icon-arrow-right"></use>
@@ -23,7 +31,11 @@
         <span class="js-userName">User</span>
       </p>
       <ul class="header__buttons-nav">
-        <li><a class="buttons-nav__item" href="./index.html" data-page="home">Home</a></li>
+        <li>
+          <a class="buttons-nav__item" href="./index.html" data-page="home"
+            >Home</a
+          >
+        </li>
         <li>
           <a
             class="buttons-nav__item buttons-nav__shop-list"
@@ -41,7 +53,9 @@
     <ul class="mobile-menu__buttons-features">
       <li>
         <button
-          class="buttons-auth__sign js-updateUsrnameButton js-elmsAuth hidden"  aria-label="update-username"
+          class="buttons-auth__sign js-updateAccountButton js-elmsAuth hidden"
+          aria-label="update-username"
+          data-modal="change-username"
         >
           Update username
           <svg width="20" height="20">
@@ -50,8 +64,47 @@
         </button>
       </li>
       <li>
-        <button class="buttons-auth__sign js-logOutButton js-elmsAuth hidden"  aria-label="log-out">
+        <button
+          class="buttons-auth__sign js-updateAccountButton js-elmsAuth hidden"
+          aria-label="update-username"
+          data-modal="change-email"
+        >
+          Change email
+          <svg width="20" height="20">
+            <use href="./images/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button
+          class="buttons-auth__sign js-updateAccountButton js-elmsAuth hidden"
+          aria-label="update-username"
+          data-modal="change-password"
+        >
+          Change password
+          <svg width="20" height="20">
+            <use href="./images/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button
+          class="buttons-auth__sign js-logOutButton js-elmsAuth hidden"
+          aria-label="log-out"
+        >
           Log Out
+          <svg width="20" height="20">
+            <use href="./images/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button>
+      </li>
+      <li>
+        <button
+          class="buttons-auth__sign buttons-auth__delete js-updateAccountButton js-elmsAuth hidden"
+          aria-label="update-username"
+          data-modal="delete-account"
+        >
+          Delete account
           <svg width="20" height="20">
             <use href="./images/icons.svg#icon-arrow-right"></use>
           </svg>
